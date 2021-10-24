@@ -6,4 +6,3 @@ const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 // Render the top component to the root.
 root.render(<App />);
-//hello
