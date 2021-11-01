@@ -1,0 +1,31 @@
+.HomeScreen {
+  height: 1000px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #DBDBDB;
+  .LeftContainer {
+    background-color: white;
+    width: 20%;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px #00000033;
+  }
+  .MiddleContainer {
+    margin-left:10px;
+    margin-top:10px;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px #00000033;
+  }
+  .RightContainer {
+    background-color: white;
+    width: 20%;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px #00000033;
+  }
+}

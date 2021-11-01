@@ -18,10 +18,15 @@ const PostContainer = (props) => {
           "shareCount": 0
         }
     ]
-    const [upVote, setUpVote] = useState(postData[0].upVote);
-    const [commentCount, setCommentCount] = useState(postData[0].commentCount);
-    const [shareCount, setShareCount] = useState(postData[0].shareCount);
-
+    const [upVote, setUpVote] = useState(0);
+    const [commentCount, setCommentCount] = useState(0);
+    const [shareCount, setShareCount] = useState(0);
+    
+    const onDisplay = (post) => {
+        setUpVote(post.upVote);
+        setCommentCount(post.commentCount);
+        setShareCount(post.shareCount);
+    }
     const voteUp = () => {
         setUpVote(parseInt(upVote)+1);
     }
@@ -37,7 +42,7 @@ const PostContainer = (props) => {
     const post = postData[0];
     return (
         <div className="PostContainer">
-            <PostShort key={post.id} post={post} voteUp={voteUp} voteDown={voteDown} commentUp={commentUp} shareUp={shareUp}/>
+            <PostShort key={post.id} post={post} onDisplay={() => onDisplay(post)} voteUp={voteUp} voteDown={voteDown} commentUp={commentUp} shareUp={shareUp}/>
             {/* {(postData.length > 0) && postData.map((post) => {
                 <PostShort key={post.id} post={post} voteUp={voteUp} voteDown={voteDown} commentUp={commentUp} shareUp={shareUp}/>
             })} */}

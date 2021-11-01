@@ -7,7 +7,6 @@ const MainLayout = ({ children, showTrending = true }) => {
     <div className="MainLayout">
       <Header />
       <div className="Main">
-        {showTrending && <Trending />}
         {children}
       </div>
     </div>

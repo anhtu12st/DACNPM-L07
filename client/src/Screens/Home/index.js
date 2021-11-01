@@ -1,17 +1,15 @@
 import PostContainer from "../../Components/Post/PostContainer";
-import "./styles.scss";
+import "./Home.scss";
 
 const HomeScreen = () => {
   return (
     <div className="HomeScreen">
       <div className="LeftContainer">
-        LeftContainer
       </div>
       <div className="MiddleContainer">
         <PostContainer/>
       </div>
       <div className="RightContainer">
-        RightContainer
         {/* <GroupTrending />
         <AboutUs /> */}
       </div>
