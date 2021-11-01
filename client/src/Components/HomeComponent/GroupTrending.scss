@@ -1,0 +1,47 @@
+.GroupTrending {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    border-radius: 3px;
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-right: 10px;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 2px 2px 2px #00000033;
+    img {
+        cursor: pointer;
+        background-color: black;
+        width: 20px;
+        height: 20px;
+        border-radius: 100px;
+    }
+    .Title {
+        margin-top: 10px;
+        margin-left: 10px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .ListGroup {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        margin-left: 20px;
+        .group {
+            display: flex;
+            flex-direction: row;
+            margin-left: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            img, div {
+                margin-top: auto;
+                margin-bottom: auto;
+            }
+            .group-name {
+                margin-left: 10px;
+            }
+
+        }
+    }
+}

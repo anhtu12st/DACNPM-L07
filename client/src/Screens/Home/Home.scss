@@ -5,18 +5,19 @@
   justify-content: space-between;
   background-color: #DBDBDB;
   .LeftContainer {
-    width: 700px;
+    width: 300px;
     margin-left: 40px;
     margin-top: 20px;
   }
   .MiddleContainer {
+    width: 700px;
     display: flex;
     flex-direction: column;
-    margin-left:20px;
-    margin-top:10px;
+    margin-left: 20px;
+    margin-top: 20px;
   }
   .RightContainer {
-    width: 700px;
+    width: 300px;
     margin-left: 20px;
     margin-top: 20px;
     margin-right: 40px;
