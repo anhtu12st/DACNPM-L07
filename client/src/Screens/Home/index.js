@@ -1,25 +1,22 @@
+import PostContainer from "../../Components/Post/PostContainer";
 import "./styles.scss";
 
-const Home = () => {
+const HomeScreen = () => {
   return (
     <div className="HomeScreen">
-      <div className="content">
-        {Array(5)
-          .fill(null)
-          .map((_) => (
-            <div></div>
-          ))}
+      <div className="LeftContainer">
+        LeftContainer
       </div>
-
-      <div className="right-bar">
-        {Array(5)
-          .fill(null)
-          .map((_) => (
-            <div></div>
-          ))}
+      <div className="MiddleContainer">
+        <PostContainer/>
+      </div>
+      <div className="RightContainer">
+        RightContainer
+        {/* <GroupTrending />
+        <AboutUs /> */}
       </div>
     </div>
   );
 };
 
-export default Home;
+export default HomeScreen;

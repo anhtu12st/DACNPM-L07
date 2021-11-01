@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { HomeScreen, LoginScreen, SignupScreen } from "./Screens";
 import { MainLayout } from "./Components";
 import "./styles.scss";
@@ -8,16 +8,15 @@ function App() {
     <BrowserRouter>
       <Switch>
         <MainLayout>
-          <Switch>
-            <Route exact path="/" component={HomeScreen} />
-          </Switch>
+          <Route exact path="/" component={HomeScreen} />
+          {/* <Route path="/login" component={LoginScreen} /> */}
+          <Route>
+            <Redirect to="/" />
+          </Route>
         </MainLayout>
-
-        <Route exact path="/login" component={LoginScreen} />
-        <Route exact path="/signup" component={SignupScreen} />
       </Switch>
     </BrowserRouter>
-  );
+  )
 }
 
 export default App;

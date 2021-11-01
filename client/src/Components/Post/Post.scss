@@ -1,0 +1,41 @@
+div {
+    border-style: solid;
+    border-width: 1px;
+}
+.PostShort {
+    display: flex;
+    flex-direction: row;
+    
+    button, img {
+        cursor: pointer;
+        background-color: black;
+        width: 10px;
+        height: 10px;
+    }
+    .VoteStatus {
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+    }
+    .ShortContent {
+        display: flex;
+        flex-direction: column;
+        .PostedBy {
+            display: flex;
+            flex-direction: row;
+        }
+        .ReactionBar {
+            display: flex;
+            flex-direction: row;
+
+            .Comment {
+                display: flex;
+                flex-direction: row;
+            }
+            .Share {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+    }
+}
