@@ -1,7 +1,8 @@
 .PostShort {
     display: flex;
     flex-direction: row;
-    border-radius: 6px;
+    max-width: 1500px;
+    border-radius: 3px;
     margin-top: 20px;
     margin-right: 10px;
     margin-right: 10px;
@@ -16,7 +17,7 @@
         height: 10px;
     }
     .VoteStatus {
-        width: 150px;
+        width: 5%;
         background-color: #CFCFCF;
         border-radius: 3px;
         .up-button {
@@ -49,6 +50,7 @@
     .ShortContent {
         display: flex;
         flex-direction: column;
+        width: 95%;
         .PostedBy {
             display: flex;
             flex-direction: row;

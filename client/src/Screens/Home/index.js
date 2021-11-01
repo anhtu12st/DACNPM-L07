@@ -1,3 +1,4 @@
+import CreatePost from "../../Components/Post/CreatePost";
 import PostContainer from "../../Components/Post/PostContainer";
 import "./Home.scss";
 
@@ -7,6 +8,7 @@ const HomeScreen = () => {
       <div className="LeftContainer">
       </div>
       <div className="MiddleContainer">
+        <CreatePost />
         <PostContainer />
       </div>
       <div className="RightContainer">
