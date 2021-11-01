@@ -7,7 +7,6 @@ const HomeScreen = () => {
       <div className="LeftContainer">
       </div>
       <div className="MiddleContainer">
-        <CreatePost />
         <PostContainer />
       </div>
       <div className="RightContainer">
