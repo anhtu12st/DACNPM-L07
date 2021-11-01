@@ -9,6 +9,7 @@
     "node-sass": "^6.0.1",
     "react": "^18.0.0-alpha-3c4c1c470-20211021",
     "react-dom": "^18.0.0-alpha-3c4c1c470-20211021",
+    "react-icons": "^4.3.1",
     "react-router-dom": "^5.3.0",
     "react-scripts": "^4.0.3",
     "sass-loader": "^12.2.0",
