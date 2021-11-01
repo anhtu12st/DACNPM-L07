@@ -1,8 +1,8 @@
 import Header from "./Header";
-import Trending from "./Trending";
 import "./styles.scss";
+import Trending from "./Trending";
 
-const MainLayout = ({ children, showTrending = true }) => {
+const MainLayout = ({ children, showTrending = false }) => {
   return (
     <div className="MainLayout">
       <Header />
