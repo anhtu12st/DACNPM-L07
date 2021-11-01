@@ -7,7 +7,8 @@ const HomeScreen = () => {
       <div className="LeftContainer">
       </div>
       <div className="MiddleContainer">
-        <PostContainer/>
+        <CreatePost />
+        <PostContainer />
       </div>
       <div className="RightContainer">
         {/* <GroupTrending />

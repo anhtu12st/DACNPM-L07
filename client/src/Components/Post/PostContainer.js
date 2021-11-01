@@ -43,6 +43,8 @@ const PostContainer = (props) => {
     return (
         <div className="PostContainer">
             <PostShort key={post.id} post={post} onDisplay={() => onDisplay(post)} voteUp={voteUp} voteDown={voteDown} commentUp={commentUp} shareUp={shareUp}/>
+            <PostShort key={post.id} post={post} onDisplay={() => onDisplay(post)} voteUp={voteUp} voteDown={voteDown} commentUp={commentUp} shareUp={shareUp}/>
+            <PostShort key={post.id} post={post} onDisplay={() => onDisplay(post)} voteUp={voteUp} voteDown={voteDown} commentUp={commentUp} shareUp={shareUp}/>
             {/* {(postData.length > 0) && postData.map((post) => {
                 <PostShort key={post.id} post={post} voteUp={voteUp} voteDown={voteDown} commentUp={commentUp} shareUp={shareUp}/>
             })} */}

@@ -1,4 +1,4 @@
-import "./Post.scss";
+import "./PostShort.scss";
 
 const PostShort = (props) => {
     return (
