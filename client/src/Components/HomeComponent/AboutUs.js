@@ -6,5 +6,5 @@ const AboutUs = (props) => {
             <div className="Content">{props.aboutUs}</div>
         </div>
     )
-}
+}   
 export default AboutUs;

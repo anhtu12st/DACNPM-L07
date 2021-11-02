@@ -1,6 +1,8 @@
-import './index.sass'
+import './Login.scss'
+import { Route } from 'react-router-dom';
+import { SignupScreen } from '..';
 
-const Login = () => {
+const LoginScreen = () => {
   return (
     <div>
       <main>
@@ -22,6 +24,10 @@ const Login = () => {
                 </button>
               </div>
             </form>
+            <div className="to-signup">
+              Tạo tài khoản?
+              <Route path="/signup" component={SignupScreen} />
+            </div>
           </div>
         </div>
       </main>
@@ -29,4 +35,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default LoginScreen

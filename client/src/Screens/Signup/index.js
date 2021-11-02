@@ -1,6 +1,6 @@
-import './index.sass'
+import './Signup.scss'
 
-const Signup = () => {
+const SignupScreen = () => {
   return (
     <div>
       <main>
@@ -30,6 +30,9 @@ const Signup = () => {
                 </button>
               </div>
             </form>
+            <div className="to-login">
+              Đã có tài khoản ?
+            </div>
           </div>
         </div>
       </main>
@@ -37,4 +40,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default SignupScreen
