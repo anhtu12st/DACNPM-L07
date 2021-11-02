@@ -13,8 +13,8 @@ function App() {
           </Switch>
         </MainLayout>
 
-        <Route exact path="/login" component={LoginScreen} />
-        <Route exact path="/signup" component={SignupScreen} />
+        <Route exact path="/Login" component={LoginScreen} />
+        <Route exact path="/Signup" component={SignupScreen} />
       </Switch>
     </BrowserRouter>
   );

@@ -15,10 +15,10 @@ const Header = () => {
       </div>
       <div className="right-action">
         <div className="login-signup">
-          <Link to="/" className="login">
+          <Link to="/login" className="login">
             Login
           </Link>
-          <Link to="/" className="signup">
+          <Link to="/signup" className="signup">
             Signup
           </Link>
         </div>
