@@ -1,4 +1,5 @@
 import './Signup.scss'
+import { Link } from 'react-router-dom'
 
 const SignupScreen = () => {
   return (
@@ -32,6 +33,9 @@ const SignupScreen = () => {
             </form>
             <div className="to-login">
               Đã có tài khoản ?
+              <Link to="/login" className="login">
+                Đăng nhập
+              </Link>
             </div>
           </div>
         </div>

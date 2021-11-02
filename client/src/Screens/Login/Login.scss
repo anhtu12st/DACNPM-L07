@@ -65,8 +65,14 @@
 	outline: none;
   }
   .to-signup {
-	display: flex;
-	flex-direction: row;
 	text-align: center;
-	margin-top: 10px;
+	margin-top: 50px;
+	.signup {
+		margin-left: 20px;
+		&:hover {
+			text-decoration: underline;
+			cursor: pointer;
+			text-decoration-color: #009999;
+		}
+	}
   }

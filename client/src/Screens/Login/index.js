@@ -1,6 +1,5 @@
 import './Login.scss'
-import { Route } from 'react-router-dom';
-import { SignupScreen } from '..';
+import { Link } from 'react-router-dom';
 
 const LoginScreen = () => {
   return (
@@ -26,7 +25,9 @@ const LoginScreen = () => {
             </form>
             <div className="to-signup">
               Tạo tài khoản?
-              <Route path="/signup" component={SignupScreen} />
+              <Link to="/signup" className="signup">
+                Đăng ký
+              </Link>
             </div>
           </div>
         </div>
