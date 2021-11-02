@@ -1,5 +1,5 @@
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import { HomeScreen, LoginScreen, SignupScreen } from "./Screens";
+import { HomeScreen, LoginScreen, SignupScreen, ProfileScreen } from "./Screens";
 import { MainLayout } from "./Components";
 import "./styles.scss";
 
@@ -9,10 +9,11 @@ function App() {
       <Switch>
         <MainLayout>
           <Route exact path="/" component={HomeScreen} />
+          <Route exact path="/profile/:id" component={ProfileScreen} />
           {/* <Route path="/login" component={LoginScreen} /> */}
-          <Route>
+          {/* <Route>
             <Redirect to="/" />
-          </Route>
+          </Route> */}
         </MainLayout>
       </Switch>
     </BrowserRouter>
