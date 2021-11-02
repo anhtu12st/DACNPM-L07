@@ -1,0 +1,56 @@
+.CreatePost {
+    display: flex;
+    flex-direction: row;
+    width: 700px;
+    height: 50px;
+    border-radius: 3px;
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-right: 10px;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 2px 2px 2px #00000033;
+    img {
+        cursor: pointer;
+        background-color: black;
+        width: 20px;
+        height: 20px;
+        border-radius: 100px;
+    }
+    img {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 20px;
+    }
+    .post-input {
+        position: relative;
+        width: 70%;
+        height: 65%;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 50px;
+        border-radius: 3px;
+        border-style: solid;
+        border-width: 1px;
+        padding-left: 20px;
+        line-height: 30px;
+    }
+    .post-button {
+        width: 10%;
+        height: 65%;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 20px;
+        background-color: #1484D6;
+        border-radius: 20px;
+        color: white;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 30px;
+        
+        cursor: pointer;
+    }
+}

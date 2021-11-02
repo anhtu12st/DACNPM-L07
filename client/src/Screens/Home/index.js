@@ -1,25 +1,28 @@
-import "./styles.scss";
+import AboutUs from "../../Components/HomeComponent/AboutUs";
+import CreateContent from "../../Components/HomeComponent/CreateContent";
+import CreatePost from "../../Components/HomeComponent/CreatePost";
+import GroupFollowing from "../../Components/HomeComponent/GroupFollowing";
+import GroupTrending from "../../Components/HomeComponent/GroupTrending";
+import PostContainer from "../../Components/HomeComponent/PostContainer";
+import "./Home.scss";
 
-const Home = () => {
+const HomeScreen = () => {
   return (
     <div className="HomeScreen">
-      <div className="content">
-        {Array(5)
-          .fill(null)
-          .map((_) => (
-            <div></div>
-          ))}
+      <div className="LeftContainer">
+        <GroupFollowing />
       </div>
-
-      <div className="right-bar">
-        {Array(5)
-          .fill(null)
-          .map((_) => (
-            <div></div>
-          ))}
+      <div className="MiddleContainer">
+        <CreatePost />
+        <PostContainer />
+      </div>
+      <div className="RightContainer">
+        <GroupTrending />
+        <CreateContent />
+        <AboutUs aboutUs={"Đặng Hoài Bão đã viết trang này"}/>
       </div>
     </div>
   );
 };
 
-export default Home;
+export default HomeScreen;
