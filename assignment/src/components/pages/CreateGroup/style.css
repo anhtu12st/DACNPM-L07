@@ -1,0 +1,28 @@
+.CreateGroup {
+  border: 1px solid black;
+  border-radius: 5px;
+  background: white;
+  justify-content: center;
+  margin: 200px 400px 200px 400px; }
+  .CreateGroup .title {
+    font-weight: bold;
+    margin: 10px 0 10px 20px; }
+  .CreateGroup .name {
+    margin: 10px 20px 10px 20px;
+    border-radius: 10px;
+    width: 90%; }
+  .CreateGroup .description {
+    margin: 10px 20px 10px 20px;
+    border-radius: 10px;
+    width: 90%; }
+  .CreateGroup .button {
+    margin: 10px 20px 10px 20px;
+    text-align: right; }
+    .CreateGroup .button .cancel {
+      border-radius: 10px;
+      width: 10%; }
+    .CreateGroup .button .create {
+      background-color: blue;
+      color: white;
+      border-radius: 10px;
+      width: 20%; }

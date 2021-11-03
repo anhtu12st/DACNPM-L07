@@ -1,0 +1,52 @@
+.toolbar{
+    height: 60px;
+    width: 100%;
+    background: white;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    .logo{
+        flex: 1;
+        .logoImg{
+            text-align: center;
+            cursor: pointer;
+        }
+    }
+    .search{
+        flex: 6;
+        .searchbar{
+            width: 60%;
+            height: 30px;
+            border: 1px solid black;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            .searchIcon{
+                margin-left: 10px;
+            }
+            .searchInput{
+                border: none;
+                width: 90%;
+            }
+            :focus{
+                outline: none;
+            }
+        }
+    }
+    .tool{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        .message{
+            cursor: pointer;
+        }
+        .notification{
+            cursor: pointer;
+        }
+        .profile{
+            cursor: pointer;
+        }
+    }
+}

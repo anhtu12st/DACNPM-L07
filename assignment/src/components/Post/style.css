@@ -1,0 +1,48 @@
+.Post {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: white;
+  margin: 20px 20px 20px 20px; }
+  .Post .updown {
+    flex: 1;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: gray; }
+    .Post .updown .up {
+      color: green;
+      cursor: pointer; }
+    .Post .updown .vote {
+      text-align: center; }
+    .Post .updown .down {
+      color: red;
+      cursor: pointer; }
+  .Post .Content {
+    flex: 30;
+    margin: 20px 20px 20px 10px; }
+    .Post .Content .Title .title {
+      font-size: 20px;
+      font-weight: bold; }
+    .Post .Content .Title .author {
+      font-size: 12px;
+      margin-left: 10px; }
+      .Post .Content .Title .author .PostPerson {
+        font-size: 12px;
+        color: blue; }
+    .Post .Content .essay {
+      margin: 10px 0 10px 0; }
+    .Post .Content .interact {
+      margin-top: 10px;
+      display: flex; }
+      .Post .Content .interact .comment {
+        display: flex; }
+        .Post .Content .interact .comment .icon {
+          cursor: pointer; }
+        .Post .Content .interact .comment .quantity {
+          align-items: center; }
+      .Post .Content .interact .share {
+        display: flex; }
+        .Post .Content .interact .share .icon {
+          cursor: pointer; }
+        .Post .Content .interact .share .quantity {
+          align-items: center; }

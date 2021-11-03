@@ -1,0 +1,30 @@
+.MoreInfo {
+    .bonus {
+        border: 1px solid black;
+        border-radius: 5px;
+        background: white;
+        margin: 20px 20px 20px 20px;
+        .content {
+            border: none;
+            margin: 20px 20px 20px 20px;
+        }
+    }
+    .rule {
+        border: 1px solid black;
+        border-radius: 5px;
+        background: white;
+        margin: 20px 20px 20px 20px;
+        .title {
+            margin: 20px 20px 20px 20px;
+        }
+    }
+    .FAQ {
+        border: 1px solid black;
+        border-radius: 5px;
+        background: white;
+        margin: 20px 20px 20px 20px;
+        .title {
+            margin: 20px 20px 20px 20px;
+        }
+    }
+}

@@ -1,0 +1,40 @@
+.toolbar {
+  height: 60px;
+  width: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0; }
+  .toolbar .logo {
+    flex: 1; }
+    .toolbar .logo .logoImg {
+      text-align: center;
+      cursor: pointer; }
+  .toolbar .search {
+    flex: 6; }
+    .toolbar .search .searchbar {
+      width: 60%;
+      height: 30px;
+      border: 1px solid black;
+      border-radius: 5px;
+      display: flex;
+      align-items: center; }
+      .toolbar .search .searchbar .searchIcon {
+        margin-left: 10px; }
+      .toolbar .search .searchbar .searchInput {
+        border: none;
+        width: 90%; }
+      .toolbar .search .searchbar :focus {
+        outline: none; }
+  .toolbar .tool {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around; }
+    .toolbar .tool .message {
+      cursor: pointer; }
+    .toolbar .tool .notification {
+      cursor: pointer; }
+    .toolbar .tool .profile {
+      cursor: pointer; }
