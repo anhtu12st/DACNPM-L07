@@ -1,2 +1,13 @@
-export { default as MainLayout } from "./MainLayout";
-export { default as PostContainer} from "./HomeComponent/PostContainer";
+export { default as Header } from "./Header";
+export { default as CreatePostBar } from "./CreatePostBar";
+export { default as Feed } from "./Feed";
+export { default as FilterPanel } from "./FilterPanel";
+export { default as Footer} from "./Footer";
+export { default as Greeting } from "./Greeting";
+export { default as GroupFollowing } from "./GroupFollowing";
+export { default as LongButton } from "./LongButton";
+export { default as MiddleBar } from "./MiddleBar";
+export { default as PostingRule } from "./PostingRule";
+export { default as PostSummary } from "./PostSummary";
+export { default as TrendingGroup } from "./TrendingGroup";
+export { default as CreateNew } from "./CreateNew";

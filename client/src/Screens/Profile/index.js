@@ -9,7 +9,6 @@ const Profile = () => {
 		console.log(id);
 	}, [id]);
 
-
 	return (
 		<div className='ProfileScreen'>
 			<div className="left-profile">
@@ -58,4 +57,4 @@ const Profile = () => {
 	);
 }
 
-export default Profile
+export default Profile;

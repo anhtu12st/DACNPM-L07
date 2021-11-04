@@ -1,13 +1,12 @@
-import Header from "./Header";
-import Trending from "./Trending";
+import { Header } from "../Components";
 import "./styles.scss";
 
-const MainLayout = ({ children, showTrending = true }) => {
+const MainLayout = (props) => {
   return (
     <div className="MainLayout">
       <Header />
       <div className="Main">
-        {children}
+        {props.children}
       </div>
     </div>
   );

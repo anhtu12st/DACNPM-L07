@@ -1,25 +1,19 @@
-import AboutUs from "../../Components/HomeComponent/AboutUs";
-import CreateContent from "../../Components/HomeComponent/CreateContent";
-import CreatePost from "../../Components/HomeComponent/CreatePost";
-import GroupFollowing from "../../Components/HomeComponent/GroupFollowing";
-import GroupTrending from "../../Components/HomeComponent/GroupTrending";
-import PostContainer from "../../Components/HomeComponent/PostContainer";
-import "./Home.scss";
+import { GroupFollowing, CreatePostBar, Feed, TrendingGroup, Footer } from "../../Components";
 
 const HomeScreen = () => {
   return (
-    <div className="HomeScreen">
-      <div className="LeftContainer">
+    <div className="home-screen">
+      <div className="left-container">
         <GroupFollowing />
       </div>
-      <div className="MiddleContainer">
-        <CreatePost />
-        <PostContainer /> 
+      <div className="middle-container">
+        <CreatePostBar />
+        <Feed /> 
       </div>
-      <div className="RightContainer">
+      <div className="right-container">
         <GroupTrending />
-        <CreateContent />
-        <AboutUs aboutUs={"Đặng Hoài Bão đã viết trang này"}/>
+        {/* <CreateContent /> */}
+        <Footer />
       </div>
     </div>
   );
