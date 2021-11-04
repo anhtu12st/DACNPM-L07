@@ -4,40 +4,39 @@
   display: flex
   flex-direction: row
   width: 700px
-  height: 50px
+  height: 60px
   border-radius: 3px
   background-color: white
-  margin-bottom: 15px
-  img
-    cursor: pointer
-    background-color: black
-    width: 20px
-    height: 20px
-    border-radius: 100px
-
-  img
+  
+  div 
     margin-top: auto
     margin-bottom: auto
-    margin-left: 20px
 
-  .post-input
+  .userAvatar
+    margin-left: 20px
+    color: green
+    font-size: 40px
+    cursor: pointer
+
+  .postInput
     position: relative
     width: 70%
     height: 65%
-    margin-top: auto
-    margin-bottom: auto
     margin-left: 50px
     border-radius: 3px
     border-style: solid
     border-width: 1px
+    border-color: gray
     padding-left: 20px
-    line-height: 30px
+    line-height: 35px
+    color: gray
 
-  .post-button
+    &:hover
+      background-color: #c4c4c49a
+
+  .postButton
     width: 10%
-    height: 65%
-    margin-top: auto
-    margin-bottom: auto
+    height: 60%
     margin-left: 20px
     background-color: #1484D6
     border-radius: 20px
@@ -46,7 +45,9 @@
     text-transform: uppercase
     font-weight: bold
     font-size: 15px
-    line-height: 30px
-
+    line-height: 35px
     cursor: pointer
+
+    &:hover
+      background-color: #045d9d
 
