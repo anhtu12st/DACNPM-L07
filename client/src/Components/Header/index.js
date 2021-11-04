@@ -17,7 +17,7 @@ const Header = () => {
             </div>
             <div className={style.userLogin}>
                 <button className={style.btn}>Login</button>
-                <button className={style.btn}> Sign Up</button>
+                <button className={style.btn}>Sign Up</button>
                 <div className={style.userDropdownList}>
                     <FontAwesomeIcon icon={faUser}/>
                     <FontAwesomeIcon icon={faChevronDown}/>
