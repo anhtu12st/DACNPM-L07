@@ -2,7 +2,7 @@ import {FilterPanel, CreatePostBar, GroupFollowing, TrendingGroup, Greeting, Foo
 import style from './Home.module.sass';
 
 
-const HomeScreen = ({ posts }) => {
+const HomeScreen = (props) => {
   return (
     <div>
       <div className={style.homeScreen}>
