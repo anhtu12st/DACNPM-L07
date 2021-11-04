@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import {useEffect, useState} from "react";
 
-import { HomeScreen, LoginScreen, SignupScreen, ProfileScreen, GroupScreen, CreatePostScreen } from "./Screens";
+import { HomeScreen, LoginScreen, SignupScreen, ProfileScreen, GroupScreen, CreatePostScreen, PostDetailScreen } from "./Screens";
 import { MainLayout } from "./Layout";
 
 import "./style.sass";
