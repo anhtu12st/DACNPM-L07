@@ -1,4 +1,4 @@
-import {FilterPanel, Header, CreatePostBar, GroupFollowing, TrendingGroup, Greeting, Footer } from "../../Components";
+import {FilterPanel, CreatePostBar, GroupFollowing, TrendingGroup, Greeting, Footer } from "../../Components";
 import style from './Home.module.sass';
 
 
