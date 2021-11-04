@@ -14,3 +14,7 @@ export { default as PostingRule } from "./PostingRule";
 export { default as PostSummary } from "./PostSummary";
 export { default as TrendingGroup } from "./TrendingGroup";
 export { default as CreateNew } from "./CreateNew";
+export { default as GroupAnalysis } from "./GroupAnalysis";
+export { default as GroupCurrentQuestions } from "./GroupCurrentQuestion";
+export { default as GroupProfile } from "./GroupProfile";
+export { default as GroupRule } from "./GroupRule";
