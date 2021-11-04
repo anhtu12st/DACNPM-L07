@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "group": "csmajor",
+    "user": "xuannguyen",
+    "timePosted": "2021-11-01T09:00:00.000Z",
+    "title": "What do you do at an internship?",
+    "paragraph": "I got an internship at amazon. but, all I know how to do is leetcode, I can't build a website or an app, but i can reverse a linked list.\n\nI'm scared that they'll fire me for not knowing anything lol. What kind of programming do interns at big tech companies do? Is it Object oriented programming? Where I create functions and make each function do stuff?",
+    "upvote": 147,
+    "comments": [
+      {
+        "user": "Own_Dealer_1196",
+        "timePosted": "2021-11-01T09:30:00.000Z",
+        "content": "They usually give you a project to work on for the duration of the internship. You’ll have a mentor and on boarding buddy to help you out and answer your questions. Your mentor should walk you through the code packages and guide you through your implementation throughout. The programming languages depend on what team you’re on but I think most of Amazon uses Java so get familiar with it. You won’t get fired from your internship you just won’t get a return offer at the end of it. The internship is meant for you to learn so they don’t expect you to know much at the start but expect that you will learn as you go. Just make sure you ask for help when you need it and be ready to learn and you’ll be fine.",
+        "upvote": 42
+      },
+      {
+        "user": "Agent007_MI9",
+        "timePosted": "2021-11-01T09:35:00.000Z",
+        "content": "Lol I was at the same boat. I ended up doing full stack at my Amazon internship. Once you get your manager's info, you can ask them what you need to learn/prepare in advance (in my case she said nothing, and I'll learn during the internship). But honestly, Amazon has so many internal tools, half of the internship will be onboarding and design doc (or if you're lucky, they provide you with one)",
+        "upvote": 42
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "group": "reactjs",
+    "user": "Bourne2Play",
+    "timePosted": "2021-10-30T09:00:00.000Z",
+    "title": "How do you test an Axios call to a GraphQL API in React?\n",
+    "paragraph": "Hi. I have a react app that is fetching products from a GraphQL API using Axios. I'm trying to figure out how to write test cases for it using Jest.\n\nMaybe I'm not googling things correctly, but I've read everything I can find, and I can't find anything relevant. Below is my working code for the app, as well as my attempt at writing a test case. This test case currently returns invalid hook call error. I would appreciate it if someone can point me in the right direction.",
+    "upvote": 19,
+    "comments": [
+      {
+        "user": "madcuntmcgee",
+        "timePosted": "2021-10-31T10:30:00.000Z",
+        "content": "It seems a bit pointless to test this, all you're testing is the API call, if that fails then it's the backend's problem unless you are passing the wrong variable to it or something.\n\ngenerally if you want to test your react component I'd think you would want to test something like whether the component correctly renders something to the screen, and you'd mock api calls so you just assume they return correctly",
+        "upvote": 25
+      }
+    ]
+  }
+]

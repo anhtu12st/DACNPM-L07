@@ -1,9 +1,26 @@
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import {useEffect, useState} from "react";
+
 import { HomeScreen, LoginScreen, SignupScreen, ProfileScreen, GroupScreen, CreatePostScreen } from "./Screens";
 import { MainLayout } from "./Layout";
-import "./styles.scss";
+
+import "./style.sass";
 
 function App() {
+    const [posts, setPosts] = useState([])
+    const fetchPosts = async () => {
+        const res = await fetch('/posts.json')
+        return await res.json()
+    }
+
+    useEffect( () => {
+        const getPosts = async () => {
+            const postArr = await fetchPosts()
+            setPosts(postArr)
+        }
+        getPosts()
+    }, [])
+
   return (
     <BrowserRouter>
       <Switch>

@@ -1,20 +1,26 @@
-import { GroupFollowing, CreatePostBar, Feed, TrendingGroup, CreateNew, Footer } from "../../Components";
+import {Feed, FilterPanel, Header, CreatePostBar, GroupFollowing, TrendingGroup, Greeting, Footer } from "../../Components";
+import style from './Home.module.sass';
 
-import "./style.sass";
-const HomeScreen = () => {
+
+const HomeScreen = ({ posts }) => {
   return (
-    <div className="Home">
-      <div className="left-container">
-        <GroupFollowing />
-      </div>
-      <div className="middle-container">
-        <CreatePostBar />
-        <Feed /> 
-      </div>
-      <div className="right-container">
-        <TrendingGroup />
-        <CreateNew />
-        <Footer />
+    <div>
+      <Header/>
+      <div className={style.homeScreen}>
+        <div className={style.leftContainer}>
+          <GroupFollowing />
+        </div>
+        <div className={style.middleContainer}>
+          <CreatePostBar />
+          <FilterPanel/>
+          <Feed posts={posts}/>
+        </div>
+        <div className={style.rightContainer}>
+          <TrendingGroup/>
+          <Greeting/>
+          <Footer/>
+        </div>
+
       </div>
     </div>
   );
