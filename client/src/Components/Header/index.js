@@ -1,31 +1,30 @@
+import React from 'react';
+import { faSearch, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from "react-router-dom";
+import style from './Header.module.sass';
 
 const Header = () => {
-  return (
-    <header>
-      <div className="logo-search">
-        <Link className="logo" to="/">
-          BK LOGO
-        </Link>
-        <div className="search">
-          <div>
-            <input type="text" placeholder="Search" />
-          </div>
+    return (
+        <div className={style.headerBar}>
+            <Link to='/'>
+              <img className={style.logo} src='/images/CSEConnector.png' alt='Page Logo'/>
+            </Link>
+            <div className={style.searchArea}>
+                <input placeholder='Search CSE Connector'/>
+                <button type='submit'><FontAwesomeIcon icon={faSearch}/></button>
+            </div>
+            <div className={style.userLogin}>
+                <button className={style.btn}>Login</button>
+                <button className={style.btn}> Sign Up</button>
+                <div className={style.userDropdownList}>
+                    <FontAwesomeIcon icon={faUser}/>
+                    <FontAwesomeIcon icon={faChevronDown}/>
+                </div>
+            </div>
         </div>
-      </div>
-      <div className="right-action">
-        <div className="login-signup">
-          <Link to="/login" className="login">
-            Login
-          </Link>
-          <Link to="/signup" className="signup">
-            Signup
-          </Link>
-        </div>
-        <div className="profile">PO</div>
-      </div>
-    </header>
-  );
-};
+    );
+}
 
 export default Header;
