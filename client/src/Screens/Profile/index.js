@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import "./Profile.scss";
 
-const Profile = () => {
+const ProfileScreen = () => {
 	let { id } = useParams();
 
 	useEffect((id) => {
@@ -57,4 +57,4 @@ const Profile = () => {
 	);
 }
 
-export default Profile;
+export default ProfileScreen;

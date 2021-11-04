@@ -1,20 +1,18 @@
 import { Footer } from "../../Components";
 import "./style.sass";
 
-const Group = () => {
+const PostDetailScreen = () => {
     return (
-        <div className="Group">
+        <div className="PostDetail">
             <div className="left-container">
-                <GroupProfile />
-                <PostView />
+                <PostDetailView />
             </div>
             <div className="right-container">
                 <GroupAnalysis />
-                <GroupRule />
-                <GroupCurrentQuestions />
+                <PostRelated />
                 <Footer />
             </div>
         </div>
     )
 }
-export default Group;
+export default PostDetailScreen;

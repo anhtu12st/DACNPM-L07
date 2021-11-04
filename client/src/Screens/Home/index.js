@@ -1,8 +1,9 @@
-import { GroupFollowing, CreatePostBar, Feed, TrendingGroup, Footer } from "../../Components";
+import { GroupFollowing, CreatePostBar, Feed, TrendingGroup, CreateNew, Footer } from "../../Components";
 
+import "./style.sass";
 const HomeScreen = () => {
   return (
-    <div className="home-screen">
+    <div className="Home">
       <div className="left-container">
         <GroupFollowing />
       </div>
@@ -11,8 +12,8 @@ const HomeScreen = () => {
         <Feed /> 
       </div>
       <div className="right-container">
-        <GroupTrending />
-        {/* <CreateContent /> */}
+        <TrendingGroup />
+        <CreateNew />
         <Footer />
       </div>
     </div>
