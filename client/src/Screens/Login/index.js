@@ -1,4 +1,4 @@
-import { Footer,LoginForm } from '../../Components';
+import { Footer, LoginForm } from '../../Components';
 import style from './Login.module.sass';
 
 const LoginScreen = (props) => {
