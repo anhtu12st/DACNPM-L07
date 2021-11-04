@@ -1,18 +1,16 @@
 import React from 'react';
-import CreatePanel from "./CreatePanel";
-import FooterPanel from "./FooterPanel";
-import GroupPanel from "./GroupPanel"
-import PostingRulePanel from "./PostingRulePanel";
+import style from './SidePanel.module.sass';
+import './style.sass'
 
-const SidePanel = ({showGroup, showCreate, showFooter, showPostingRule}) => {
-    return (
-        <div className='panel-area'>
-            {showPostingRule && <PostingRulePanel/>}
-            {showGroup && <GroupPanel/>}
-            {showCreate && <CreatePanel/>}
-            {showFooter && <FooterPanel/>}
-        </div>
-    );
-}
+const SidePanel = ({ title, children, borderColor }) => {
+  const className = `${style.sidePanel} ${borderColor}`
+
+  return (
+      <div className={className}>
+        { title && <div className={style.title}>{title}</div> }
+        {children}
+      </div>
+  );
+};
 
 export default SidePanel;

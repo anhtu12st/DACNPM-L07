@@ -1,8 +1,9 @@
 import React from 'react';
+import SidePanel from "../SidePanel";
 
-const PostingRulePanel = () => {
+const PostingRule = () => {
   return (
-      <div className='side-panel' id='posting-rule-panel'>
+      <SidePanel>
         <label>Posting to CSE Connector</label>
         <ul>
           <li>1. Behave like you would in real life</li>
@@ -10,8 +11,8 @@ const PostingRulePanel = () => {
           <li>3. Search for duplicates before posting</li>
           <li>4. Read the community's rules</li>
         </ul>
-      </div>
-  );
-};
+      </SidePanel>
+  )
+}
 
-export default PostingRulePanel;
+export default PostingRule;

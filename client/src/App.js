@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { HomeScreen, LoginScreen, SignupScreen, CreatePostScreen } from "./Screens";
-import { MainLayout } from "./Components";
-import "./style.sass";
 import {useEffect, useState} from "react";
+
+import "./style.sass";
 
 function App() {
     const [posts, setPosts] = useState([])
@@ -30,10 +30,9 @@ function App() {
         <Route exact path="/createpost">
           <CreatePostScreen/>
         </Route>
-
       </Switch>
     </BrowserRouter>
-  );
+  )
 }
 
 export default App;

@@ -1,6 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareDown, faCaretSquareUp } from "@fortawesome/free-regular-svg-icons";
+import style from './PostSummary.module.sass';
+import MiddleBar from "../MiddleBar";
 
 const PostSummary = ({ content }) => {
     const MS_PER_HOUR = 60 * 60 * 1000
@@ -11,21 +13,21 @@ const PostSummary = ({ content }) => {
         timeUnit = 'days'
     }
     return (
-        <div className='mid-container '>
-            <div className='voting'>
+        <MiddleBar>
+            <div className={style.voting}>
                 <FontAwesomeIcon icon={faCaretSquareUp}/>
-                <span className='upvote-count'>{content.upvote}</span>
+                <span className={style.upvoteCount}>{content.upvote}</span>
                 <FontAwesomeIcon icon={faCaretSquareDown}/>
             </div>
-            <div className='post-content'>
+            <div className={style.postContent}>
                 <div className='post-info-container'>
-                    <span className='group-label'>Group:{content.group}</span>
-                    <span className='post-info'>Posted by {content.user} {timePassed} {timeUnit} ago</span>
+                    <span className={style.groupLabel}>Group:{content.group}</span>
+                    <span className={style.postInfo}>Posted by {content.user} {timePassed} {timeUnit} ago</span>
                 </div>
                 <label>{content.title}</label>
 
             </div>
-        </div>
+        </MiddleBar>
     );
 };
 

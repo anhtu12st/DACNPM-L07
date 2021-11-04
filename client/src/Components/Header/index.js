@@ -3,20 +3,22 @@ import { faSearch, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from "react-router-dom";
+import style from './Header.module.sass';
+
 const Header = () => {
     return (
-        <div id='header-bar'>
+        <div className={style.headerBar}>
             <Link to='/'>
-              <img id='logo' src='/images/CSEConnector.png' alt='image'/>
+              <img className={style.logo} src='/images/CSEConnector.png' alt='Page Logo'/>
             </Link>
-            <div id='search-area'>
+            <div className={style.searchArea}>
                 <input placeholder='Search CSE Connector'/>
                 <button type='submit'><FontAwesomeIcon icon={faSearch}/></button>
             </div>
-            <div id='user-login'>
-                <button className='small-btn'>Login</button>
-                <button className='small-btn'> Sign Up</button>
-                <div id='user-dropdown-list'>
+            <div className={style.userLogin}>
+                <button className={style.btn}>Login</button>
+                <button className={style.btn}> Sign Up</button>
+                <div className={style.userDropdownList}>
                     <FontAwesomeIcon icon={faUser}/>
                     <FontAwesomeIcon icon={faChevronDown}/>
                 </div>

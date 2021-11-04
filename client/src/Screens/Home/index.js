@@ -1,19 +1,29 @@
-import "./styles.scss";
-import {SidePanel, Header, Feed, FilterPanel} from "../../Components";
+import {Feed, FilterPanel, Header, CreatePostBar, GroupFollowing, TrendingGroup, Greeting, Footer } from "../../Components";
+import style from './Home.module.sass';
 
-const Home = ( {posts} ) => {
-    return (
-        <div>
-            <Header/>
-            <div className='flex-container'>
-                <div className='mid-area'>
-                    <FilterPanel/>
-                    <Feed posts={posts}/>
-                </div>
-                <SidePanel showCreate={true}/>
-            </div>
+
+const HomeScreen = ({ posts }) => {
+  return (
+    <div>
+      <Header/>
+      <div className={style.homeScreen}>
+        <div className={style.leftContainer}>
+          <GroupFollowing />
         </div>
-    );
-}
+        <div className={style.middleContainer}>
+          <CreatePostBar />
+          <FilterPanel/>
+          <Feed posts={posts}/>
+        </div>
+        <div className={style.rightContainer}>
+          <TrendingGroup/>
+          <Greeting/>
+          <Footer/>
+        </div>
 
-export default Home;
+      </div>
+    </div>
+  );
+};
+
+export default HomeScreen;

@@ -1,14 +1,6 @@
-$dark-blue: #0C2A43
-$canvas-gray: #DAE0E6
-$light-gray: #F5F5F5
-$post-border: rgb(204, 204, 204)
-$post-transparent: rgb(255, 255, 255, 0.8)
-$dark-gray: #A0A0A0
-$main-white: #ffffff
-$hover-gray: #f0f0f0
-$line-gray: rgb(237, 239, 241)
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600&display=swap')
+@import variable
 
 *
   box-sizing: border-box
@@ -17,143 +9,32 @@ body
   background: $canvas-gray
   font-family: 'IBM Plex Sans', sans-serif
 
-#header-bar
-  height: 50px
-  display: flex
-  justify-content: space-between
-  background-color: green
-  align-items: center
-  padding: 0 10px
-  #logo
-    height: 40px
-    width: auto
-  #search-area
-    height: 40px
-    display: flex
-    align-items: center
-
-    input
-      border: 0
-      height: 100%
-      padding: 10px
-      width: 30vw
-      border-radius: 2px 0 0 2px
-      font-size: 14px
-      font-family: inherit
-    button
-      height: 100%
-      width: 40px
-      background: $canvas-gray
-      border: none
-      border-radius: 0 2px 2px 0
-      cursor: pointer
-
-  #user-login
-    height: 40px
-    display: flex
-    justify-content: space-around
-    width: 350px
-    align-items: center
-
-    #user-dropdown-list
-      color: $canvas-gray
-      font-size: 20px
-      display: flex
-      align-items: center
-      svg
-        margin: 0 5px
-      svg:nth-child(2)
-        font-size: 14px
-
-.small-btn
-  display: inline-block
-  height: 80%
-  border-radius: 20px
-  background-color: $main-white
-  width: 120px
-  border: none
-  cursor: pointer
-  font-family: inherit
 
 
-.long-btn
-  width: 100%
-  margin: 0 auto
-  border-radius: 20px
-  padding: 3px
-  cursor: pointer
-  border: solid black 1px
-  text-align: center
-  text-decoration: none
-  color: black
-
-.mid-container
-  border: $post-border solid 1px
-  border-radius: 5px
-  display: flex
-  margin-bottom: 15px
-  width: 100%
-  background: $main-white
-
-.flex-container
-  width: 1000px
-  margin: 0 auto
-  padding: 15px
-  display: flex
-  justify-content: space-between
-  .mid-area
-    flex-grow: 1
-
-  .panel-area
-    width: 320px
-    margin:
-      left: 20px
-      bottom: 15px
-    .side-panel
-      border: $canvas-gray solid 1px
-      border-radius: 5px
-      margin-bottom: 10px
-      width: 100%
-      background: $main-white
-      padding: 10px 15px
+//.flex-container
+//  width: 1000px
+//  margin: 0 auto
+//  padding: 15px
+//  display: flex
+//  justify-content: space-between
+//  .mid-area
+//    flex-grow: 1
+//
+//  .panel-area
+//    width: 320px
+//    margin:
+//      left: 20px
+//      bottom: 15px
+//    .side-panel
+//      border: $canvas-gray solid 1px
+//      border-radius: 5px
+//      margin-bottom: 10px
+//      width: 100%
+//      background: $main-white
+//      padding: 10px 15px
 
 
-#content-filter
-  padding: 10px
-  .filter-item
-    border-radius: 20px
-    padding: 5px
-    margin-right: 10px
-    width: 70px
-    cursor: pointer
-    display: flex
-    justify-content: space-around
-    align-items: center
-  .filter-item:hover
-    background-color: $hover-gray
 
-#feed-container
-  width: 100%
-  .voting
-    padding: 10px 0
-    display: flex
-    flex-direction: column
-    width: 50px
-    background: $light-gray
-    align-items: center
-    .upvote-count
-      margin: 5px 0
-  .post-content
-    width: 100%
-    padding: 10px
-    .group-label
-      font-size: 12px
-      font-weight: bold
-    .post-info
-      font-style: italic
-      color: $dark-gray
-      font-size: 12px
-      margin-left: 10px
 
 #create-panel
   display: flex
@@ -186,3 +67,5 @@ body
     display: block
     border-bottom: 1px solid $line-gray
     padding: 16px 0
+
+
