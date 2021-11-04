@@ -5,7 +5,6 @@ import style from './Home.module.sass';
 const HomeScreen = ({ posts }) => {
   return (
     <div>
-      <Header/>
       <div className={style.homeScreen}>
         <div className={style.leftContainer}>
           <GroupFollowing />
