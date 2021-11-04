@@ -14,7 +14,7 @@ const HomeScreen = () => {
       </div>
       <div className="MiddleContainer">
         <CreatePost />
-        <PostContainer />
+        <PostContainer /> 
       </div>
       <div className="RightContainer">
         <GroupTrending />

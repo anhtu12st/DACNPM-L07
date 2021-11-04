@@ -10,17 +10,12 @@ function App() {
         <MainLayout>
           <Route exact path="/" component={HomeScreen} />
           <Route exact path="/profile/:id" component={ProfileScreen} />
-          {/* <Route path="/login" component={LoginScreen} /> */}
-          {/* <Route>
+          <Route path="/login" component={LoginScreen} />
+          <Route path="/signup" component={SignupScreen} />
+          <Route>
             <Redirect to="/" />
-          </Route> */}
+          </Route>
         </MainLayout>
-<<<<<<< HEAD
-
-        <Route exact path="/Login" component={LoginScreen} />
-        <Route exact path="/Signup" component={SignupScreen} />
-=======
->>>>>>> a6dd383232542dbd67db93b04e2e1d46b8ecd65b
       </Switch>
     </BrowserRouter>
   )
