@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { Footer, LoginForm } from '../../Components';
 
 const LoginScreen = (props) => {
