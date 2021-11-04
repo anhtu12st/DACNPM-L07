@@ -1,4 +1,4 @@
-import React from 'react';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareDown, faCaretSquareUp } from "@fortawesome/free-regular-svg-icons";
 import style from './PostSummary.module.sass';
@@ -20,12 +20,13 @@ const PostSummary = ({ content }) => {
                 <FontAwesomeIcon icon={faCaretSquareDown}/>
             </div>
             <div className={style.postContent}>
-                <div className='post-info-container'>
-                    <span className={style.groupLabel}>Group:{content.group}</span>
+                <div className={style.postInfoContent}>
+                    <FontAwesomeIcon icon={faUserCircle} className={style.groupAvatar}/>
+                    <span className={style.groupLabel}>{content.group}</span>
                     <span className={style.postInfo}>Posted by {content.user} {timePassed} {timeUnit} ago</span>
                 </div>
                 <label>{content.title}</label>
-
+                <div className={style.post_content}>{content.cont}</div>
             </div>
         </MiddleBar>
     );

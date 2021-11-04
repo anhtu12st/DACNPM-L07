@@ -1,4 +1,4 @@
-import {FilterPanel, CreatePostBar, GroupFollowing, TrendingGroup, Greeting, Footer } from "../../Components";
+import {FilterPanel, Feed, CreatePostBar, GroupFollowing, TrendingGroup, Greeting, Footer } from "../../Components";
 import style from './Home.module.sass';
 
 
@@ -11,7 +11,7 @@ const HomeScreen = (props) => {
       <div className={style.middleContainer}>
         <CreatePostBar />
         <FilterPanel/>
-        {/* <Feed posts={posts}/> */}
+        <Feed />
       </div>
       <div className={style.rightContainer}>
         <TrendingGroup/>
