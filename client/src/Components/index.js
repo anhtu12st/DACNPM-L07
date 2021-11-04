@@ -18,3 +18,4 @@ export { default as GroupAnalysis } from "./GroupAnalysis";
 export { default as GroupCurrentQuestions } from "./GroupCurrentQuestion";
 export { default as GroupProfile } from "./GroupProfile";
 export { default as GroupRule } from "./GroupRule";
+export { default as CreateGroupPopup } from "./CreateGroupPopup";

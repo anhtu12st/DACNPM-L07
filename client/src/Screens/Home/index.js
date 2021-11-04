@@ -1,8 +1,11 @@
-import {FilterPanel, Feed, CreatePostBar, GroupFollowing, TrendingGroup, Greeting, Footer } from "../../Components";
+import { useState } from "react";
+import {FilterPanel, Feed, CreatePostBar, GroupFollowing, TrendingGroup, Greeting, Footer, CreateGroupPopup } from "../../Components";
 import style from './Home.module.sass';
 
 
 const HomeScreen = (props) => {
+  const [isPopup, setShow] = useState(false)
+
   return (
     <div className={style.homeScreen}>
       <div className={style.leftContainer}>
@@ -18,7 +21,11 @@ const HomeScreen = (props) => {
         <Greeting/>
         <Footer/>
       </div>
-
+      <div className={style.popup} style={{
+        visibility: isPopup ? "visible" : "hidden",
+      }}>
+        <CreateGroupPopup show={isPopup}/>
+      </div>
     </div>
   );
 };
