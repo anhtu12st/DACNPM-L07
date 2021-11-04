@@ -1,11 +1,11 @@
 import { Header } from "../Components";
-import "./styles.scss";
+import style from "./MainLayout.module.sass";
 
 const MainLayout = (props) => {
   return (
-    <div className="MainLayout">
+    <div className={style.MainLayout}>
       <Header />
-      <div className="Main">
+      <div className={style.Main}>
         {props.children}
       </div>
     </div>
