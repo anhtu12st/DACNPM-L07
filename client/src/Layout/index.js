@@ -1,10 +1,10 @@
 import { Header } from "../Components";
 import style from "./MainLayout.module.sass";
 
-const MainLayout = (props) => {
+const Layout = (props) => {
   return (
     <div className={style.MainLayout}>
-      <Header />
+      <Header isLoggedIn={props.isLoggedIn} logOut={props.logOut}/>
       <div className={style.Main}>
         {props.children}
       </div>
@@ -12,4 +12,4 @@ const MainLayout = (props) => {
   );
 };
 
-export default MainLayout;
+export default Layout;

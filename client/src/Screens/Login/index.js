@@ -5,7 +5,7 @@ const LoginScreen = (props) => {
   return (
     <div className={style.LoginScreen}>
       <div className={style.middleContainer}>
-        <LoginForm />
+        <LoginForm LoggedIn={props.LoggedIn}/>
       </div>
       <div className={style.rightContainer}>
         <Footer />

@@ -5,7 +5,7 @@ const SignupScreen = (props) => {
   return (
     <div className={style.SignupScreen}>
       <div className={style.middleContainer}>
-        <SignUpForm />
+        <SignUpForm SignedUp={props.SignedUp}/>
       </div>
       <div className={style.rightContainer}>
         <Footer />

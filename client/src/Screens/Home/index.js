@@ -4,27 +4,47 @@ import style from './Home.module.sass';
 
 
 const HomeScreen = (props) => {
-  const [isPopup, setShow] = useState(false)
-
+  //
+  const {isLoggedIn} = props
+  //state
+  const [isCreateGroupPopup, setShow] = useState(false)
+  //reduce
+  const isClickonGreetingCreateGroup = () => {
+    setShow(true)
+  }
+  const closeCreateGroupPopup = () => {
+    setShow(false)
+  }
+  
   return (
     <div className={style.homeScreen}>
-      <div className={style.leftContainer}>
+      <div className={style.leftContainer} style={{
+        display: isLoggedIn ? "block" : "none"
+      }}>
         <GroupFollowing />
       </div>
       <div className={style.middleContainer}>
-        <CreatePostBar />
+        <div style={{
+          display: isLoggedIn ? "block" : "none"
+        }}>
+          <CreatePostBar />
+        </div>
         <FilterPanel/>
         <Feed />
       </div>
       <div className={style.rightContainer}>
         <TrendingGroup/>
-        <Greeting/>
+        <div style={{
+          display: isLoggedIn ? "block" : "none"
+        }}>
+          <Greeting isGroupClick={isClickonGreetingCreateGroup}/>
+        </div>
         <Footer/>
       </div>
       <div className={style.popup} style={{
-        visibility: isPopup ? "visible" : "hidden",
+        visibility: isCreateGroupPopup ? "visible" : "hidden",
       }}>
-        <CreateGroupPopup show={isPopup}/>
+        <CreateGroupPopup close={closeCreateGroupPopup}/>
       </div>
     </div>
   );

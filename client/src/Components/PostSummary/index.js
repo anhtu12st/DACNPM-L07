@@ -3,8 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareDown, faCaretSquareUp } from "@fortawesome/free-regular-svg-icons";
 import style from './PostSummary.module.sass';
 import MiddleBar from "../MiddleBar";
+import { useState } from 'react';
 
 const PostSummary = ({ content }) => {
+    const [upvote, setUpVote] = useState(content.upvote)
+    const voteUp = () => {
+        setUpVote(upvote + 1)
+    }
+    const voteDown = () => {
+        setUpVote(upvote - 1)
+    }
     const MS_PER_HOUR = 60 * 60 * 1000
     let timePassed = Math.floor((new Date() - new Date(content.timePosted)) / MS_PER_HOUR)
     let timeUnit = 'h'
@@ -15,9 +23,9 @@ const PostSummary = ({ content }) => {
     return (
         <MiddleBar>
             <div className={style.voting}>
-                <FontAwesomeIcon icon={faCaretSquareUp}/>
-                <span className={style.upvoteCount}>{content.upvote}</span>
-                <FontAwesomeIcon icon={faCaretSquareDown}/>
+                <div onClick={voteUp}><FontAwesomeIcon icon={faCaretSquareUp}/></div>
+                <span className={style.upvoteCount}>{upvote}</span>
+                <div onClick={voteDown}><FontAwesomeIcon icon={faCaretSquareDown}/></div>
             </div>
             <div className={style.postContent}>
                 <div className={style.postInfoContent}>
