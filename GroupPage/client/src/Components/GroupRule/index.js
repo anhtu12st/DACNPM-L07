@@ -1,5 +1,6 @@
+import './style.sass';
 
-const GroupRule = () => {
+const MoreInfo = () => {
     var moreInfo = {
         member: 356,
         date: "10/8/2021"
@@ -23,12 +24,11 @@ const GroupRule = () => {
                 <ol className="title">
                     Nội quy
                     {rules.length > 0 && rules.map(rule => (
-                        <li>
+                        <li className="content">
                             {rule}
                         </li>
                     ))}
                 </ol>
-
             </div>
             <div className="FAQ">
                 <div className="title">Câu hỏi thường gặp</div>
@@ -36,4 +36,5 @@ const GroupRule = () => {
         </div>
     );
 }
-export default GroupRule;
+
+export default MoreInfo;
