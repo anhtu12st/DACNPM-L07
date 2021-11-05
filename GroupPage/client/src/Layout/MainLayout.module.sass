@@ -1,0 +1,65 @@
+.MainLayout
+  header
+    height: 50px
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 1000
+    box-shadow: 2px 2px 2px #00000033
+    width: 100%
+    display: flex
+    flex-direction: row
+    align-items: center
+
+    &>.logo-search
+      display: flex
+      flex: 1
+      flex-direction: row
+      padding: 0 20px
+
+      .logo
+        width: 120px
+        height: 36px
+        line-height: 36px
+
+      .search 
+        flex: 1
+
+        &>div
+          max-width: 1000px
+          margin: auto
+          border: solid 1px #00000033
+          border-radius: 10px
+          height: 36px
+          padding: 0 20px
+          display: flex
+
+          input
+            font-size: 14px
+            line-height: 14px
+            flex: 1
+            outline: none
+            border: none
+
+    &>.right-action 
+      display: flex
+      flex-direction: row
+      align-items: center
+      padding: 0 20px
+
+      a
+        border: solid 1px #00000033
+        border-radius: 10px
+        min-height: 32px
+        padding: 4px 16px
+        min-width: 32px
+        line-height: 17px
+        margin: 0 3px
+
+      .profile 
+        width: 50px
+        text-align: center
+  
+  .Main
+    margin-top: 10px
+    width: 100%

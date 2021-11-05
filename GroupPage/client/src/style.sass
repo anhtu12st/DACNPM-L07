@@ -1,0 +1,74 @@
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600&display=swap')
+@import variable
+
+*
+  box-sizing: border-box
+
+body
+  background: $canvas-gray
+  font-family: 'IBM Plex Sans', sans-serif
+  margin: 0
+  padding: 0
+  width: 100% 
+
+
+
+//.flex-container
+//  width: 1000px
+//  margin: 0 auto
+//  padding: 15px
+//  display: flex
+//  justify-content: space-between
+//  .mid-area
+//    flex-grow: 1
+//
+//  .panel-area
+//    width: 320px
+//    margin:
+//      left: 20px
+//      bottom: 15px
+//    .side-panel
+//      border: $canvas-gray solid 1px
+//      border-radius: 5px
+//      margin-bottom: 10px
+//      width: 100%
+//      background: $main-white
+//      padding: 10px 15px
+
+
+
+
+#create-panel
+  display: flex
+  flex-direction: column
+  font-size: 14px
+  label
+    font-weight: bold
+    font-size: 16px
+
+#posting-rule-panel
+  font-family: 'IBM Plex Sans', sans-serif
+  font-weight: 500
+  label
+    font-size: 16px
+    border-bottom: 1px $line-gray solid
+    display: block
+    padding-bottom: 10px
+  ul
+    margin: 0
+    font-size: 14px
+    padding: 0
+    li
+      padding: 10px 0
+      border-bottom: 1px $line-gray solid
+      list-style: none
+
+#create-post-container
+  label
+    font-weight: 500
+    display: block
+    border-bottom: 1px solid $line-gray
+    padding: 16px 0
+
+

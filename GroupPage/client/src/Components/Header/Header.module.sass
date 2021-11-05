@@ -1,0 +1,74 @@
+@import '../../variable'
+
+.headerBar
+  height: 50px
+  display: flex
+  justify-content: space-between
+  background-color: green
+  align-items: center
+  padding: 0 10px
+  .logo
+    height: 40px
+    width: auto
+    margin-right: 20px
+
+  .searchArea
+    height: 40px
+    width: 600px
+    display: flex
+    align-items: center
+
+    input
+      border: 0
+      height: 100%
+      padding: 10px
+      width: 100%
+      border-radius: 2px 0 0 2px
+      font-size: 14px
+      font-family: inherit
+    button
+      height: 100%
+      width: 40px
+      background: $canvas-gray
+      border: none
+      border-radius: 0 2px 2px 0
+      cursor: pointer
+
+  .userLogin
+    height: 40px
+    display: flex
+    justify-content: space-around
+    width: 270px
+
+    .userDropdownList
+      color: $canvas-gray
+      font-size: 20px
+      display: flex
+      svg
+        margin: auto 5px
+        font-size: 30px
+        
+        &:hover
+          width: 40px
+          height: 40px
+          padding: 5px
+          border-radius: 5px
+          background-color: #002c00
+          cursor: pointer
+      div
+        margin: auto 5px
+        svg
+          margin: auto 5px
+          font-size: 20px
+
+    .btn
+      display: inline-block
+      height: 80%
+      border-radius: 20px
+      background-color: $main-white
+      width: 120px
+      border: none
+      cursor: pointer
+      font-family: inherit
+      line-height: 30px
+      text-align: center

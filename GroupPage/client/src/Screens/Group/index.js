@@ -1,13 +1,19 @@
 import "./style.sass";
-import Header from "../../Components/Header/index";
+import { Footer, GroupProfile, GroupRule, Header } from "../../Components";
+import GroupFeed from "../../Components/Feed/group";
 
 const Group = () => {
     return (
         <div>
+            <Header/>
             <div className="Group">
                 <div className="left-container">
+                    <GroupProfile/>
+                    <GroupFeed/>
                 </div>
                 <div className="right-container">
+                    <GroupRule/>
+                    <Footer/>
                 </div>
             </div>
         </div>
