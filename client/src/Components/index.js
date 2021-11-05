@@ -18,3 +18,6 @@ export { default as GroupAnalysis } from "./GroupAnalysis";
 export { default as GroupCurrentQuestions } from "./GroupCurrentQuestion";
 export { default as GroupProfile } from "./GroupProfile";
 export { default as GroupRule } from "./GroupRule";
+export { default as CreatePostEditor } from "./CreatePostEditor";
+export { default as TextEditor } from "./TextEditor";
+export { default as RoundButton } from "./RoundButton";

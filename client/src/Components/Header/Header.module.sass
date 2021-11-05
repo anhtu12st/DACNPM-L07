@@ -4,7 +4,7 @@
   height: 50px
   display: flex
   justify-content: space-between
-  background-color: green
+  background-color: white
   align-items: center
   padding: 0 10px
   .logo
@@ -16,20 +16,25 @@
     align-items: center
 
     input
-      border: 0
       height: 100%
       padding: 10px
       width: 30vw
       border-radius: 2px 0 0 2px
       font-size: 14px
       font-family: inherit
-    button
-      height: 100%
-      width: 40px
-      background: $canvas-gray
-      border: none
-      border-radius: 0 2px 2px 0
-      cursor: pointer
+      background: $background-light-gray
+      border: 1px solid $border-gray
+      &:hover
+        outline: black 1px solid
+      &:focus
+        outline: $light-blue 1px solid
+    //button
+    //  height: 100%
+    //  width: 40px
+    //  background: $canvas-gray
+    //  border: none
+    //  border-radius: 0 2px 2px 0
+    //  cursor: pointer
 
   .userLogin
     height: 40px
@@ -39,7 +44,7 @@
     align-items: center
 
     .userDropdownList
-      color: $canvas-gray
+      color: $dark-gray
       font-size: 20px
       display: flex
       align-items: center
@@ -54,6 +59,8 @@
       border-radius: 20px
       background-color: $main-white
       width: 120px
-      border: none
       cursor: pointer
       font-family: inherit
+      border: solid 1px $light-blue
+      font-weight: 600
+      color: $light-blue
