@@ -1,9 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import "./Profile.scss";
 
 const ProfileScreen = () => {
-	let { id } = useParams();
+	const [profile, setProfile] = useState({ userName:"Meo Meo", firstName: "Phan", lastName: "Anh Tu", email: "superhero@sentai.hensin", isUpdate: false });
+	const { id } = useParams();
+
+	const handleOnChangeProfile = (e) => {
+		e.preventDefault();
+		const { name, value } = e.target;
+		setProfile({ ...profile, [name]: value });
+	}
 
 	useEffect((id) => {
 		console.log(id);
@@ -17,29 +24,48 @@ const ProfileScreen = () => {
 				</div>
 				<div className="profile-info">
 					<div className="profile-name">
-						<h1>John Doe</h1>
+						<h1>{profile.userName}</h1>
 					</div>
 					<div className="profile-bio">
-						<form>
-							<div className="line">
-								<label htmlFor="first-name">First Name:</label>
-								<input type="text" name="first-name" disabled value="Phan" />
-							</div>
-							
-							<div className="line">
-								<label htmlFor="last-name">Last Name:</label>
-								<input type="text" name="last-name" disabled value="Anh Tu" />
-							</div>
+						<div className="line">
+							<label htmlFor="first-name">First Name:</label>
+							<input
+								type="text"
+								className={profile.isUpdate && "update"}
+								name="firstName"
+								disabled={!profile.isUpdate}
+								value={profile.firstName}
+								onChange={handleOnChangeProfile}
+							/>
+						</div>
 
-							<div className="line">
-								<label htmlFor="email">Email:</label>
-								<input type="text" name="email" disabled value="superhero@sentai.hensin" />
-							</div>
+						<div className="line">
+							<label htmlFor="last-name">Last Name:</label>
+							<input
+								type="text"
+								className={profile.isUpdate && "update"}
+								name="lastName"
+								disabled={!profile.isUpdate}
+								value={profile.lastName}
+								onChange={handleOnChangeProfile}
+							/>
+						</div>
 
-							<button>
-								Update Profile
-							</button>
-						</form>
+						<div className="line">
+							<label htmlFor="email">Email:</label>
+							<input
+								type="text"
+								className={profile.isUpdate && "update"}
+								name="email"
+								disabled={!profile.isUpdate}
+								value={profile.email}
+								onChange={handleOnChangeProfile}
+							/>
+						</div>
+
+						<button onClick={(e) => (setProfile({ ...profile, isUpdate: !profile.isUpdate }))}>
+							{profile.isUpdate ? "Save" : "Update"} Profile
+						</button>
 					</div>
 				</div>
 			</div>
