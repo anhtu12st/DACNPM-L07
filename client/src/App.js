@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
-import { HomeScreen, LoginScreen, ProfileScreen, SignupScreen, GroupScreen } from "./Screens";
+import { HomeScreen, LoginScreen, SignupScreen, ProfileScreen, GroupScreen, CreatePostScreen, PostDetailScreen} from "./Screens";
 import Layout from "./Layout";
 
 import "./style.sass";
@@ -19,9 +19,9 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Layout isLoggedIn={isLoggedIn} logOut={LogOut}>
-          {/* <Route exact path="/">
+          <Route exact path="/">
             <HomeScreen isLoggedIn={isLoggedIn}/>
-          </Route> */}
+          </Route>
           <Route exact path="/login">
             <LoginScreen LoggedIn={LoggedIn}/>
           </Route>
@@ -30,10 +30,10 @@ function App() {
           </Route>
           <Route exact path="/profile/:id" component={ProfileScreen} />
           <Route exact path="/" component={GroupScreen} />
-          {/* <Route exact path="/createpost" component={CreatePostScreen} />
-          <Route exact path="/post:id" component={PostDetailScreen} /> */}
+          <Route exact path="/createpost" component={CreatePostScreen} />
+          {/* <Route exact path="/post:id" component={PostDetailScreen} /> */}
           <Route>
-            <Redirect to="/" />
+            {/*<Redirect to="/" />*/}
           </Route>
         </Layout>
       </Switch>
