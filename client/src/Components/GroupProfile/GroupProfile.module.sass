@@ -1,38 +1,29 @@
+@import "../../variable"
 
-.image
-    display: flex
-    .cover
-        object-fit: cover
+.container
+    background: white
+    height: 100px
+    .profile
         width: 100%
-        height: 80px
-    .avatar
-        font-size: 100px
-        border-radius: 50%
-        object-fit: cover
-        position: absolute
-        right: 0
-        top: 150px
-        left: 120px
-
-
-.title
-    .name
-        font-size: 24px
-        font-weight: bold
-        flex: 8
-
-    .takepart
-        flex: 2
-        .button
+        height: 100%
+        max-width: 1220px
+        margin: 0 auto
+        display: flex
+        justify-content: center
+        flex-direction: column
+        .introContainer
+            display: flex
             align-items: center
-            background-color: blue
-            color: white
-            border: none
-            border-radius: 10px
-            cursor: pointer
-
-
-
-.description
-    margin: 20px 20px 20px 50px
-
+            margin-bottom: 10px
+            .intro
+                font-size: 28px
+                font-weight: 700
+            .btn
+                padding: 7px 15px
+                color: $dark-blue
+                border: 1px $dark-blue solid
+                margin-left: 20px
+        .name
+            font-size: 14px
+            color: $font-gray
+            font-weight: 500

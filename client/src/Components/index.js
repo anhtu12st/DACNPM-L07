@@ -22,3 +22,4 @@ export { default as CreatePostEditor } from "./CreatePostEditor";
 export { default as TextEditor } from "./TextEditor";
 export { default as RoundButton } from "./RoundButton";
 export { default as GroupHeader } from "./GroupCover";
+export { default as SidePanel } from "./SidePanel";

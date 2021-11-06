@@ -1,15 +1,17 @@
 import style from "./Group.module.sass";
-import {Footer, GroupHeader, GroupProfile, GroupRule} from "../../Components";
+import {CreatePostBar, FilterPanel, Footer, GroupHeader, GroupProfile, GroupRule} from "../../Components";
 import GroupFeed from "../../Components/Feed/group";
 
 const Group = () => {
     return (
         <div className={style.groupContainer}>
           <GroupHeader/>
-          <GroupProfile className={style.groupProfile}/>
+          <GroupProfile/>
           <div className={style.flexContainer}>
                 <div className={style.leftContainer}>
-                    <GroupFeed/>
+                  <CreatePostBar/>
+                  <FilterPanel/>
+                  <GroupFeed/>
                 </div>
                 <div className={style.rightContainer}>
                     <GroupRule/>
