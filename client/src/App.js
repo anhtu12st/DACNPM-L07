@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect, useParams } from "react-router-dom";
 
 import { HomeScreen, LoginScreen, SignupScreen, ProfileScreen, GroupScreen, CreatePostScreen, PostDetailScreen} from "./Screens";
 import Layout from "./Layout";
@@ -15,6 +15,7 @@ function App() {
   const LogOut = () => {
     setLoggedIn(false)
   }
+
   return (
     <BrowserRouter>
       <Switch>
@@ -31,7 +32,7 @@ function App() {
           <Route exact path="/profile/:id" component={ProfileScreen} />
           <Route exact path="/group" component={GroupScreen} />
           <Route exact path="/createpost" component={CreatePostScreen} />
-          {/* <Route exact path="/post:id" component={PostDetailScreen} /> */}
+          <Route exact path="/posts/:id" component={PostDetailScreen} />
           <Route>
             <Redirect to="/" />
           </Route>

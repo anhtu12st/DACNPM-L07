@@ -1,11 +1,12 @@
 import React from 'react';
-import {faChevronDown, faSearch, faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
-import {faUser} from '@fortawesome/free-regular-svg-icons'
+import {faSignOutAlt, faUserCircle} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Link} from "react-router-dom";
+import {ExitToApp} from '@mui/icons-material'
+
 import style from './Header.module.sass';
 
-const Header = (props) => {
+const Header = ({ isLoggedIn, logOut }) => {
   return (
       <div className={style.headerBar}>
         <Link to='/'>
@@ -13,21 +14,22 @@ const Header = (props) => {
         </Link>
         <div className={style.searchArea}>
           {/*<span><FontAwesomeIcon icon={faSearch}/></span>*/}
-          <input placeholder='Search CSE Connector'/>
+          <input placeholder='Tìm kiếm trong CSE Connector'/>
           {/*<button type='submit'><FontAwesomeIcon icon={faSearch}/></button>*/}
         </div>
-        <div className={style.userLogin} style={{ "justify-content": props.isLoggedIn ? "flex-end" : "space-around" }}>
-                <Link style={{ display: props.isLoggedIn ? "none" : "block" }} to='/login' className={style.btn}>Login</Link>
-                <Link style={{ display: props.isLoggedIn ? "none" : "block" }} to='/signup' className={style.btn}>Sign Up</Link>
-                <div className={style.userDropdownList} style={{
-                    display: props.isLoggedIn ? "flex" : "none"
-                }}>
-                    <Link to='/profile/123'>
-                        <FontAwesomeIcon icon={faUser} />
-                    </Link>
-                    <div onClick={props.logOut}><FontAwesomeIcon icon={faSignOutAlt} /></div>
-                </div>
-            </div>
+        <div className={style.userLogin} style={{"justify-content": isLoggedIn ? "flex-end" : "space-around"}}>
+          <Link style={{display: isLoggedIn ? "none" : "block"}} to='/login' className={style.btn}>Log In</Link>
+          <Link style={{display: isLoggedIn ? "none" : "block"}} to='/signup' className={style.btn}>Sign Up</Link>
+
+          {isLoggedIn &&
+          <div className={style.userDropdownList}>
+            <Link to='/profile/123' >
+              <FontAwesomeIcon icon={faUserCircle} className={style.userLoginIcon}/>
+            </Link>
+            <ExitToApp onClick={logOut} fontSize={'inherit'} className={style.userLoginIcon}/>
+          </div>}
+
+        </div>
       </div>
   );
 }

@@ -3,10 +3,14 @@
 .headerBar
   height: 50px
   display: flex
+  width: 100%
   justify-content: space-between
   background-color: white
   align-items: center
-  padding: 0 10px
+  padding: 0 20px
+  position: fixed
+  top: 0
+  z-index: 1
   .logo
     height: 40px
     width: auto
@@ -29,45 +33,44 @@
       border: 1px solid $border-gray
       &:hover
         outline: black 1px solid
+        background: white
       &:focus
-        outline: $light-blue 1px solid
-    //button
-    //  height: 100%
-    //  width: 40px
-    //  background: $canvas-gray
-    //  border: none
-    //  border-radius: 0 2px 2px 0
-    //  cursor: pointer
+        outline: $button-blue 1px solid
+        background: white
 
   .userLogin
     height: 40px
     display: flex
     justify-content: space-around
     width: 270px
-
+    align-items: center
     .userDropdownList
-      color: $dark-gray
-      font-size: 20px
       display: flex
-      svg
-        margin: auto 5px
-        font-size: 30px
-        
+      font-size: 30px
+      align-items: center
+      .userLoginIcon:first-child
+        margin-right: 15px
+      .userLoginIcon
+        color: $font-gray
         &:hover
-          width: 40px
-          height: 40px
-          padding: 5px
-          border-radius: 5px
-          background-color: #002c00
-          cursor: pointer
-      div
-        margin: auto 5px
-        svg
-          margin: auto 5px
-          font-size: 20px
-      a
-        text-decoration: none
-        color: $main-white
+          color: $button-blue
+      //svg
+      //  margin: auto 5px
+      //  font-size: 30px
+      //
+      //  &:hover
+      //    width: 40px
+      //    height: 40px
+      //    padding: 5px
+      //    border-radius: 5px
+      //    background-color: #002c00
+      //    cursor: pointer
+      //div
+      //  margin: 0 5px
+      //  svg
+      //    margin: auto 5px
+      //    font-size: 20px
+
 
     .btn
       display: inline-block
@@ -79,6 +82,8 @@
       font-family: inherit
       line-height: 30px
       text-align: center
-      border: solid 1px $light-blue
+      border: solid 1px $button-blue
       font-weight: 600
-      color: $light-blue
+      color: $button-blue
+      text-decoration: none
+      font-size: 14px

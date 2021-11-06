@@ -17,8 +17,8 @@ const CreatePostBar = (props) => {
       <MiddleBar>
         <div className={style.createPost}>
           <div><I icon={faUserCircle} className={style.userAvatar}/></div>
-          <input className={style.postInput} value={Input} onChange={userInput} placeholder="Tạo bài viết"></input>
-          <div className={style.postButton} onClick={resetInput}>Đăng</div>
+          <input className={style.postInput} value={Input} onChange={userInput} placeholder="Tạo bài viết"/>
+          {/*<div className={style.postButton} onClick={resetInput}>Đăng</div>*/}
         </div>
       </MiddleBar>
   )
