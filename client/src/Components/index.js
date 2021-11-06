@@ -23,3 +23,4 @@ export { default as TextEditor } from "./TextEditor";
 export { default as RoundButton } from "./RoundButton";
 export { default as GroupCover } from "./GroupCover";
 export { default as POST } from "./POST";
+export { default as SidePanel } from "./SidePanel";

@@ -30,7 +30,7 @@ const GroupFollowing = (props) => {
         }
       ]
 
-    const title = "NHÓM THEO DÕI"
+    const title = "Nhóm theo dõi"
 
     return (
         <SidePanel title={title}>

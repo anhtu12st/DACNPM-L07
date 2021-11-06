@@ -1,20 +1,25 @@
 import { Link } from "react-router-dom";
-import SidePanel from "../SidePanel";
-import LongButton from "../LongButton";
-
+import { SidePanel, RoundButton } from "../../Components";
 import style from "./Greeting.module.sass";
+
 const Greeting = (props) => {
   const title = 'Xin chào';
 
   return (
       <SidePanel title={title}>
-        <p> Chào mừng bạn đến với diễn dàn, bạn đang ở màn hình chính. Bạn có thể tạo nhóm mới hoặc bài viết mới tại đây. </p>
-        <div className={style.createGroup} onClick={props.isGroupClick}>
-          <LongButton content={"Tạo nhóm"} backGColor="blue"/>
+        <div className={style.greetingContainer}>
+          <p> Chào mừng bạn đến với diễn dàn, bạn đang ở màn hình chính. Bạn có thể tạo nhóm mới hoặc bài viết mới tại đây. </p>
+          <div onClick={props.isGroupClick}>
+            <RoundButton className={style.createGroupBtn}>
+              Tạo nhóm mới
+            </RoundButton>
+          </div>
+          <Link to='/createpost'>
+            <RoundButton className={style.createPostBtn}>
+              Tạo bài viết
+            </RoundButton>
+          </Link>
         </div>
-        <Link to='/createpost'>
-          <LongButton content={"Tạo bài viết"}/>
-        </Link>
       </SidePanel>
   );
 }

@@ -23,7 +23,7 @@ const TrendingGroup = (props) => {
       "name": "Nhóm Python"
     }
   ]
-  const title = 'NHÓM THỊNH HÀNH'
+  const title = 'Nhóm thịnh hành'
   return (
     <SidePanel title={title}>
       <Link to="/group" className={style.listGroup} style={{ textDecoration: 'none', color: 'black'}} >
