@@ -32,7 +32,10 @@ function App() {
           <Route exact path="/profile/:id" component={ProfileScreen} />
           <Route exact path="/group" component={GroupScreen} />
           <Route exact path="/createpost" component={CreatePostScreen} />
-          <Route exact path="/posts/:id" component={PostDetailScreen} />
+          <Route
+              exact path="/posts/:id"
+              render={props => <PostDetailScreen {...props} />}
+          />
           <Route>
             <Redirect to="/" />
           </Route>
