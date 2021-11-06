@@ -1,6 +1,8 @@
 .ProfileScreen {
-  background-color: #dbdbdb;
-  min-height: calc(100vh - 50px);
+	position: relative;
+	top: 50px;
+  	background-color: #dbdbdb;
+  	min-height: calc(100vh - 50px);
 	padding: 20px;
 	display: flex;
 	flex-direction: row;
@@ -12,6 +14,8 @@
 		background-color: #ffffff;
 		padding: 10px;
 		margin: 0 20px;
+		border: 1px solid #c2c2c2;
+		border-radius: 10px;
 
     .profile-image {
       width: 100%;
@@ -24,6 +28,7 @@
         height: 200px;
         object-fit: cover;
         margin: auto;
+		border-radius: 5px;
       }
     }
 
@@ -63,6 +68,7 @@
 				font-weight: bold;
 				cursor: pointer;
 				outline: none;
+				border-radius: 5px;
 			}
 		}
 	}
@@ -73,11 +79,14 @@
 		background-color: #ffffff;
 		padding: 50px 30px;
 		margin: 0 20px;
+		border: 1px solid #c2c2c2;
+		border-radius: 10px;
 
 		.post {
 			padding: 8px 13px;
 			margin: 10px 0px;
 			border: solid 1px #dbdbdb;
+			border-radius: 5px;
 		}
 	}
 }

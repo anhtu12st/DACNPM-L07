@@ -26,7 +26,9 @@ const Header = ({ isLoggedIn, logOut }) => {
             <Link to='/profile/123' >
               <FontAwesomeIcon icon={faUserCircle} className={style.userLoginIcon}/>
             </Link>
+            <Link to="/">
             <ExitToApp onClick={logOut} fontSize={'inherit'} className={style.userLoginIcon}/>
+            </Link>
           </div>}
 
         </div>

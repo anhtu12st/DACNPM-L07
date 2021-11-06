@@ -3,6 +3,7 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 import SidePanel from "../SidePanel";
 import style from './TrendingGroup.module.sass';
+import { Link } from 'react-router-dom';
 
 const TrendingGroup = (props) => {
   var data = [
@@ -25,14 +26,14 @@ const TrendingGroup = (props) => {
   const title = 'NHÓM THỊNH HÀNH'
   return (
     <SidePanel title={title}>
-      <div className={style.listGroup}>
+      <Link to="/group" className={style.listGroup} style={{ textDecoration: 'none', color: 'black'}} >
         {(data.length > 0) && data.map((group) =>
             <div className={style.group} key={group.id}>
               <I icon={faUserCircle} className={style.groupAvatar}/>
               <div className={style.groupName}>{group.name}</div>
             </div>
         )}
-      </div>
+      </Link>
     </SidePanel>
   )
 }
