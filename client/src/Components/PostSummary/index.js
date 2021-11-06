@@ -6,7 +6,7 @@ import MiddleBar from "../MiddleBar";
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
 
-const PostSummary = ({ content }) => {
+const PostSummary = ({ content, children }) => {
     const [upvote, setUpVote] = useState(content.upvote)
     const voteUp = () => {
         setUpVote(upvote + 1)
@@ -47,6 +47,7 @@ const PostSummary = ({ content }) => {
                     <div className={style.post_content}>{content.cont}</div>
                 </div>
             </Link>
+            {children}
         </MiddleBar>
     );
 };
