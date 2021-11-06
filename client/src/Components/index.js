@@ -21,3 +21,4 @@ export { default as CreateGroupPopup } from "./CreateGroupPopup";
 export { default as CreatePostEditor } from "./CreatePostEditor";
 export { default as TextEditor } from "./TextEditor";
 export { default as RoundButton } from "./RoundButton";
+export { default as GroupHeader } from "./GroupCover";
