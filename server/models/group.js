@@ -7,7 +7,7 @@ const groupSchema = new Schema(
   {
     title: { type: String, required: true },
     desc: { type: String, default: '' },
-    posts: [postSchema]
+    posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }]
   },
   { timestamps: { createdAt: 'created', updatedAt: 'updatedAt' } }
 );
@@ -22,4 +22,3 @@ groupSchema.options.toJSON.transform = (_, ret) => {
 };
 
 module.exports = mongoose.model('Group', groupSchema);
-exports.groupSchema = groupSchema;

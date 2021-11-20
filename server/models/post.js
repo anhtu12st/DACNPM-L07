@@ -95,4 +95,3 @@ postSchema.post('save', function (doc, next) {
 });
 
 module.exports = mongoose.model('Post', postSchema);
-exports.postSchema = postSchema;

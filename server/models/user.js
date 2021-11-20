@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const groupSchema = require('./group');
-
 const userModel = new Schema(
   {
     displayName: { type: String, required: true },
@@ -16,7 +14,7 @@ const userModel = new Schema(
         return `https://secure.gravatar.com/avatar/${this._id}?s=90&d=identicon`;
       }
     },
-    groups: [groupSchema],
+    groups: [{ type: Schema.Types.ObjectId, ref: 'Group' }],
   },
   { timestamps: { createdAt: 'created', updatedAt: 'updatedAt' } }
 );

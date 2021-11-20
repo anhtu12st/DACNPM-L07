@@ -18,6 +18,7 @@ const {
   listPostsByUser,
   removePost,
   modifyPost,
+  showPost,
 } = require('./controllers/post');
 const { upvote, downvote, unvote } = require('./controllers/votes');
 const {

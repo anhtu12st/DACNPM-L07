@@ -13,7 +13,7 @@ const commentSchema = new Schema(
     text: { type: String, required: true },
     score: { type: Number, default: 0 },
     votes: [voteSchema],
-    comments: [commentSchema],
+    comments: [this],
   },
   { timestamps: { createdAt: 'created', updatedAt: 'updatedAt' } }
 );
@@ -68,5 +68,4 @@ commentSchema.methods = {
   },
 };
 
-module.exports = mongoose.model('Comment', commentSchema);
-exports.commentSchema = commentSchema;
+module.exports = commentSchema;
