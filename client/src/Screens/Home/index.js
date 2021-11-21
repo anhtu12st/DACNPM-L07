@@ -1,12 +1,11 @@
 import { useState } from "react";
-import {FilterPanel, Feed, CreatePostBar, GroupFollowing, TrendingGroup, Greeting, Footer, CreateGroupPopup } from "../../Components";
+import { FilterPanel, Feed, CreatePostBar, GroupFollowing, TrendingGroup, Greeting, Footer, CreateGroupPopup } from "../../Components";
+import { useUserContext } from "../../Contexts/UserContext";
 import style from './Home.module.sass';
 
 
-const HomeScreen = (props) => {
-  //
-  const {isLoggedIn} = props
-  //state
+const HomeScreen = () => {
+  const { isAuthenticated } = useUserContext();
   const [isCreateGroupPopup, setShow] = useState(false)
   //reduce
   const isClickonGreetingCreateGroup = () => {
@@ -15,36 +14,36 @@ const HomeScreen = (props) => {
   const closeCreateGroupPopup = () => {
     setShow(false)
   }
-  
+
   return (
     <div className={style.homeScreen}>
       <div className={style.leftContainer} style={{
-        display: isLoggedIn ? "block" : "none"
+        display: isAuthenticated() ? "block" : "none"
       }}>
         <GroupFollowing />
       </div>
       <div className={style.middleContainer}>
         <div style={{
-          display: isLoggedIn ? "block" : "none"
+          display: isAuthenticated() ? "block" : "none"
         }}>
           <CreatePostBar />
         </div>
-        <FilterPanel/>
+        <FilterPanel />
         <Feed />
       </div>
       <div className={style.rightContainer}>
-        <TrendingGroup/>
+        <TrendingGroup />
         <div style={{
-          display: isLoggedIn ? "block" : "none"
+          display: isAuthenticated() ? "block" : "none"
         }}>
-          <Greeting isGroupClick={isClickonGreetingCreateGroup}/>
+          <Greeting isGroupClick={isClickonGreetingCreateGroup} />
         </div>
-        <Footer/>
+        <Footer />
       </div>
       <div className={style.popup} style={{
         visibility: isCreateGroupPopup ? "visible" : "hidden",
       }}>
-        <CreateGroupPopup close={closeCreateGroupPopup}/>
+        <CreateGroupPopup close={closeCreateGroupPopup} />
       </div>
     </div>
   );

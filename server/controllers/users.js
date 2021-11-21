@@ -1,10 +1,9 @@
-const jwtDecode = require('jwt-decode');
 const { body } = require('express-validator');
 
 const User = require('../models/user');
 const { createToken, hashPassword, verifyPassword } = require('../utils/authentication');
 
-exports.signup = async (req, res) => {
+exports.signup = async (req, res, next) => {
   try {
     const { username, email } = req.body;
 
@@ -14,7 +13,6 @@ exports.signup = async (req, res) => {
       username,
       email,
       password: hashedPassword,
-      channels,
     };
 
     const existingEmail = await User.findOne({
@@ -24,6 +22,16 @@ exports.signup = async (req, res) => {
     if (existingEmail) {
       return res.status(400).json({
         message: 'Email already exists.',
+      });
+    }
+
+    const existingUsername = await User.findOne({
+      username: userData.username,
+    });
+
+    if (existingUsername) {
+      return res.status(400).json({
+        message: 'Username already exists.',
       });
     }
 
@@ -44,22 +52,20 @@ exports.signup = async (req, res) => {
       message: 'There was a problem creating your account.',
     });
   } catch (error) {
-    return res.status(400).json({
-      message: 'There was a problem creating your account.',
-    });
+    next(error)
   }
 };
 
-exports.authenticate = async (req, res) => {
+exports.authenticate = async (req, res, next) => {
   try {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
     const user = await User.findOne({
-      email,
+      username,
     });
 
     if (!user) {
       return res.status(403).json({
-        message: 'Wrong email or password.',
+        message: 'Wrong username or password.',
       });
     }
 
@@ -76,13 +82,11 @@ exports.authenticate = async (req, res) => {
       });
     } else {
       res.status(403).json({
-        message: 'Wrong email or password.',
+        message: 'Wrong username or password.',
       });
     }
   } catch (error) {
-    return res.status(400).json({
-      message: 'Something went wrong.',
-    });
+    next(error);
   }
 };
 
@@ -116,18 +120,17 @@ exports.find = async (req, res, next) => {
 };
 
 exports.validateUser = [
-  body('email')
+  body('username')
     .exists()
     .trim()
     .withMessage('is required')
 
-    .notEmpty()
-    .withMessage('cannot be blank')
+    .isLength({ min: 6 })
+    .withMessage('must be at least 6 characters long')
 
-    .matches(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-    )
-    .withMessage('is wrong format'),
+    .notEmpty()
+    .withMessage('cannot be blank'),
+
   body('password')
     .exists()
     .trim()

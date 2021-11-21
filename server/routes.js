@@ -38,8 +38,12 @@ const requireAuth = require('./middlewares/requireAuth');
 const postAuth = require('./middlewares/postAuth');
 const commentAuth = require('./middlewares/commentAuth');
 
+router.get('/welcome', (_, res) => {
+  res.send('OK 123123')
+})
+
 // authentication
-router.get('/auth', requireAuth, getAuthInfo);
+router.get('/auth/:userId', requireAuth, getAuthInfo);
 router.post('/signup', validateUser, signup);
 router.post('/authenticate', validateUser, authenticate);
 
