@@ -9,6 +9,7 @@ const {
   find,
   updateUser,
   getAuthInfo,
+  findGroupFollowing,
 } = require('./controllers/users');
 const {
   loadPosts,
@@ -20,7 +21,7 @@ const {
   modifyPost,
   showPost,
 } = require('./controllers/post');
-const { upvote, downvote, unvote } = require('./controllers/votes');
+const {upvote, downvote, unvote} = require('./controllers/votes');
 const {
   loadComments,
   validate,
@@ -50,6 +51,7 @@ router.post('/authenticate', validateUser, authenticate);
 // users
 router.get('/users', listUsers);
 router.get('/users/:search', search);
+router.get('/user/following', requireAuth, findGroupFollowing)
 router.get('/user/:userId', find);
 router.put('/user/:userId', requireAuth, updateUser);
 
@@ -76,6 +78,7 @@ router.get('/votes/unvote/:post/:comment?', requireAuth, unvote);
 router.param('group', loadChannel);
 router.get('/group/:group', groupInfo);
 router.post('/group', [requireAuth, channelValidate], createGroup);
+
 
 module.exports = (app) => {
   app.use('/api', router);

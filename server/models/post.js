@@ -12,6 +12,11 @@ const postSchema = new Schema(
       ref: 'User',
       required: true,
     },
+    group: {
+      type: Schema.Types.ObjectId,
+      ref: 'Group',
+      required: true,
+    },
     title: { type: String, required: true },
     text: { type: String, required: true },
     score: { type: Number, default: 0 },

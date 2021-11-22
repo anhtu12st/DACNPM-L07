@@ -2,7 +2,6 @@ export { default as Header } from "./Header";
 export { default as LoginForm } from "./LoginForm";
 export { default as SignUpForm } from "./SignUpForm";
 export { default as CreatePostBar } from "./CreatePostBar";
-export { default as PostView } from "./PostView";
 export { default as Feed } from "./Feed";
 export { default as FilterPanel } from "./FilterPanel";
 export { default as Footer} from "./Footer";
