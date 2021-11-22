@@ -1,5 +1,5 @@
 import React from 'react';
-import {Header, PostingRule, CreatePostEditor, Footer} from "../../Components";
+import {PostingRule, CreatePostEditor, Footer} from "../../Components";
 import style from './CreatePost.module.sass';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faChevronDown } from "@fortawesome/free-solid-svg-icons";

@@ -1,10 +1,34 @@
 import React from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import style from './CreatePostEditor.module.sass';
 import { TextSnippetOutlined, ImageOutlined, LinkOutlined, PollOutlined, LocalOfferOutlined, KeyboardArrowDownOutlined } from '@mui/icons-material'
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
-import { TextEditor, RoundButton } from '../../Components'
+import {TextEditor, RoundButton } from '../../Components'
+import { createPost } from '../../Services/Post'
 
 const CreatePostEditor = () => {
+
+  const [form, setForm] = useState({});
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+      const { name, value } = e.target;
+      setForm({ ...form, [name]: value });
+  }
+  const handleContent = (contentState) => {
+    var content = ""
+    contentState.blocks.map(block => content = content + "\n" + block.text)
+    setForm({ ...form, "text": content });
+  }
+  const handleCreatePost = async (e) => {
+      try {
+          await createPost(form);
+      } catch (error) {
+          setError(error.response?.data?.message || "Unexpected error")
+      }
+  }
   return (
       <div className={style.container}>
         <div className={style.choosePostType}>
@@ -26,8 +50,8 @@ const CreatePostEditor = () => {
           </div>
         </div>
         <div className={style.postContent}>
-          <input className={style.postTitle} placeholder={'Tiêu đề'}/>
-          <TextEditor placeholder={'Nội dung'}/>
+          <input className={style.postTitle} placeholder={'Tiêu đề'} name="title" onChange={handleChange} value={form['title']} />
+          <TextEditor placeholder={'Nội dung'} handleContent={handleContent}/>
         </div>
         <div className={style.btnContainer}>
           <RoundButton>
@@ -38,9 +62,9 @@ const CreatePostEditor = () => {
             </div>
           </RoundButton>
           <RoundButton>
-            <div className={style.flexWrapper}>
+            <Link to="/" className={style.flexWrapper} onClick={handleCreatePost}  style={{ textDecoration: 'none', color: 'black'}}>
               <span>post</span>
-            </div>
+            </Link>
           </RoundButton>
         </div>
         <div className={style.sendNotification}>
