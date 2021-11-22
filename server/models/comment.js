@@ -15,7 +15,7 @@ const commentSchema = new Schema(
     votes: [voteSchema],
     comments: [this],
   },
-  { timestamps: { createdAt: 'created', updatedAt: 'updatedAt' } }
+  { timestamps: { createdAt: 'created', updatedAt: 'updated' } }
 );
 
 commentSchema.set('toJSON', { getters: true });

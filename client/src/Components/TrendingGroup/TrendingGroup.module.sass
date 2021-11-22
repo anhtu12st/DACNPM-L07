@@ -1,28 +1,28 @@
+@import ../../variable
+
+
 .listGroup
   display: flex
   flex-direction: column
-  margin-top: 10px
-  margin-left: 20px
+  margin-top: 15px
   .group
     display: flex
     flex-direction: row
-    margin-left: 10px
-    margin-top: 10px
-    margin-bottom: 10px
-    border-radius: 10px
-
-    &:hover 
-      height: 40px 
-      background-color: #e2e2e2
-
+    align-items: center
+    width: 100%
+    padding-top: 10px
+    &:not(:last-child)
+      border-bottom: 1px solid $border-gray
+      padding-bottom: 10px
     div
       margin-top: auto
       margin-bottom: auto
       cursor: pointer
 
     .groupAvatar
-        color: grey
-        font-size: 30px
-      
+      color: grey
+      font-size: 30px
+
     .groupName
       margin-left: 10px
+

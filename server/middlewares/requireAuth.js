@@ -10,7 +10,6 @@ const requireAuth = (req, res, next) => {
     const decodedToken = jwt.verify(token.slice(7), config.jwt.secret, {
       algorithm: 'HS256',
     });
-
     req.user = decodedToken;
     next();
   } catch (error) {

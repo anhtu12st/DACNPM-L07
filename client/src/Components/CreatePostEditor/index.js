@@ -57,7 +57,7 @@ const CreatePostEditor = () => {
           <RoundButton>
             <div className={style.flexWrapper}>
               <LocalOfferOutlined/>
-              <span>Tag</span>
+              <span className={style.tag}>Tag</span>
               <KeyboardArrowDownOutlined/>
             </div>
           </RoundButton>

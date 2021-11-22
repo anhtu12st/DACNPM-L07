@@ -11,7 +11,6 @@ const UserProvider = ({ children }) => {
 	const setUserInfo = ({ token, userInfo }) => {
     localStorage.setItem('token', token);
     localStorage.setItem('userInfo', JSON.stringify(userInfo));
-
     setUserState({
       token,
       userInfo,

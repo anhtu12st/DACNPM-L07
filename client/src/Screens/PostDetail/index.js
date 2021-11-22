@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobeAsia } from '@fortawesome/free-solid-svg-icons';
 
 const fetchPost = (id) => {
-  return postsData.filter(item => item.id === id)[0]
+  return postsData.filter(item => item.id === id)
 }
 
 const PostDetailScreen = () => {
@@ -19,7 +19,7 @@ const PostDetailScreen = () => {
           <Link to="/group" style={{textDecoration: "none"}}>
           <div className={style.content}>
             <div className={style.groupAvatar}>
-              <FontAwesomeIcon icon={faGlobeAsia} className={style.avatar}></FontAwesomeIcon>
+              <FontAwesomeIcon icon={faGlobeAsia} className={style.avatar}/>
             </div>
             <div className={style.groupName}>Nhóm C++</div>
           </div>
