@@ -18,12 +18,13 @@ exports.loadPosts = async (req, res, next, id) => {
 
 exports.createPost = async (req, res, next) => {
   try {
-    const { title, text } = req.body;
+    const { title, text, group } = req.body;
     const author = req.user.id;
     const post = await Post.create({
       title,
       author,
       text,
+      group
     });
     res.status(201).json(post);
   } catch (error) {
