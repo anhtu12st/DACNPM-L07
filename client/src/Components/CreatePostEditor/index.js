@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
 import style from './CreatePostEditor.module.sass';
@@ -8,10 +8,14 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
 import {TextEditor, RoundButton } from '../../Components'
 import { createPost } from '../../Services/Post'
 
-const CreatePostEditor = () => {
+const CreatePostEditor = (props) => {
 
   const [form, setForm] = useState({});
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    setForm({ ...form, "group": props.group });
+  }, [props.group, form]);
 
   const handleChange = (e) => {
       const { name, value } = e.target;
