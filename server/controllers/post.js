@@ -1,4 +1,5 @@
 const { body } = require('express-validator');
+var mongoose = require('mongoose');
 
 const Post = require('../models/post');
 const User = require('../models/user');
@@ -24,7 +25,7 @@ exports.createPost = async (req, res, next) => {
       title,
       author,
       text,
-      group
+      group: mongoose.Types.ObjectId(group)
     });
     res.status(201).json(post);
   } catch (error) {
@@ -128,4 +129,9 @@ exports.postValidate = [
 
     .isLength({ max: 5000 })
     .withMessage('must be at most 5000 characters long'),
+
+  body('group')
+      .exists()
+      .trim()
+      .withMessage('is required')
 ];

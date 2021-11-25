@@ -1,18 +1,17 @@
 import style from './PostDetail.module.sass'
 import { Link, useParams } from 'react-router-dom'
 import postsData from '../../MockData/PostsData'
-import {Footer, POST, GroupCover, GroupRule} from "../../Components";
+import {Footer, FullPost, GroupCover, GroupRule} from "../../Components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobeAsia } from '@fortawesome/free-solid-svg-icons';
 
 const fetchPost = (id) => {
-  return postsData.filter(item => item.id === id)
+  return postsData.find(item => item.id === id)
 }
 
 const PostDetailScreen = () => {
   const { id } = useParams()
-  const detail = fetchPost(id)
-
+  const post = fetchPost(Number(id))
   return (
       <div className={style.postDetailScreen}>
         <GroupCover >
@@ -30,7 +29,7 @@ const PostDetailScreen = () => {
         </div>
         <div className={style.contentContainer}>
           <div className={style.leftContainer}>
-            <POST />
+            <FullPost post={post}/>
           </div>
           <div className={style.rightContainer}>
             <GroupRule />

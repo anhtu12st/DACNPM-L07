@@ -7,7 +7,7 @@ import { faSearch, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { fetchGroupFollowing } from "../../Services/Group";
 
 const CreatePost = () => {
-  const [groupID, setGroupID] = useState("0")
+  const [groupID, setGroupID] = useState(-1)
   const [groups, setGroups] = useState([])
 
   useEffect(() => {
@@ -26,13 +26,10 @@ const CreatePost = () => {
             <FontAwesomeIcon icon={faSearch}/>
             {/*<SearchOutlinedIcon/>*/}
             <select onChange={(e) => setGroupID(e.target.value)}>
-              <option className={style.group} value={"0"}>
-                <div className={style.groupName}>Chọn một nhóm</div>
-              </option>
-              {(groups.length > 0) && groups.map((group) =>
-                  <option className={style.group} key={group.id} value={group.id}>
-                    <div className={style.groupName}>{group.title}</div>
-                  </option>
+              <option className={style.groupOption} value=''>Chọn một nhóm</option>
+              {(groups.length > 0) &&
+              groups.map((group, idx) =>
+                  <option key={idx} value={group.id}> {group.title}</option>
               )}
             </select>
             {/* <FontAwesomeIcon icon={faChevronDown}/> */}

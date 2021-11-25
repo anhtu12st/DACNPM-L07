@@ -87,7 +87,7 @@ postSchema.pre('save', function (next) {
   next();
 });
 
-postSchema.post('save', function (doc, next) {
+postSchema.post('save', function (doc) {
   if (this.wasNew)
     this.vote(this.author._id, 1);
 

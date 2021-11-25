@@ -15,7 +15,7 @@ const GroupFeed = (props) => {
             end: 0
         },
         {
-            id: 0,
+            id: 1,
             "upvote": 20,
             group: "Nhóm C++",
             user: "cuong231",
@@ -25,7 +25,7 @@ const GroupFeed = (props) => {
             end: 0
         },
         {
-            id: 0,
+            id: 2,
             "upvote": 21,
             group: "Nhóm C++",
             user: "cuong231",
@@ -35,7 +35,7 @@ const GroupFeed = (props) => {
             end: 0
         },
         {
-            id: 0,
+            id: 3,
             "upvote": 20,
             group: "Nhóm C++",
             user: "cuong231",
@@ -45,7 +45,7 @@ const GroupFeed = (props) => {
             end: 0
         },
         {
-            id: 0,
+            id: 4,
             "upvote": 21,
             group: "Nhóm C++",
             user: "cuong231",
@@ -55,7 +55,7 @@ const GroupFeed = (props) => {
             end: 0
         },
         {
-            id: 0,
+            id: 5,
             "upvote": 20,
             group: "Nhóm Java",
             user: "cuong231",
@@ -65,7 +65,7 @@ const GroupFeed = (props) => {
             end: 0
         },
         {
-            id: 0,
+            id: 6,
             "upvote": 21,
             group: "Nhóm C++",
             user: "cuong231",
@@ -75,7 +75,7 @@ const GroupFeed = (props) => {
             end: 0
         },
         {
-            id: 0,
+            id: 7,
             "upvote": 20,
             group: "Nhóm Java",
             user: "cuong231",
