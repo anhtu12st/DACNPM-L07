@@ -7,6 +7,8 @@ const userModel = new Schema(
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String },
+    firstName: { type: String, default: '' },
+    lastName: { type: String, default: '' },
     role: { type: String, required: true, default: 'user' },
     profilePhoto: {
       type: String,
@@ -15,6 +17,7 @@ const userModel = new Schema(
       }
     },
     groups: [{ type: Schema.Types.ObjectId, ref: 'Group' }],
+    posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
   },
   { timestamps: { createdAt: 'created', updatedAt: 'updatedAt' } }
 );

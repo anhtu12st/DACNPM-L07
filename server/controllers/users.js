@@ -111,7 +111,7 @@ exports.search = async (req, res, next) => {
 
 exports.find = async (req, res, next) => {
   try {
-    const user = await User.findOne({ _id: req.params.userId });
+    const user = await User.findOne({ _id: req.params.userId }).populate('posts').populate('groups');
     delete user.password;
     res.json(user);
   } catch (error) {
@@ -146,7 +146,7 @@ exports.validateUser = [
     .withMessage('must be at most 50 characters long'),
 ];
 
-exports.updateUser = async (req, res) => {
+exports.updateUser = async (req, res, next) => {
   try {
     if (!req.user)
       return res.status(403).json({
@@ -156,24 +156,28 @@ exports.updateUser = async (req, res) => {
       return res.status(403).json({
         message: "You are not allowed to change other's information",
       });
-    const { oldPassword, password, email, profilePhoto, role } = req.body;
-    const hashedPassword = await hashPassword(password);
+    // const { oldPassword, password, email, profilePhoto, role } = req.body;
+    const { email, profilePhoto, role, firstName, lastName } = req.body;
+    // const hashedPassword = await hashPassword(password);
     const user = await User.findOne({ _id: req.user.id });
     if (!user)
       return res.status(400).json({
         message: 'User not found',
       });
-    const passwordValid = await verifyPassword(oldPassword, user.password);
-    if (!passwordValid) {
-      return res.status(401).json({ message: 'Incorrect old password' });
-    }
-    if (oldPassword === password) {
-      return res.status(400).json({ message: 'Old and new password cannot be the same' });
-    }
-    if (password) user.password = hashedPassword;
+    // const passwordValid = await verifyPassword(oldPassword, user.password) : true;
+    // if (!passwordValid) {
+    //   return res.status(401).json({ message: 'Incorrect old password' });
+    // }
+    // if (oldPassword === password) {
+    //   return res.status(400).json({ message: 'Old and new password cannot be the same' });
+    // }
+    // if (password) user.password = hashedPassword;
     if (email) user.email = email;
     if (role) user.role = role;
     if (profilePhoto) user.profilePhoto = profilePhoto;
+    if (firstName) user.firstName = firstName;
+    if (lastName) user.lastName = lastName;
+
 
     const newUser = await user.save();
     const token = createToken(newUser);
@@ -185,7 +189,7 @@ exports.updateUser = async (req, res) => {
       userInfo: newUser,
     });
   } catch (err) {
-    return res.status(401).json({ message: err });
+    next(err);
   }
 };
 

@@ -38,9 +38,9 @@ function App() {
               exact path="/posts/:id"
               render={props => <PostDetailScreen {...props} />}
             />
-            <Route>
+            {/* <Route>
               <Redirect to="/" />
-            </Route>
+            </Route> */}
           </Layout>
         </Switch>
       </BrowserRouter>
