@@ -18,15 +18,18 @@ exports.loadPosts = async (req, res, next, id) => {
 };
 
 exports.createPost = async (req, res, next) => {
+  const author = mongoose.Types.ObjectId(req.user.id);
   try {
     const { title, text, group } = req.body;
-    const author = req.user.id;
     const post = await Post.create({
       title,
       author,
       text,
       group: mongoose.Types.ObjectId(group)
     });
+    console.log(author)
+    console.log(typeof author)
+    post.vote(author, 1)
     res.status(201).json(post);
   } catch (error) {
     next(error);
