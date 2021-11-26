@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const voteSchema = mongoose.model('Vote');
-const commentSchema = mongoose.model('Comment');
+// const voteSchema = mongoose.model('Vote');
+// const commentSchema = mongoose.model('Comment');
 
 const postSchema = new Schema(
   {

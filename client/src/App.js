@@ -32,7 +32,7 @@ function App() {
               <SignupScreen SignedUp={LoggedIn} />
             </Route>
             <Route exact path="/profile/:id" component={ProfileScreen} />
-            <Route exact path="/group" component={GroupScreen} />
+            <Route exact path="/group/:id" component={GroupScreen} />
             <Route exact path="/createpost" component={CreatePostScreen} />
             <Route
               exact path="/posts/:id"

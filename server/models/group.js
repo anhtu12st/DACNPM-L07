@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const { postSchema } = require('./post');
+// const { postSchema } = require('./post');
 
 const groupSchema = new Schema(
   {
+    moderator: {type: Schema.Types.ObjectId, ref: 'User', required: true},
     title: { type: String, required: true },
     desc: { type: String, default: '' }
   },
