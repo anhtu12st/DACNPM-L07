@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getPostbyUser } from '../../Services/Post';
 import { getUserInfo, updateUserInfo } from '../../Services/User';
 import "./Profile.scss";
@@ -8,7 +8,7 @@ const ProfileScreen = () => {
 	const [update, setUpdate] = useState(false);
 	const { id } = useParams();
 	const [userInfo, setUserInfo] = useState({});
-	const { profilePhoto, username, email, firstName, lastName, posts } = userInfo;
+	const { profilePhoto, username, email, firstName, lastName } = userInfo;
 
 	const handleOnChangeProfile = (e) => {
 		e.preventDefault();
@@ -37,13 +37,13 @@ const ProfileScreen = () => {
 	}, [id]);
 
 	const [postsData, setPostsData] = useState()
-    useEffect( () => {
-        const fetchData = async() => {
-          const data = await getPostbyUser(id)
-		  console.log(data.data)
-          setPostsData(data.data)
-        }
-        fetchData()
+	useEffect(() => {
+		const fetchData = async () => {
+			const data = await getPostbyUser(id)
+			console.log(data.data)
+			setPostsData(data.data)
+		}
+		fetchData()
 	}, [id])
 
 	return (
@@ -99,14 +99,16 @@ const ProfileScreen = () => {
 			</div>
 
 			<div className="right-profile">
-				{posts?.length > 0 ? <>
+				{postsData?.length > 0 ? <>
 					<h1>Recently Posts</h1>
+					{
+						postsData.map(({ title, id }) => (
+							<div key={id} style={{display: 'flex'}}>
+								<Link to={`/posts/${id}`} className="post" style={{ textDecoration: 'none', flex: 1 }}>{title}</Link>
+							</div>
+						))
+					}
 
-					<div className="post">Your post: This the name of the post</div>
-					<div className="post">Your post: This the name of the post</div>
-					<div className="post">Your post: This the name of the post</div>
-					<div className="post">Your post: This the name of the post</div>
-					<div className="post">Your post: This the name of the post</div>
 				</> : <h1>No Posts</h1>}
 			</div>
 		</div>

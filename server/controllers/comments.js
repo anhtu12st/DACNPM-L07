@@ -19,14 +19,14 @@ exports.loadComments = async (req, res, next, id) => {
 exports.createComment = async (req, res, next) => {
   try {
     const { id } = req.user;
-    const { comment } = req.body;
-
+    const { comment: text } = req.body;
+    
     if (req.params.comment) {
-      req.comment.addComment(id, comment);
+      req.comment.addComment(id, text);
       const post = await req.post.save();
       return res.status(201).json(post);
     } else if (req.post) {
-      const post = await req.post.addComment(id, comment);
+      const post = await req.post.addComment(id, text);
       return res.status(201).json(post);
     }
   } catch (error) {

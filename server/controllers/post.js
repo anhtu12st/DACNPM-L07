@@ -45,7 +45,7 @@ exports.showPost = async (req, res, next) => {
       { $inc: { views: 1 } },
       { new: true, timestamps: false },
     );
-    res.json({ ...post.doc });
+    res.json({ ...post._doc });
   } catch (error) {
     next(error);
   }

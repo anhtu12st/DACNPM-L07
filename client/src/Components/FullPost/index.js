@@ -19,7 +19,7 @@ const FullPost = ({ post }) => {
             isSummary={false}
 
         />
-        <CommentSection/>
+        <CommentSection post={post} />
       </div>
   )
 }

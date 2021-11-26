@@ -19,3 +19,8 @@ export const getPostbyUser = async (id) => {
     const data = await Axios.get(url);
     return data;
 }
+export const getPostById = async (id) => {
+    const url = `/post/${id}`;
+    const { data } = await Axios.get(url);
+    return data;
+}
