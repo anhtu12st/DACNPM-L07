@@ -9,6 +9,11 @@ export const getPost = async () => {
     const data = await Axios.get(url);
     return data;
 }
+export const getPostGroupFollowing = async () => {
+    const url = '/post/user';
+    const data = await Axios.get(url);
+    return data;
+}
 export const getPostbyGroup = async (id) => {
     const url = `/post/group/${id}`;
     const data = await Axios.get(url);

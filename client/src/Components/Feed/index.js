@@ -1,16 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import PostSummary from '../PostSummary'
 import style from './Feed.module.sass';
-import { Link, Route } from 'react-router-dom'
-import {getPost} from '../../Services/Post';
-
-import { PostDetailScreen } from "../../Screens";
+import { Link } from 'react-router-dom'
+import {getPost, getPostGroupFollowing} from '../../Services/Post';
+import { useUserContext } from '../../Contexts/UserContext';
 
 const Feed = () => {
   const [postsData, setPostsData] = useState([])
+  const { isAuthenticated } = useUserContext();
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getPost()
+      var data = 0
+      if (isAuthenticated() )  {data = await getPostGroupFollowing()}
+      else {data = await getPost()}
       setPostsData(data.data)
     }
     fetchData()
