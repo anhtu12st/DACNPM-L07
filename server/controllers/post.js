@@ -48,8 +48,7 @@ exports.showPost = async (req, res, next) => {
 
 exports.listPosts = async (req, res, next) => {
   try {
-    const { sortType = '-score' } = req.body;
-    const posts = await Post.find().sort(sortType);
+    const posts = await Post.find();
     res.json(posts);
   } catch (error) {
     next(error);
@@ -62,6 +61,18 @@ exports.listPostsByUser = async (req, res, next) => {
     const { sortType = '-created' } = req.body;
     const author = await User.findOne({ _id: userId });
     const posts = await Post.find({ author: author.id }).sort(sortType);
+    res.json(posts);
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.listPostsByGroup = async (req, res, next) => {
+  try {
+    const { groupId } = req.params;
+    const { sortType = '-created' } = req.body;
+    const group = await User.findOne({ _id: groupId });
+    const posts = await Post.find({ group: group.id }).sort(sortType);
     res.json(posts);
   } catch (error) {
     next(error);

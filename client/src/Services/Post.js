@@ -10,3 +10,9 @@ export const listPosts = async () => {
     const { data } = await Axios.get(url);
     return data;
 }
+
+export const listPostsByGroup = async () => {
+    const url = '/postGroup';
+    const { data } = await Axios.get(url);
+    return data;
+}
