@@ -231,3 +231,39 @@ exports.findGroupFollowing = async (req, res) => {
     res.status(401).json({message: error})
   }
 }
+
+exports.isJoinGroupByID = async (req, res) => {
+  try {
+    if (!req.user) {
+      return res.status(401).json({
+        message: 'Not signed in',
+      })
+    }
+    const { id } = req.params
+    const userGroup = await User.findOne({_id: req.user.id})
+    const ret = (userGroup.groups.findIndex(x => x.toString() == id) > -1)
+    res.json(ret)  
+  } catch (error) {
+    res.status(401).json({message: error})
+  }
+}
+
+exports.resetJoinGroupByID = async (req, res) => {
+  try {
+    if (!req.user) {
+      return res.status(401).json({
+        message: 'Not signed in',
+      })
+    }
+    const { id } = req.params
+    const ObjectId = require('mongoose').Types.ObjectId
+    const user = await User.findOne({_id: req.user.id})
+    const userGroup = user.groups
+    const indx = userGroup.findIndex(x => x.toString() == id)
+    if (indx > -1) userGroup.splice(indx, 1)
+    else userGroup.push(new ObjectId(id))
+    await User.findOneAndUpdate({_id: req.user.id}, {groups: userGroup})
+  } catch (error) {
+    res.status(401).json({message: error})
+  }
+}

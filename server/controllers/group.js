@@ -28,7 +28,7 @@ exports.createGroup = async (req, res, next) => {
       moderator: req.user.id,
       title,
       desc,
-      userNum: 0
+      userNum: '0'
     });
     res.status(201).json(group);
   } catch (error) {

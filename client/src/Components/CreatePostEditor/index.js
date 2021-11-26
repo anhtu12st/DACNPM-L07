@@ -33,7 +33,6 @@ const CreatePostEditor = ({ group }) => {
   // }
 
   const handleCreatePost = () => {
-    console.log(group)
     if (group < 0) {
       alert('Chọn nhóm để đăng bài')
       return;

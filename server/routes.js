@@ -10,12 +10,15 @@ const {
   updateUser,
   getAuthInfo,
   findGroupFollowing,
+  isJoinGroupByID,
+  resetJoinGroupByID
 } = require('./controllers/users');
 const {
   loadPosts,
   postValidate,
   createPost,
   listPosts,
+  listPostsByGroup,
   listPostsByUser,
   removePost,
   modifyPost,
@@ -51,6 +54,8 @@ router.post('/authenticate', validateUser, authenticate);
 
 // users
 router.get('/users', listUsers);
+router.get('/user/setgroup/:id', requireAuth, resetJoinGroupByID);
+router.get('/user/group/:id', requireAuth, isJoinGroupByID);
 router.get('/users/:search', search);
 router.get('/user/following', requireAuth, findGroupFollowing)
 router.get('/user/:userId', find);
@@ -63,6 +68,7 @@ router.get('/post/user/:userId', listPostsByUser);
 router.post('/post/modify/:post', [requireAuth, postAuth], modifyPost);
 router.get('/post/:post', showPost);
 router.get('/post', listPosts);
+router.get('/post/group/:id', listPostsByGroup);
 router.delete('/post/:post', [requireAuth, postAuth], removePost);
 
 // comments
