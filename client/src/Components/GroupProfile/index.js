@@ -6,13 +6,13 @@ const GroupProfile = ({group}) => {
       <div className={style.container}>
         <div className={style.profile}>
           <div className={style.introContainer}>
-            <div className={style.intro}>Mô tả</div>
+            <div className={style.intro}>{group.desc}</div>
             <RoundButton className={style.btn}>
               Đã tham gia
             </RoundButton>
           </div>
           <div className={style.name}>
-            Nhóm
+            {group.title}
           </div>
         </div>
       </div>

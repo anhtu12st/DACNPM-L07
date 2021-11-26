@@ -7,7 +7,7 @@ import { getGroupByID } from "../../Services/Group";
 
 
 const Group = () => {
-    const [group, setGroup] = useState()
+    const [group, setGroup] = useState({title: "", desc: ""})
     const {id} = useParams()
     useEffect( () => {
         const fetchData = async() => {
@@ -15,11 +15,11 @@ const Group = () => {
           setGroup(data)
         }
         fetchData()
-      }, [id])
+      }, [])
     return (
         <div className={style.groupContainer}>
           <GroupCover/>
-          <GroupProfile className={style.groupProfile} />
+          <GroupProfile className={style.groupProfile} group={group} />
           <div className={style.flexContainer}>
                 <div className={style.leftContainer}>
                   <CreatePostBar/>

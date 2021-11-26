@@ -12,7 +12,6 @@ const TrendingGroup = () => {
   useEffect( () => {
     const fetchData = async() => {
       const data = await fetchTrendingGroup()
-      console.log(data)
       setGroupsData(data)
     }
     fetchData()

@@ -76,8 +76,8 @@ router.get('/votes/downvote/:post/:comment?', requireAuth, downvote);
 router.get('/votes/unvote/:post/:comment?', requireAuth, unvote);
 
 // group
-router.param('group', loadChannel);
-router.get('/group/:group', groupInfo);
+// router.param('group', loadChannel);
+router.get('/group/:id', groupInfo);
 router.post('/group', [requireAuth, channelValidate], createGroup);
 
 router.get('/trendingGroup', getTrendingGroup)
