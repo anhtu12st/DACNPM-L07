@@ -20,8 +20,8 @@ const TrendingGroup = () => {
   return (
     <SidePanel title={title}>
       {!!data && data.map((group) =>
-        <Link to={`/group/${group.id}`} className={style.listGroup} style={{ textDecoration: 'none', color: 'black'}} >
-            <div className={style.group} key={group.id}>
+        <Link to={`/group/${group._id}`} className={style.listGroup} style={{ textDecoration: 'none', color: 'black'}} >
+            <div className={style.group} key={group._id}>
               <I icon={faUserCircle} className={style.groupAvatar}/>
               <div className={style.groupName}>{group.title}</div>
             </div>
