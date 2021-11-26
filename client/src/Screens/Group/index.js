@@ -32,7 +32,7 @@ const Group = () => {
                 <div className={style.leftContainer}>
                   <CreatePostBar/>
                   <FilterPanel/>
-                  <GroupFeed/>
+                  <GroupFeed id={id}/>
                 </div>
                 <div className={style.rightContainer}>
                     <GroupRule/>

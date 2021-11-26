@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import { HomeScreen, LoginScreen, SignupScreen, ProfileScreen, GroupScreen, CreatePostScreen, PostDetailScreen } from "./Screens";
 import Layout from "./Layout";
@@ -38,9 +38,6 @@ function App() {
               exact path="/posts/:id"
               render={props => <PostDetailScreen {...props} />}
             />
-            {/* <Route>
-              <Redirect to="/" />
-            </Route> */}
           </Layout>
         </Switch>
       </BrowserRouter>

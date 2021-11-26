@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { getPostbyUser } from '../../Services/Post';
 import { getUserInfo, updateUserInfo } from '../../Services/User';
 import "./Profile.scss";
 
@@ -34,6 +35,15 @@ const ProfileScreen = () => {
 
 		fetchUserInfoById();
 	}, [id]);
+
+	const [postsData, setPostsData] = useState()
+    useEffect( () => {
+        const fetchData = async() => {
+          const data = await getPostbyUser(id)
+          setPostsData(data.data)
+        }
+        fetchData()
+	}, [id])
 
 	return (
 		<div className='ProfileScreen'>

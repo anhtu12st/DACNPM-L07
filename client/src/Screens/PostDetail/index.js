@@ -4,14 +4,17 @@ import postsData from '../../MockData/PostsData'
 import {Footer, FullPost, GroupCover, GroupRule} from "../../Components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobeAsia } from '@fortawesome/free-solid-svg-icons';
+import { useLocation } from 'react-router-dom'
 
-const fetchPost = (id) => {
-  return postsData.find(item => item.id === id)
-}
+//
+// const fetchPost = (id) => {
+//   return postsData.find(item => item.id === id)
+// }
 
 const PostDetailScreen = () => {
-  const { id } = useParams()
-  const post = fetchPost(Number(id))
+  const location = useLocation()
+  console.log(location)
+  const { post } = location.state
   return (
       <div className={style.postDetailScreen}>
         <GroupCover >
