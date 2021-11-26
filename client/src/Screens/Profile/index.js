@@ -40,7 +40,7 @@ const ProfileScreen = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			const data = await getPostbyUser(id)
-			setPostsData(data.data)
+			setPostsData((data.data).reverse())
 		}
 		fetchData()
 	}, [id])

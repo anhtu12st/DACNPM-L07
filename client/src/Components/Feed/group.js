@@ -9,10 +9,10 @@ const GroupFeed = ({ id }) => {
     useEffect( () => {
         const fetchData = async() => {
           const data = await getPostbyGroup(id)
-          setPostsData(data.data)
+          setPostsData((data.data).reverse())
         }
         fetchData()
-      }, [])
+      }, [id])
     return (
         <div className={style.feedContainer}>
             {!!postsData && postsData.map(post =>

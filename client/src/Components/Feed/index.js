@@ -13,7 +13,7 @@ const Feed = () => {
       var data = 0
       if (isAuthenticated() )  {data = await getPostGroupFollowing()}
       else {data = await getPost()}
-      setPostsData(data.data)
+      setPostsData((data.data).reverse())
     }
     fetchData()
   }, [isAuthenticated])
