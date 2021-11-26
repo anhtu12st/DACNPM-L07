@@ -1,40 +1,59 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { getUserInfo, updateUserInfo } from '../../Services/User';
 import "./Profile.scss";
 
 const ProfileScreen = () => {
-	const [profile, setProfile] = useState({ userName:"Meo Meo", firstName: "Phan", lastName: "Anh Tu", email: "superhero@sentai.hensin", isUpdate: false });
+	const [update, setUpdate] = useState(false);
 	const { id } = useParams();
+	const [userInfo, setUserInfo] = useState({});
+	const { profilePhoto, username, email, firstName, lastName, posts } = userInfo;
 
 	const handleOnChangeProfile = (e) => {
 		e.preventDefault();
 		const { name, value } = e.target;
-		setProfile({ ...profile, [name]: value });
+		setUserInfo({ ...userInfo, [name]: value });
 	}
 
-	useEffect((id) => {
-		console.log(id);
+	const handleUpdateProfile = async () => {
+		if (update) {
+			try {
+				await updateUserInfo(id, userInfo);
+			} catch (err) { }
+		}
+		setUpdate(!update)
+	}
+
+	useEffect(() => {
+		const fetchUserInfoById = async () => {
+			try {
+				const data = await getUserInfo(id);
+				setUserInfo(data);
+			} catch (error) { }
+		}
+
+		fetchUserInfoById();
 	}, [id]);
 
 	return (
 		<div className='ProfileScreen'>
 			<div className="left-profile">
 				<div className="profile-image">
-					<img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="profile" />
+					<img src={profilePhoto} alt="profile" />
 				</div>
 				<div className="profile-info">
 					<div className="profile-name">
-						<h1>{profile.userName}</h1>
+						<h1>{username}</h1>
 					</div>
 					<div className="profile-bio">
 						<div className="line">
 							<label htmlFor="first-name">First Name:</label>
 							<input
 								type="text"
-								className={profile.isUpdate && "update"}
+								className={update && "update"}
 								name="firstName"
-								disabled={!profile.isUpdate}
-								value={profile.firstName}
+								disabled={!update}
+								value={firstName}
 								onChange={handleOnChangeProfile}
 							/>
 						</div>
@@ -43,10 +62,10 @@ const ProfileScreen = () => {
 							<label htmlFor="last-name">Last Name:</label>
 							<input
 								type="text"
-								className={profile.isUpdate && "update"}
+								className={update && "update"}
 								name="lastName"
-								disabled={!profile.isUpdate}
-								value={profile.lastName}
+								disabled={!update}
+								value={lastName}
 								onChange={handleOnChangeProfile}
 							/>
 						</div>
@@ -55,29 +74,29 @@ const ProfileScreen = () => {
 							<label htmlFor="email">Email:</label>
 							<input
 								type="text"
-								className={profile.isUpdate && "update"}
 								name="email"
-								disabled={!profile.isUpdate}
-								value={profile.email}
+								value={email}
 								onChange={handleOnChangeProfile}
 							/>
 						</div>
 
-						<button onClick={(e) => (setProfile({ ...profile, isUpdate: !profile.isUpdate }))}>
-							{profile.isUpdate ? "Save" : "Update"} Profile
+						<button onClick={handleUpdateProfile}>
+							{update ? "Save" : "Update"} Profile
 						</button>
 					</div>
 				</div>
 			</div>
 
 			<div className="right-profile">
-				<h1>Recently Activity</h1>
+				{posts?.length > 0 ? <>
+					<h1>Recently Posts</h1>
 
-				<div className="post">Your post: This the name of the post</div>
-				<div className="post">Your post: This the name of the post</div>
-				<div className="post">Your post: This the name of the post</div>
-				<div className="post">Your post: This the name of the post</div>
-				<div className="post">Your post: This the name of the post</div>
+					<div className="post">Your post: This the name of the post</div>
+					<div className="post">Your post: This the name of the post</div>
+					<div className="post">Your post: This the name of the post</div>
+					<div className="post">Your post: This the name of the post</div>
+					<div className="post">Your post: This the name of the post</div>
+				</> : <h1>No Posts</h1>}
 			</div>
 		</div>
 	);
