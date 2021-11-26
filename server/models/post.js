@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 
 // const voteSchema = mongoose.model('Vote');
 // const commentSchema = mongoose.model('Comment');
+let Vote = require('./vote')
 
 const postSchema = new Schema(
   {
@@ -19,8 +20,9 @@ const postSchema = new Schema(
     },
     title: { type: String, required: true },
     text: { type: String, required: true },
-    score: { type: Number, default: 0 },
-    views: { type: Number, default: 1 },
+    vote_count: { type: Number, default: 0 },
+    voters: [{ type: Schema.Types.ObjectId, ref: 'Vote'}],
+    views: { type: Number, default: 1 }
   },
   { timestamps: { createdAt: 'created', updatedAt: 'updatedAt' } },
 );
@@ -35,43 +37,53 @@ postSchema.options.toJSON.transform = (doc, ret) => {
 };
 
 postSchema.methods = {
-  vote(user, vote) {
-    const existingVote = this.votes.find((v) => v.user._id.equals(user));
-
-    if (existingVote) {
-      this.score -= existingVote.vote;
-      if (vote === 0)
-        this.votes.pull(existingVote);
-      else {
-        this.score += vote;
-        existingVote.vote = vote;
+  async vote(voter, vote) {
+    const voterIdx = this.voters.indexOf(voter)
+    if (voterIdx !== -1) {
+      const voting = await this.voters[voterIdx].populate()
+      if (vote === voting.vote_value) {
+        this.vote_count -= voting.vote_value;
+        this.voters.pull(voter);
+        Vote.deleteOne({ voter, vote_value: vote, parent: this._id })
       }
-    } else if (vote !== 0) {
-      this.score += vote;
-      this.votes.push({ user, vote });
+
+      else {
+        this.vote_count -= this.voters[voterIdx].vote_value;
+        this.vote_count += vote;
+        this.voters[voterIdx].vote_value = vote
+      }
     }
 
+    else {
+      this.vote_count += vote;
+      this.voters.push(voter);
+      Vote.create({
+        voter,
+        vote_value: vote,
+        parent: this._id
+      })
+    }
     return this.save();
   },
 
-  addComment(author, body) {
-    this.comments.push({ author, body, history: [{ body }] });
-    return this.save();
-  },
-
-  modifyComment(id, body) {
-    const comment = this.comments.id(id);
-    if (!comment) throw new Error('Comment not found');
-    comment.updateComment(body);
-    return this.save();
-  },
-
-  removeComment(id) {
-    const comment = this.comments.id(id);
-    if (!comment) throw new Error('Comment not found');
-    comment.remove();
-    return this.save();
-  },
+  // addComment(author, body) {
+  //   this.comments.push({ author, body, history: [{ body }] });
+  //   return this.save();
+  // },
+  //
+  // modifyComment(id, body) {
+  //   const comment = this.comments.id(id);
+  //   if (!comment) throw new Error('Comment not found');
+  //   comment.updateComment(body);
+  //   return this.save();
+  // },
+  //
+  // removeComment(id) {
+  //   const comment = this.comments.id(id);
+  //   if (!comment) throw new Error('Comment not found');
+  //   comment.remove();
+  //   return this.save();
+  // },
 };
 
 postSchema.pre(/^find/, function () {
@@ -80,15 +92,6 @@ postSchema.pre(/^find/, function () {
     .populate('comments.comments.author', '-role');
 });
 
-postSchema.pre('save', function (next) {
-  this.wasNew = this.isNew;
-  next();
-});
 
-postSchema.post('save', function (doc) {
-  if (this.wasNew) {
-    this.vote(this.author, 1);
-  }
-});
 
 module.exports = mongoose.model('Post', postSchema);

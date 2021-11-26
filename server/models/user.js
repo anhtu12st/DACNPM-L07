@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const userModel = new Schema(
+const userSchema = new Schema(
   {
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
@@ -22,8 +22,8 @@ const userModel = new Schema(
   { timestamps: { createdAt: 'created', updatedAt: 'updatedAt' } }
 );
 
-userModel.set('toJSON', { getters: true });
-userModel.options.toJSON.transform = (_, ret) => {
+userSchema.set('toJSON', { getters: true });
+userSchema.options.toJSON.transform = (_, ret) => {
   const obj = { ...ret };
   delete obj._id;
   delete obj.__v;
@@ -31,4 +31,4 @@ userModel.options.toJSON.transform = (_, ret) => {
   return obj;
 };
 
-module.exports = mongoose.model('User', userModel);
+module.exports = mongoose.model('User', userSchema);

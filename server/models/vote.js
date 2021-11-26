@@ -4,11 +4,9 @@ const { Schema } = mongoose;
 
 const voteSchema = new Schema(
   {
-    user: { type: Schema.Types.ObjectId, required: true, ref: 'User' },
-    isPostVote: { type: Boolean, required: true }, // post's vote: true | comment's vote: false
-    isUpvote: { type: Boolean, required: true }, // upvote: true | downvote: false
-    post: { type: Schema.Types.ObjectId, ref: 'Post' },
-    comment: { type: Schema.Types.Boolean, ref: 'Comment' }
+    voter: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    vote_value: { type: Number, required: true },
+    parent: { type: Schema.Types.ObjectId, ref: 'Post', required: true }
   }
 );
 
