@@ -18,6 +18,7 @@ const {
   postValidate,
   createPost,
   listPosts,
+  listPostsByGroup,
   listPostsByUser,
   removePost,
   modifyPost,
@@ -67,6 +68,7 @@ router.get('/post/user/:userId', listPostsByUser);
 router.post('/post/modify/:post', [requireAuth, postAuth], modifyPost);
 router.get('/post/:post', showPost);
 router.get('/post', listPosts);
+router.get('/post/group/:id', listPostsByGroup);
 router.delete('/post/:post', [requireAuth, postAuth], removePost);
 
 // comments

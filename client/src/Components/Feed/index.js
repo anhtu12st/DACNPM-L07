@@ -10,21 +10,20 @@ const Feed = () => {
     useEffect( () => {
         const fetchData = async() => {
           const data = await getPost()
-          console.log(data.data)
           setPostsData(data.data)
         }
         fetchData()
       }, [])
     return (
         <div className={style.feedContainer}>
-            {/* {!!postsData && postsData.map(post =>
+            {!!postsData && postsData.map(post =>
                 <Link to={`/posts/${post.id}`} className={style.linkContainer}>
                     <PostSummary
                         content={post}
                         isSummary={true}
                     />
                 </Link>
-            )} */}
+            )}
         </div>
     );
 };

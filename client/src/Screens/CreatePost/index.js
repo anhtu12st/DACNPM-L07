@@ -8,7 +8,7 @@ import { fetchGroupFollowing } from "../../Services/Group";
 
 const CreatePost = () => {
   const [groupID, setGroupID] = useState(-1)
-  const [groups, setGroups] = useState([])
+  const [groups, setGroups] = useState()
 
   useEffect(() => {
     const fetchData = async() => {
@@ -27,9 +27,9 @@ const CreatePost = () => {
             {/*<SearchOutlinedIcon/>*/}
             <select onChange={(e) => setGroupID(e.target.value)}>
               <option className={style.groupOption} value=''>Chọn một nhóm</option>
-              {(groups.length > 0) &&
-              groups.map((group, idx) =>
-                  <option key={idx} value={group.id}> {group.title}</option>
+              {(!!groups) &&
+                groups.map((group) =>
+                    <option key={group._id} value={group._id}> {group.title}</option>
               )}
             </select>
             {/* <FontAwesomeIcon icon={faChevronDown}/> */}

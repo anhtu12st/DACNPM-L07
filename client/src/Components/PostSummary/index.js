@@ -40,9 +40,9 @@ const PostSummary = ({ content, isSummary }) => {
                 <div className={style.postContent}>
                     <div className={style.postInfoContent}>
                         { isSummary && <FontAwesomeIcon icon={faUserCircle} className={style.groupAvatar}/> }
-                        { isSummary && <span className={style.groupLabel}>{content.group}</span> }
+                        { isSummary && <span className={style.groupLabel}>{content.group.title}</span> }
 
-                        <span className={style.postInfo}>Đăng bởi {content.author} {timePassed} {timeUnit} trước</span>
+                        <span className={style.postInfo}>Đăng bởi {content.author.username} {timePassed} {timeUnit} trước</span>
                     </div>
                     <label>{content.title}</label>
                     <div className={style.post_content}>{content.text}</div>

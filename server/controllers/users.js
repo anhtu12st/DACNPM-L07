@@ -262,7 +262,6 @@ exports.resetJoinGroupByID = async (req, res) => {
     const indx = userGroup.findIndex(x => x.toString() == id)
     if (indx > -1) userGroup.splice(indx, 1)
     else userGroup.push(new ObjectId(id))
-    console.log(userGroup)
     await User.findOneAndUpdate({_id: req.user.id}, {groups: userGroup})
   } catch (error) {
     res.status(401).json({message: error})

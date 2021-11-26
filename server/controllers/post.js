@@ -1,6 +1,7 @@
 const { body } = require('express-validator');
 var mongoose = require('mongoose');
 
+const Group = require('../models/group');
 const Post = require('../models/post');
 const User = require('../models/user');
 
@@ -59,12 +60,25 @@ exports.listPosts = async (req, res, next) => {
   }
 };
 
+exports.listPostsByGroup = async (req, res, next) => {
+  try {
+    const groupId = req.params.id
+    const group = await Group.find()
+    const groupById = group.find(x => x._id.toString() == groupId)
+    const posts = await Post.find({ group: groupById._id});
+    res.json(posts);
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.listPostsByUser = async (req, res, next) => {
   try {
     const { userId } = req.params;
-    const { sortType = '-created' } = req.body;
-    const author = await User.findOne({ _id: userId });
-    const posts = await Post.find({ author: author.id }).sort(sortType);
+    // const { sortType = '-created' } = req.body;
+    const author = await User.find({ _id: userId });
+    const authorById = author.find(x => x._id.toString() == userId)
+    const posts = await Post.find({ author: authorById._id });
     res.json(posts);
   } catch (error) {
     next(error);
