@@ -21,16 +21,14 @@ const GroupFollowing = (props) => {
 
   return (
       <SidePanel title={title}>
-        
-          {(groups.length > 0) && groups.map((group) => 
-            <Link to={`/group/${group._id}`} className={style.listGroup} style={{textDecoration: 'none', color: 'black'}}>
+          {(groups.length > 0) && groups.map((group, idx) =>
+            <Link key={idx} to={`/group/${group._id}`} className={style.listGroup} style={{textDecoration: 'none', color: 'black'}}>
               <div className={style.group} key={group.id}>
                 <I icon={faUserCircle} className={style.groupAvatar}/>
                 <div className={style.groupName}>{group.title}</div>
               </div>
             </Link>
           )}
-        
       </SidePanel>
   )
 }

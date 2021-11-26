@@ -1,23 +1,26 @@
-import React, {useState, useEffect} from 'react';
-import {PostingRule, CreatePostEditor, Footer} from "../../Components";
+import React, {useEffect, useState} from 'react';
+import {CreatePostEditor, Footer, PostingRule} from "../../Components";
 import style from './CreatePost.module.sass';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSearch} from "@fortawesome/free-solid-svg-icons";
 // import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { fetchGroupFollowing } from "../../Services/Group";
+import {fetchGroupFollowing} from "../../Services/Group";
 
 const CreatePost = () => {
   const [groupID, setGroupID] = useState(-1)
-  const [groups, setGroups] = useState()
+  const [groups, setGroups] = useState([])
 
   useEffect(() => {
-    const fetchData = async() => {
+    const fetchData = async () => {
       const data = await fetchGroupFollowing()
       setGroups(data)
     }
     fetchData()
   }, [])
 
+  const handleSelectInputChange = (e) => {
+    setGroupID(e.target.value)
+  }
   return (
       <div className={style.flexContainer}>
         <div className={style.leftContainer}>
@@ -25,11 +28,11 @@ const CreatePost = () => {
           <div className={style.chooseGroup}>
             <FontAwesomeIcon icon={faSearch}/>
             {/*<SearchOutlinedIcon/>*/}
-            <select onChange={(e) => setGroupID(e.target.value)}>
-              <option className={style.groupOption} value=''>Chọn một nhóm</option>
-              {(!!groups) &&
-                groups.map((group) =>
-                    <option key={group._id} value={group._id}> {group.title}</option>
+            <select value={groupID} onChange={handleSelectInputChange}>
+              <option value={-1} selected="selected">Chọn một nhóm</option>
+              {(groups.length > 0) &&
+              groups.map((group, idx) =>
+                  <option key={idx} value={group._id}> {group.title}</option>
               )}
             </select>
             {/* <FontAwesomeIcon icon={faChevronDown}/> */}

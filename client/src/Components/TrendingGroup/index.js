@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import {fetchTrendingGroup} from '../../Services/Group';
 
 const TrendingGroup = () => {
-  const [data, setGroupsData] = useState()
+  const [data, setGroupsData] = useState([])
   useEffect( () => {
     const fetchData = async() => {
       const data = await fetchTrendingGroup()
@@ -19,9 +19,9 @@ const TrendingGroup = () => {
   const title = 'Nhóm thịnh hành'
   return (
     <SidePanel title={title}>
-      {!!data && data.map((group) =>
-        <Link to={`/group/${group._id}`} className={style.listGroup} style={{ textDecoration: 'none', color: 'black'}} >
-            <div className={style.group} key={group._id}>
+      {data.length > 0 && data.map((group, idx) =>
+        <Link key={idx} to={`/group/${group._id}`} className={style.listGroup} style={{ textDecoration: 'none', color: 'black'}} >
+            <div className={style.group} >
               <I icon={faUserCircle} className={style.groupAvatar}/>
               <div className={style.groupName}>{group.title}</div>
             </div>
