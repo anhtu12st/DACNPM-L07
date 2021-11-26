@@ -76,9 +76,10 @@ postSchema.methods = {
 };
 
 postSchema.pre(/^find/, function () {
-  this.populate('author')
-    .populate('comments.author', '-role')
-    .populate('comments.comments.author', '-role');
+  this.populate('author');
+    // .populate('comments.author', '-role')
+    // .populate('comments.comments.author', '-role');
+  this.populate('group');
 });
 
 postSchema.pre('save', function (next) {

@@ -49,8 +49,7 @@ exports.showPost = async (req, res, next) => {
 
 exports.listPosts = async (req, res, next) => {
   try {
-    const { sortType = '-score' } = req.body;
-    const posts = await Post.find().sort(sortType);
+    const posts = await Post.find();
     res.json(posts);
   } catch (error) {
     next(error);

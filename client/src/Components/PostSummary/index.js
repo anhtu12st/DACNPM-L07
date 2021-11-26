@@ -6,7 +6,7 @@ import MiddleBar from "../MiddleBar";
 import { useState } from 'react';
 
 const PostSummary = ({ content, isSummary }) => {
-    const [upvote, setUpVote] = useState(content.upvote)
+    const [upvote, setUpVote] = useState(0) //useState(content.vote)
     const voteUp = () => {
         setUpVote(upvote + 1)
     }
@@ -14,7 +14,7 @@ const PostSummary = ({ content, isSummary }) => {
         setUpVote(upvote - 1)
     }
     const MS_PER_HOUR = 60 * 60 * 1000
-    let timePassed = Math.floor((new Date() - new Date(content.timePosted)) / MS_PER_HOUR)
+    let timePassed = Math.floor((new Date() - new Date(content.created)) / MS_PER_HOUR)
     let timeUnit = 'giờ'
     if (timePassed >= 24) {
         timePassed = Math.floor(timePassed / 24)
@@ -42,10 +42,10 @@ const PostSummary = ({ content, isSummary }) => {
                         { isSummary && <FontAwesomeIcon icon={faUserCircle} className={style.groupAvatar}/> }
                         { isSummary && <span className={style.groupLabel}>{content.group}</span> }
 
-                        <span className={style.postInfo}>Đăng bởi {content.user} {timePassed} {timeUnit} trước</span>
+                        <span className={style.postInfo}>Đăng bởi {content.author} {timePassed} {timeUnit} trước</span>
                     </div>
                     <label>{content.title}</label>
-                    <div className={style.post_content}>{content.cont}</div>
+                    <div className={style.post_content}>{content.text}</div>
                 </div>
             </div>
         </MiddleBar>
