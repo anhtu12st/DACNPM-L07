@@ -7,14 +7,9 @@ const groupSchema = new Schema(
   {
     moderator: {type: Schema.Types.ObjectId, ref: 'User', required: true},
     title: { type: String, required: true },
-<<<<<<< HEAD
     desc: { type: String, default: '' },
     userNum: { type: String , default: '0' },
     // posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }]
-=======
-    desc: { type: String, default: '' }
-
->>>>>>> origin/nguyen
   },
   { timestamps: { createdAt: 'created', updatedAt: 'updatedAt' } }
 );
