@@ -20,7 +20,7 @@ const Header = () => {
         <input placeholder='Tìm kiếm trong CSE Connector' />
         {/*<button type='submit'><FontAwesomeIcon icon={faSearch}/></button>*/}
       </div>
-      <div className={style.userLogin} style={{ "justify-content": isAuthenticated() ? "flex-end" : "space-around" }}>
+      <div className={style.userLogin} style={{ justifyContent: isAuthenticated() ? "flex-end" : "space-around" }}>
         <Link style={{ display: isAuthenticated() ? "none" : "block" }} to='/login' className={style.btn}>Log In</Link>
         <Link style={{ display: isAuthenticated() ? "none" : "block" }} to='/signup' className={style.btn}>Sign Up</Link>
 

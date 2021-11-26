@@ -21,5 +21,6 @@ export { default as CreatePostEditor } from "./CreatePostEditor";
 export { default as TextEditor } from "./TextEditor";
 export { default as RoundButton } from "./RoundButton";
 export { default as GroupCover } from "./GroupCover";
-export { default as POST } from "./POST";
+export { default as FullPost } from "./FullPost";
 export { default as SidePanel } from "./SidePanel";
+export { default as CommentSection } from "./CommentSection";

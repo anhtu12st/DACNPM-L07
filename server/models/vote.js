@@ -9,4 +9,4 @@ const voteSchema = new Schema(
   { _id: false },
 );
 
-exports.voteSchema = voteSchema;
+module.exports = voteSchema;

@@ -4,9 +4,8 @@ import { faCaretSquareDown, faCaretSquareUp } from "@fortawesome/free-regular-sv
 import style from './PostSummary.module.sass';
 import MiddleBar from "../MiddleBar";
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
 
-const PostSummary = ({ content, children }) => {
+const PostSummary = ({ content, isSummary }) => {
     const [upvote, setUpVote] = useState(content.upvote)
     const voteUp = () => {
         setUpVote(upvote + 1)
@@ -29,25 +28,26 @@ const PostSummary = ({ content, children }) => {
             }
         }
     }
+
     return (
         <MiddleBar>
-            <Link to={`/posts/${content.id}`} className={style.linkContainer}>
-                <div className={style.voting}>
+            <div className={style.flexContainer}>
+                <div className={`${style.voting} ${!isSummary && style.inFullPost}`}>
                     <div onClick={voteUp}><FontAwesomeIcon icon={faCaretSquareUp}/></div>
                     <span className={style.upvoteCount}>{upvote}</span>
                     <div onClick={voteDown}><FontAwesomeIcon icon={faCaretSquareDown}/></div>
                 </div>
                 <div className={style.postContent}>
                     <div className={style.postInfoContent}>
-                        <FontAwesomeIcon icon={faUserCircle} className={style.groupAvatar}/>
-                        <span className={style.groupLabel}>{content.group}</span>
+                        { isSummary && <FontAwesomeIcon icon={faUserCircle} className={style.groupAvatar}/> }
+                        { isSummary && <span className={style.groupLabel}>{content.group}</span> }
+
                         <span className={style.postInfo}>Đăng bởi {content.user} {timePassed} {timeUnit} trước</span>
                     </div>
                     <label>{content.title}</label>
                     <div className={style.post_content}>{content.cont}</div>
                 </div>
-            </Link>
-            {children}
+            </div>
         </MiddleBar>
     );
 };

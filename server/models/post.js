@@ -22,7 +22,7 @@ const postSchema = new Schema(
     score: { type: Number, default: 0 },
     votes: [voteSchema],
     comments: [commentSchema],
-    views: { type: Number, default: 0 },
+    views: { type: Number, default: 1 },
   },
   { timestamps: { createdAt: 'created', updatedAt: 'updatedAt' } },
 );
@@ -87,16 +87,10 @@ postSchema.pre('save', function (next) {
   next();
 });
 
-postSchema.post('save', function (doc, next) {
-  if (this.wasNew)
-    this.vote(this.author._id, 1);
-
-  doc
-    .populate('author')
-    .populate('comments.author', '-role')
-    .populate('comments.comments.author', '-role')
-    .execPopulate()
-    .then(() => next());
+postSchema.post('save', function (doc) {
+  if (this.wasNew) {
+    this.vote(this.author, 1);
+  }
 });
 
 module.exports = mongoose.model('Post', postSchema);
