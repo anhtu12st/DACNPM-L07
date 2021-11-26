@@ -26,15 +26,24 @@ exports.createGroup = async (req, res, next) => {
   try {
     const { title, desc } = req.body;
     const group = await Group.create({
+      moderator: req.user.id,
       title,
-      desc,
-      posts: []
+      desc
     });
     res.status(201).json(group);
   } catch (error) {
     next(error);
   }
 };
+
+exports.getTrendingGroup = async (req, res) => {
+  try {
+    const groups = await Group.find();
+    res.json(groups)
+  } catch (error) {
+    next(error);
+  }
+}
 
 exports.channelValidate = [
   body('title')

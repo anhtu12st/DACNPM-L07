@@ -33,6 +33,7 @@ const {
   channelValidate,
   groupInfo,
   createGroup,
+  getTrendingGroup
 } = require('./controllers/group');
 
 const requireAuth = require('./middlewares/requireAuth');
@@ -79,6 +80,7 @@ router.param('group', loadChannel);
 router.get('/group/:group', groupInfo);
 router.post('/group', [requireAuth, channelValidate], createGroup);
 
+router.get('/trendingGroup', getTrendingGroup)
 
 module.exports = (app) => {
   app.use('/api', router);

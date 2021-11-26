@@ -4,8 +4,9 @@
   "description": "DAHCNPM",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "yarn && node index.js",
+    "dev": "nodemon index.js",
+    "build": "cd ../client && yarn && yarn start"
   },
   "keywords": [],
   "author": "",

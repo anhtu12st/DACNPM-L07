@@ -4,36 +4,30 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import SidePanel from "../SidePanel";
 import style from './TrendingGroup.module.sass';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import {fetchTrendingGroup} from '../../Services/Group';
 
-const TrendingGroup = (props) => {
-  var data = [
-    {
-      "id": 1,
-      "avatar": "",
-      "name": "Nhóm C++"
-    },
-    {
-      "id": 2,
-      "avatar": "",
-      "name": "Nhóm Java"
-    },
-    {
-      "id": 3,
-      "avatar": "",
-      "name": "Nhóm Python"
+const TrendingGroup = () => {
+  const [data, setGroupsData] = useState()
+  useEffect( () => {
+    const fetchData = async() => {
+      const data = await fetchTrendingGroup()
+      console.log(data)
+      setGroupsData(data)
     }
-  ]
+    fetchData()
+  }, [])
   const title = 'Nhóm thịnh hành'
   return (
     <SidePanel title={title}>
-      <Link to="/group" className={style.listGroup} style={{ textDecoration: 'none', color: 'black'}} >
-        {(data.length > 0) && data.map((group) =>
+      {!!data && data.map((group) =>
+        <Link to={`/group/${group.id}`} className={style.listGroup} style={{ textDecoration: 'none', color: 'black'}} >
             <div className={style.group} key={group.id}>
               <I icon={faUserCircle} className={style.groupAvatar}/>
-              <div className={style.groupName}>{group.name}</div>
+              <div className={style.groupName}>{group.title}</div>
             </div>
-        )}
-      </Link>
+        </Link>
+      )}
     </SidePanel>
   )
 }
