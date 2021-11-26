@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 
 const Post = require('../models/post');
 const User = require('../models/user');
+const Group = require('../models/group');
 
 exports.loadPosts = async (req, res, next, id) => {
   try {
@@ -72,7 +73,7 @@ exports.listPostsByGroup = async (req, res, next) => {
   try {
     const { groupId } = req.params;
     const { sortType = '-created' } = req.body;
-    const group = await User.findOne({ _id: groupId });
+    const group = await Group.findOne({ _id: groupId });
     const posts = await Post.find({ group: group.id }).sort(sortType);
     res.json(posts);
   } catch (error) {
