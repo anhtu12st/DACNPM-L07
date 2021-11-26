@@ -1,9 +1,9 @@
 import './style.sass';
 
-const MoreInfo = () => {
+const MoreInfo = ({userNum, createAt}) => {
     var moreInfo = {
-        member: 356,
-        date: "10/8/2021"
+        member: userNum,
+        date: createAt
     }
     var rules = [
         "Tôn trọng các thành viên khác trong Group.",
