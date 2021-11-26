@@ -28,9 +28,7 @@ exports.createPost = async (req, res, next) => {
       text,
       group: mongoose.Types.ObjectId(group)
     });
-    console.log(author)
-    console.log(typeof author)
-    post.vote(author, 1)
+    await post.vote(author, 1)
     res.status(201).json(post);
   } catch (error) {
     next(error);

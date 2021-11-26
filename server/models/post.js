@@ -40,11 +40,13 @@ postSchema.methods = {
   async vote(voter, vote) {
     const voterIdx = this.voters.indexOf(voter)
     if (voterIdx !== -1) {
-      const voting = await this.voters[voterIdx].populate()
+      const populatedPost = await this.populate('voters')
+      const voting = populatedPost.voters
+      console.log(voting)
       if (vote === voting.vote_value) {
         this.vote_count -= voting.vote_value;
         this.voters.pull(voter);
-        Vote.deleteOne({ voter, vote_value: vote, parent: this._id })
+        Vote.deleteOne({ voter: voter, vote_value: vote, parent: this._id })
       }
 
       else {
@@ -58,7 +60,7 @@ postSchema.methods = {
       this.vote_count += vote;
       this.voters.push(voter);
       Vote.create({
-        voter,
+        voter: voter,
         vote_value: vote,
         parent: this._id
       })

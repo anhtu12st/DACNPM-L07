@@ -2,20 +2,10 @@ import React, {useEffect, useState} from 'react';
 import PostSummary from '../PostSummary'
 import style from './Feed.module.sass';
 import { Link, Route } from 'react-router-dom'
-import {getPost} from '../../Services/Post';
-
+import { downvotePost, upvotePost} from "../../Services/Vote";
 import { PostDetailScreen } from "../../Screens";
 
-const Feed = () => {
-  const [postsData, setPostsData] = useState([])
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getPost()
-      setPostsData(data.data)
-    }
-    fetchData()
-  }, [])
-
+const Feed = ({ handleVote, postsData }) => {
   return (
       <div className={style.feedContainer}>
         {postsData.length > 0 && postsData.map((post, idx) =>
@@ -30,6 +20,7 @@ const Feed = () => {
               <PostSummary
                   content={post}
                   isSummary={true}
+                  handleVote={handleVote}
               />
             </Link>
         )}

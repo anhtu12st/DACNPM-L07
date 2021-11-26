@@ -6,7 +6,7 @@ import {faSearch} from "@fortawesome/free-solid-svg-icons";
 // import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import {fetchGroupFollowing} from "../../Services/Group";
 
-const CreatePost = () => {
+const CreatePost = ({ handleCreatePost }) => {
   const [groupID, setGroupID] = useState(-1)
   const [groups, setGroups] = useState([])
 
@@ -21,6 +21,11 @@ const CreatePost = () => {
   const handleSelectInputChange = (e) => {
     setGroupID(e.target.value)
   }
+
+  const createPostInGroup = (title, text) => {
+    handleCreatePost(groupID, title, text)
+  }
+
   return (
       <div className={style.flexContainer}>
         <div className={style.leftContainer}>
@@ -37,7 +42,7 @@ const CreatePost = () => {
             </select>
             {/* <FontAwesomeIcon icon={faChevronDown}/> */}
           </div>
-          <CreatePostEditor group={groupID}/>
+          <CreatePostEditor createPostInGroup={createPostInGroup}/>
         </div>
         <div className={style.rightContainer}>
           <PostingRule/>

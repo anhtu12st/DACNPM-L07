@@ -15,7 +15,7 @@ import {RoundButton, TextEditor} from '../../Components'
 import {createPost} from '../../Services/Post'
 import {EditorState} from "draft-js";
 
-const CreatePostEditor = ({ group }) => {
+const CreatePostEditor = ({ createPostInGroup }) => {
   const [editorState, setEditorState] = useState(() => EditorState.createEmpty())
   const [title, setTitle] = useState('')
 
@@ -32,21 +32,14 @@ const CreatePostEditor = ({ group }) => {
   //   setForm({ ...form, "text": content });
   // }
 
-  const handleCreatePost = () => {
-    if (group < 0) {
-      alert('Chọn nhóm để đăng bài')
-      return;
-    }
-    const postContent = {
-        title: title,
-        text: editorState.getCurrentContent().getPlainText('\u0001'),
-        group: group
-    }
-    createPost(postContent);
-  }
 
   const handleTitleInputChange = (e) => {
     setTitle(e.target.value)
+  }
+
+  const handleCreatePost = () => {
+    const text = editorState.getCurrentContent().getPlainText('\u0001');
+    createPostInGroup(title, text)
   }
 
   return (

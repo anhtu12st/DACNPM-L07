@@ -225,7 +225,7 @@ exports.findGroupFollowing = async (req, res) => {
         message: 'Not signed in',
       })
     }
-    const userGroup = await User.findOne({_id: req.user.id}).populate('groups')
+    const userGroup = await User.findById(req.user.id).populate('groups')
     res.status(200).json(userGroup.groups)
   } catch (error) {
     res.status(401).json({message: error})

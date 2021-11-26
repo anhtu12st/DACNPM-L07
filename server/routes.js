@@ -77,9 +77,9 @@ router.post('/comment/:post/:comment?', [requireAuth, validate], createComment);
 router.delete('/comment/:post/:comment', [requireAuth, commentAuth], removeComment);
 
 // votes
-router.get('/votes/upvote/:post/:comment?', requireAuth, upvote);
-router.get('/votes/downvote/:post/:comment?', requireAuth, downvote);
-router.get('/votes/unvote/:post/:comment?', requireAuth, unvote);
+router.post('/votes/upvote/:post/:comment?', requireAuth, upvote);
+router.post('/votes/downvote/:post/:comment?', requireAuth, downvote);
+// router.get('/votes/unvote/:post/:comment?', requireAuth, unvote);
 
 // group
 // router.param('group', loadChannel);

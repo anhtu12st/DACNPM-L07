@@ -3,10 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareDown, faCaretSquareUp } from "@fortawesome/free-regular-svg-icons";
 import style from './PostSummary.module.sass';
 import MiddleBar from "../MiddleBar";
-import { useState } from 'react';
 
-const PostSummary = ({ content, isSummary }) => {
-
+const PostSummary = ({ content, isSummary, handleVote }) => {
     const MS_PER_HOUR = 60 * 60 * 1000
     let timePassed = Math.floor((new Date() - new Date(content.created)) / MS_PER_HOUR)
     let timeUnit = 'giờ'
@@ -23,16 +21,23 @@ const PostSummary = ({ content, isSummary }) => {
         }
     }
 
-    const handleVote = (vote_value) => {
-
+    const handleUpvote = (e) => {
+        e.preventDefault()
+        handleVote(content.id, 1)
     }
+
+    const handleDownvote = (e) => {
+        e.preventDefault()
+        handleVote(content.id, -1)
+    }
+
     return (
         <MiddleBar>
             <div className={style.flexContainer}>
                 <div className={`${style.voting} ${!isSummary && style.inFullPost}`}>
-                    <div onClick={ () => handleVote(1) }><FontAwesomeIcon icon={faCaretSquareUp}/></div>
+                    <div onClick={ handleUpvote } className={style.voteBtn}><FontAwesomeIcon icon={faCaretSquareUp}/></div>
                     <span className={style.upvoteCount}>{content.vote_count}</span>
-                    <div onClick={ () => handleVote(-1) }><FontAwesomeIcon icon={faCaretSquareDown}/></div>
+                    <div onClick={ handleDownvote } className={style.voteBtn}><FontAwesomeIcon icon={faCaretSquareDown}/></div>
                 </div>
                 <div className={style.postContent}>
                     <div className={style.postInfoContent}>

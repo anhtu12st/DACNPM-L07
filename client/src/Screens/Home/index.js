@@ -4,7 +4,7 @@ import { useUserContext } from "../../Contexts/UserContext";
 import style from './Home.module.sass';
 
 
-const HomeScreen = () => {
+const HomeScreen = ({ handleVote, postsData }) => {
   const { isAuthenticated } = useUserContext();
   const [isCreateGroupPopup, setShow] = useState(false)
   //reduce
@@ -29,7 +29,7 @@ const HomeScreen = () => {
           <CreatePostBar />
         </div>
         <FilterPanel />
-        <Feed />
+        <Feed handleVote={handleVote} postsData={postsData}/>
       </div>
       <div className={style.rightContainer}>
         <TrendingGroup />
