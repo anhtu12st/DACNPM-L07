@@ -3,8 +3,7 @@ import style from './TextEditor.module.sass'
 import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 
-const TextEditor = ({ placeholder, handleContent }) => {
-  const [editorState, setEditorState] = useState(() => EditorState.createEmpty())
+const TextEditor = ({ placeholder, handleContent, editorState, setEditorState }) => {
   const [isFocus, setFocus] = useState(false)
 
   return (
@@ -17,7 +16,7 @@ const TextEditor = ({ placeholder, handleContent }) => {
           onEditorStateChange={setEditorState}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
-          onContentStateChange={(contentState) => handleContent(contentState)}
+          // onContentStateChange={(contentState) => handleContent(contentState)}
       />
   );
 };

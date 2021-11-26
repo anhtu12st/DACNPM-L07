@@ -14,9 +14,8 @@ exports.loadChannel = async (req, res, next, id) => {
 
 exports.groupInfo = async (req, res, next) => {
   try {
-    const { id } = req.group;
-    const group = await Group.findById(id);
-    res.json({ ...group._doc });
+    const group = await Group.findOne({ _id: req.params.id })
+    res.json(group);
   } catch (error) {
     next(error);
   }
@@ -26,15 +25,25 @@ exports.createGroup = async (req, res, next) => {
   try {
     const { title, desc } = req.body;
     const group = await Group.create({
+      moderator: req.user.id,
       title,
       desc,
-      posts: []
+      userNum: 0
     });
     res.status(201).json(group);
   } catch (error) {
     next(error);
   }
 };
+
+exports.getTrendingGroup = async (req, res) => {
+  try {
+    const groups = await Group.find();
+    res.json(groups)
+  } catch (error) {
+    next(error);
+  }
+}
 
 exports.channelValidate = [
   body('title')

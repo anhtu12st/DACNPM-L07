@@ -34,6 +34,7 @@ const {
   channelValidate,
   groupInfo,
   createGroup,
+  getTrendingGroup
 } = require('./controllers/group');
 
 const requireAuth = require('./middlewares/requireAuth');
@@ -77,10 +78,11 @@ router.get('/votes/downvote/:post/:comment?', requireAuth, downvote);
 router.get('/votes/unvote/:post/:comment?', requireAuth, unvote);
 
 // group
-router.param('group', loadChannel);
-router.get('/group/:group', groupInfo);
+// router.param('group', loadChannel);
+router.get('/group/:id', groupInfo);
 router.post('/group', [requireAuth, channelValidate], createGroup);
 
+router.get('/trendingGroup', getTrendingGroup)
 
 module.exports = (app) => {
   app.use('/api', router);

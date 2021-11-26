@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const voteSchema = require('./vote');
-const commentSchema = require('./comment');
+// const voteSchema = mongoose.model('Vote');
+// const commentSchema = mongoose.model('Comment');
 
 const postSchema = new Schema(
   {
@@ -20,9 +20,8 @@ const postSchema = new Schema(
     title: { type: String, required: true },
     text: { type: String, required: true },
     score: { type: Number, default: 0 },
-    votes: [voteSchema],
-    comments: [commentSchema],
-    views: { type: Number, default: 0 },
+    views: { type: Number, default: 1 },
+    // votes: [{ type: Schema.Types.ObjectId, ref: 'Vote' }]
   },
   { timestamps: { createdAt: 'created', updatedAt: 'updatedAt' } },
 );
@@ -87,16 +86,10 @@ postSchema.pre('save', function (next) {
   next();
 });
 
-postSchema.post('save', function (doc, next) {
-  if (this.wasNew)
-    this.vote(this.author._id, 1);
-
-  doc
-    .populate('author')
-    .populate('comments.author', '-role')
-    .populate('comments.comments.author', '-role')
-    .execPopulate()
-    .then(() => next());
+postSchema.post('save', function (doc) {
+  if (this.wasNew) {
+    this.vote(this.author, 1);
+  }
 });
 
 module.exports = mongoose.model('Post', postSchema);

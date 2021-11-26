@@ -1,38 +1,55 @@
-import React from 'react';
-import { useState , useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 
 import style from './CreatePostEditor.module.sass';
-import { TextSnippetOutlined, ImageOutlined, LinkOutlined, PollOutlined, LocalOfferOutlined, KeyboardArrowDownOutlined } from '@mui/icons-material'
+import {
+  ImageOutlined,
+  KeyboardArrowDownOutlined,
+  LinkOutlined,
+  LocalOfferOutlined,
+  PollOutlined,
+  TextSnippetOutlined
+} from '@mui/icons-material'
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
-import {TextEditor, RoundButton } from '../../Components'
-import { createPost } from '../../Services/Post'
+import {RoundButton, TextEditor} from '../../Components'
+import {createPost} from '../../Services/Post'
+import {EditorState} from "draft-js";
 
-const CreatePostEditor = (props) => {
+const CreatePostEditor = ({ group }) => {
+  const [editorState, setEditorState] = useState(() => EditorState.createEmpty())
+  const [title, setTitle] = useState('')
 
-  const [form, setForm] = useState({});
-  const [error, setError] = useState("");
+  // const [form, setForm] = useState({});
+  // const [error, setError] = useState("");
 
-  useEffect(() => {
-    setForm({ ...form, "group": props.group });
-  }, [props.group, form]);
+  // useEffect(() => {
+  //   setForm({ ...form, "group": props.group });
+  // }, [props.group, form]);
 
-  const handleChange = (e) => {
-      const { name, value } = e.target;
-      setForm({ ...form, [name]: value });
+  // const handleContent = (contentState) => {
+  //   var content = ""
+  //   contentState.blocks.map(block => content = content + "\n" + block.text)
+  //   setForm({ ...form, "text": content });
+  // }
+
+  const handleCreatePost = () => {
+    console.log(group)
+    if (group < 0) {
+      alert('Chọn nhóm để đăng bài')
+      return;
+    }
+    const postContent = {
+        title: title,
+        text: editorState.getCurrentContent().getPlainText('\u0001'),
+        group: group
+    }
+    createPost(postContent);
   }
-  const handleContent = (contentState) => {
-    var content = ""
-    contentState.blocks.map(block => content = content + "\n" + block.text)
-    setForm({ ...form, "text": content });
+
+  const handleTitleInputChange = (e) => {
+    setTitle(e.target.value)
   }
-  const handleCreatePost = async (e) => {
-      try {
-          await createPost(form);
-      } catch (error) {
-          setError(error.response?.data?.message || "Unexpected error")
-      }
-  }
+
   return (
       <div className={style.container}>
         <div className={style.choosePostType}>
@@ -54,8 +71,13 @@ const CreatePostEditor = (props) => {
           </div>
         </div>
         <div className={style.postContent}>
-          <input className={style.postTitle} placeholder={'Tiêu đề'} name="title" onChange={handleChange} value={form['title']} />
-          <TextEditor placeholder={'Nội dung'} handleContent={handleContent}/>
+          <input className={style.postTitle} placeholder={'Tiêu đề'} name="title" onChange={handleTitleInputChange}
+                 value={title}/>
+          <TextEditor
+              placeholder={'Nội dung'}
+              editorState={editorState}
+              setEditorState={setEditorState}
+          />
         </div>
         <div className={style.btnContainer}>
           <RoundButton>
@@ -66,7 +88,8 @@ const CreatePostEditor = (props) => {
             </div>
           </RoundButton>
           <RoundButton>
-            <Link to="/" className={style.flexWrapper} onClick={handleCreatePost}  style={{ textDecoration: 'none', color: 'black'}}>
+            <Link to="/" className={style.flexWrapper} onClick={handleCreatePost}
+                  style={{textDecoration: 'none', color: 'black'}}>
               <span>post</span>
             </Link>
           </RoundButton>
