@@ -16,7 +16,7 @@ const Feed = () => {
       setPostsData(data.data)
     }
     fetchData()
-  }, [])
+  }, [isAuthenticated])
 
   return (
       <div className={style.feedContainer}>
