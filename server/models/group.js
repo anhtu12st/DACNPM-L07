@@ -13,13 +13,13 @@ const groupSchema = new Schema(
   { timestamps: { createdAt: 'created', updatedAt: 'updatedAt' } }
 );
 
-groupSchema.set('toJSON', { getters: true });
-
-groupSchema.options.toJSON.transform = (_, ret) => {
-  const obj = { ...ret };
-  delete obj._id;
-  delete obj.__v;
-  return obj;
-};
+// groupSchema.set('toJSON', { getters: true });
+//
+// groupSchema.options.toJSON.transform = (_, ret) => {
+//   const obj = { ...ret };
+//   delete obj._id;
+//   delete obj.__v;
+//   return obj;
+// };
 
 module.exports = mongoose.model('Group', groupSchema);
