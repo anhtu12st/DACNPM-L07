@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const voteSchema = mongoose.model('Vote');
-const commentSchema = mongoose.model('Comment');
+// const voteSchema = mongoose.model('Vote');
+// const commentSchema = mongoose.model('Comment');
 
 const postSchema = new Schema(
   {
@@ -21,6 +21,7 @@ const postSchema = new Schema(
     text: { type: String, required: true },
     score: { type: Number, default: 0 },
     views: { type: Number, default: 1 },
+    // votes: [{ type: Schema.Types.ObjectId, ref: 'Vote' }]
   },
   { timestamps: { createdAt: 'created', updatedAt: 'updatedAt' } },
 );
