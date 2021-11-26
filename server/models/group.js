@@ -8,6 +8,7 @@ const groupSchema = new Schema(
     moderator: {type: Schema.Types.ObjectId, ref: 'User', required: true},
     title: { type: String, required: true },
     desc: { type: String, default: '' },
+    userNum: { type: String , default: '0' },
     // posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }]
   },
   { timestamps: { createdAt: 'created', updatedAt: 'updatedAt' } }

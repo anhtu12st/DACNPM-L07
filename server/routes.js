@@ -10,6 +10,8 @@ const {
   updateUser,
   getAuthInfo,
   findGroupFollowing,
+  isJoinGroupByID,
+  resetJoinGroupByID
 } = require('./controllers/users');
 const {
   loadPosts,
@@ -51,6 +53,8 @@ router.post('/authenticate', validateUser, authenticate);
 
 // users
 router.get('/users', listUsers);
+router.get('/user/setgroup/:id', requireAuth, resetJoinGroupByID);
+router.get('/user/group/:id', requireAuth, isJoinGroupByID);
 router.get('/users/:search', search);
 router.get('/user/following', requireAuth, findGroupFollowing)
 router.get('/user/:userId', find);

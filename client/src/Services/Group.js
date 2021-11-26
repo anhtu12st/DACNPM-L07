@@ -20,3 +20,12 @@ export const getGroupByID = async (id) => {
   const { data } = await Axios.get(url);
   return data;
 }
+export const isJoinGroup = async (id) => {
+  const url = `/user/group/${id}`;
+  const { data } = await Axios.get(url);
+  return data;
+}
+export const resetJoinGroup = async (id) => {
+  const url = `/user/setgroup/${id}`;
+  await Axios.get(url);
+}
