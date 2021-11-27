@@ -22,17 +22,13 @@ const CreatePost = ({ handleCreatePost }) => {
     setGroupID(e.target.value)
   }
 
-  const createPostInGroup = (title, text) => {
-    handleCreatePost(groupID, title, text)
-  }
-
   return (
       <div className={style.flexContainer}>
         <div className={style.leftContainer}>
           <h3 className={style.heading}>Tạo bài đăng</h3>
+
           <div className={style.chooseGroup}>
             <FontAwesomeIcon icon={faSearch}/>
-            {/*<SearchOutlinedIcon/>*/}
             <select value={groupID} onChange={handleSelectInputChange}>
               <option value={-1} selected="selected">Chọn một nhóm</option>
               {(groups.length > 0) &&
@@ -40,10 +36,13 @@ const CreatePost = ({ handleCreatePost }) => {
                   <option key={idx} value={group._id}> {group.title}</option>
               )}
             </select>
-            {/* <FontAwesomeIcon icon={faChevronDown}/> */}
           </div>
-          <CreatePostEditor createPostInGroup={createPostInGroup}/>
+
+          <CreatePostEditor groupID={groupID} handleCreatePost={handleCreatePost}/>
+
         </div>
+
+
         <div className={style.rightContainer}>
           <PostingRule/>
           <Footer/>

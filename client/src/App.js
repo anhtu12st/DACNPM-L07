@@ -36,6 +36,7 @@ function App() {
     else {
       newVote = await downvotePost(postId)
     }
+    console.log(newVote)
     let newData = [...postsData]
     newData[postIdx].vote_count = newVote
     setPostsData(newData)
@@ -49,10 +50,6 @@ function App() {
   }
 
   const handleCreatePost = (group, title, text) => {
-    if (group < 0) {
-      alert('Chọn nhóm để đăng bài')
-      return;
-    }
     const postContent = {
       title: title,
       text: text,

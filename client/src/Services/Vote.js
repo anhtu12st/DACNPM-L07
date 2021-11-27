@@ -1,11 +1,13 @@
 import Axios from './Axios'
 
-export const upvotePost = (postId) => {
+export const upvotePost = async (postId) => {
   const url = `/votes/upvote/${postId}`
-  return Axios.post(url)
+  const response = await Axios.post(url)
+  return response.data
 }
 
-export const downvotePost = (postId) => {
+export const downvotePost = async (postId) => {
   const url = `/votes/downvote/${postId}`
-  return Axios.post(url)
+  const response = await Axios.post(url)
+  return response.data
 }

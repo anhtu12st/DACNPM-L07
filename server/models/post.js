@@ -39,33 +39,49 @@ postSchema.options.toJSON.transform = (doc, ret) => {
 
 postSchema.methods = {
   async vote(voter, vote) {
-    const voterIdx = this.voters.indexOf(voter)
-    if (voterIdx !== -1) {
-      const populatedPost = await this.populate('voters')
-      const voting = populatedPost.voters
-      console.log(voting)
-      if (vote === voting.vote_value) {
-        this.vote_count -= voting.vote_value;
-        this.voters.pull(voter);
-        Vote.deleteOne({ voter: voter, vote_value: vote, parent: this._id })
-      }
-
-      else {
-        this.vote_count -= this.voters[voterIdx].vote_value;
-        this.vote_count += vote;
-        this.voters[voterIdx].vote_value = vote
+    const cur_vote = await Vote.findOne({ voter, parent: this._id }).exec()
+    if (cur_vote) {
+      if (cur_vote.vote_value === vote) {
+        this.voters.pull(cur_vote._id)
+        await Vote.deleteOne(cur_vote)
+        this.vote_count -= vote
+      } else {
+        await Vote.updateOne({voter, parent: this._id}, {$set: {vote_value: vote}})
+        this.vote_count += vote * 2
       }
     }
-
     else {
-      this.vote_count += vote;
-      this.voters.push(voter);
-      Vote.create({
-        voter: voter,
-        vote_value: vote,
-        parent: this._id
-      })
+      this.vote_count += vote
+      const new_vote = await Vote.create({ voter, vote_value: vote, parent: this._id })
+      this.voters.push(new_vote._id)
     }
+    // this person has voted
+    // if (voterIdx !== -1) {
+    //   console.log(this)
+    //   const voting = populatedPost.voters
+    //   // unvote?
+    //   if (vote === voting.vote_value) {
+    //     this.vote_count -= voting.vote_value;
+    //     this.voters.pull(voter);
+    //     Vote.deleteOne({ voter: voter, vote_value: vote, parent: this._id })
+    //   }
+    //   // change upvote to downvote or vice versa?
+    //   else {
+    //     this.vote_count -= this.voters[voterIdx].vote_value;
+    //     this.vote_count += vote;
+    //     this.voters[voterIdx].vote_value = vote
+    //   }
+    // }
+    // // this person has not voted yet
+    // else {
+    //   this.vote_count += vote;
+    //   const newVote = await Vote.create({
+    //     voter: voter,
+    //     vote_value: vote,
+    //     parent: this._id
+    //   })
+    //   this.voters.push(newVote._id);
+    // }
     return this.save();
   },
 

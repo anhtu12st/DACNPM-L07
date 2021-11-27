@@ -23,10 +23,10 @@ const CreatePostBar = (props) => {
           <div><Link to={`/profile/${userState?.userInfo?.id}`}  style={{ textDecoration: 'none', color: 'black'}}><I icon={faUserCircle} className={style.userAvatar}/></Link></div>
           <Link to="/createpost">
             <input className={style.postInput} value={Input} onChange={userInput} placeholder="Tạo bài viết"/>
+            <RoundButton className={style.btn}>
+              Đăng
+            </RoundButton>
           </Link>
-          <RoundButton className={style.btn}>
-            Đăng
-          </RoundButton>
         </div>
       </MiddleBar>
   )

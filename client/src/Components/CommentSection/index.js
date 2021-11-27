@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import {FontAwesomeIcon as I} from "@fortawesome/react-fontawesome";
 // import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
 import style from './CommentSection.module.sass'
-import { TextEditor } from "../index";
+import { TextEditor, RoundButton } from "../index";
 import { EditorState } from "draft-js";
 import { createComment } from '../../Services/Comment';
 import moment from 'moment';
@@ -21,16 +21,37 @@ const CommentSection = ({ post }) => {
     setSortingOption(e.target.value)
   }
 
-  const handleCreateComment = async () => {
+  const handleCreateComment = () => {
+    if (!comment.getCurrentContent().hasText())
+      return
     try {
-      const data = await createComment(post._id, { comment: comment.getCurrentContent().getPlainText('\u0001') })
-      setCommentsList(data.comments)
+      const newComment = comment.getCurrentContent().getPlainText('\u0001')
+
       setComment(() => EditorState.createEmpty())
+
+      const sendHTTPPostRequest = async () => {
+        const data = await createComment(post._id, { comment:  newComment })
+        setCommentsList(data.comments)
+      }
+      sendHTTPPostRequest()
     } catch (error) { }
   }
 
   return (
     <div className={style.commentContainer}>
+      <TextEditor
+          placeholder={'Suy nghĩ của bạn thế nào?'}
+          editorState={comment}
+          setEditorState={setComment}
+      />
+      <RoundButton
+          onClick={handleCreateComment}
+          className={style.sendBtn}
+          disabled={!comment.getCurrentContent().hasText()}
+      >
+        Bình luận
+      </RoundButton>
+
       <div className={style.sortingOption}>
         <label>Sắp xếp theo: </label>
         <select className={style.sortingSelection} onChange={handleSelectSortingChange}>
@@ -52,6 +73,7 @@ const CommentSection = ({ post }) => {
         </select>
       </div>
 
+
       {commentsList.map(({ author, text, created }) => (
         <div className={style.comment}>
           <div className={style.postInfoContent}>
@@ -63,17 +85,8 @@ const CommentSection = ({ post }) => {
           </div>
         </div>
       ))}
-
-      <TextEditor
-        placeholder={'Suy nghĩ của bạn thế nào?'}
-        editorState={comment}
-        setEditorState={setComment}
-      />
-      <button
-        style={{ width: 150, height: 30, borderRadius: 20, textAlign: 'center', backgroundColor: 'blue', color: 'white', marginTop: 5 }}
-        onClick={handleCreateComment}
-      >Gửi</button>
     </div>
+
   );
 };
 

@@ -27,6 +27,7 @@ const PostDetailScreen = () => {
 
     fetchPostData()
   }, [id, history])
+  console.log(post)
 
   return (
     <div className={style.postDetailScreen}>
@@ -37,7 +38,7 @@ const PostDetailScreen = () => {
               <div className={style.groupAvatar}>
                 <FontAwesomeIcon icon={faGlobeAsia} className={style.avatar} />
               </div>
-              <div className={style.groupName}>Nhóm C++</div>
+              <div className={style.groupName}>{post.group.title}</div>
             </div>
           </Link>
         </GroupCover>
