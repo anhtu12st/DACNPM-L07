@@ -7,9 +7,9 @@ import { getGroupByID, isJoinGroup, resetJoinGroup } from "../../Services/Group"
 
 
 const Group = () => {
-    const [group, setGroup] = useState({title: "", desc: ""})
+    const [group, setGroup] = useState({title: "", desc: "", userNum: "0", created: ""})
     const [isJoin, setJoin] = useState()
-  
+
     const {id} = useParams()
     useEffect( () => {
       const fetchData = async() => {
@@ -35,7 +35,7 @@ const Group = () => {
                   <GroupFeed id={id}/>
                 </div>
                 <div className={style.rightContainer}>
-                    <GroupRule/>
+                    <GroupRule userNum = {group.userNum} createAt = {group.created.slice(0,10)}/>
                     <Footer/>
                 </div>
             </div>
