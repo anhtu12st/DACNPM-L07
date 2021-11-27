@@ -43,7 +43,7 @@ exports.showPost = async (req, res, next) => {
       { $inc: { views: 1 } },
       { new: true, timestamps: false },
     );
-    res.json({ ...post.doc });
+    res.json({ ...post._doc });
   } catch (error) {
     next(error);
   }
@@ -57,6 +57,27 @@ exports.listPosts = async (req, res, next) => {
     next(error);
   }
 };
+
+
+exports.listPostsGroupFollowing = async (req, res, next) => {
+  try {
+    const user = await User.findOne({_id: req.user.id})
+    const userGroup = user.groups
+    var group = await Group.find()
+    var posts = []
+    var postx = userGroup.map(async(id) => {
+      const groupId = id.toString()
+      const groupById = group.find(x => x._id.toString() == groupId)
+      var post = await Post.find({ group: groupById._id})
+      posts = [ ...posts , ...post ]
+    })
+    await Promise.all(postx)
+    res.json(posts);
+  } catch (error) {
+    next(error);
+  }
+};
+
 
 exports.listPostsByGroup = async (req, res, next) => {
   try {

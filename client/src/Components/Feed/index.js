@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import PostSummary from '../PostSummary'
 import style from './Feed.module.sass';
-import { Link, Route } from 'react-router-dom'
-import { downvotePost, upvotePost} from "../../Services/Vote";
-import { PostDetailScreen } from "../../Screens";
 
-const Feed = ({ handleVote, postsData }) => {
+import { Link } from 'react-router-dom'
+import {getPost, getPostGroupFollowing} from '../../Services/Post';
+import { downvotePost, upvotePost} from "../../Services/Vote";
+
+const Feed = ({ postsData, handleVote }) => {
+
   return (
       <div className={style.feedContainer}>
         {postsData.length > 0 && postsData.map((post, idx) =>

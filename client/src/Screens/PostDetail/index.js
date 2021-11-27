@@ -1,30 +1,44 @@
 import style from './PostDetail.module.sass'
-import { Link, useParams } from 'react-router-dom'
-import postsData from '../../MockData/PostsData'
-import {Footer, FullPost, GroupCover, GroupRule} from "../../Components";
+import { Link, useHistory, useParams } from 'react-router-dom'
+import { Footer, FullPost, GroupCover, GroupRule } from "../../Components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobeAsia } from '@fortawesome/free-solid-svg-icons';
-import { useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { getPostById } from '../../Services/Post';
 
-//
-// const fetchPost = (id) => {
-//   return postsData.find(item => item.id === id)
-// }
 
 const PostDetailScreen = () => {
-  const location = useLocation()
-  console.log(location)
-  const { post } = location.state
+  const history = useHistory();
+  const [post, setPost] = useState({})
+  const [loading, setLoading] = useState(true)
+  const { id } = useParams()
+
+  useEffect(() => {
+    const fetchPostData = async () => {
+      setLoading(true)
+      try {
+        const data = await getPostById(id)
+        setPost(data)
+        setLoading(false)
+      } catch (error) {
+        history.replace('/')
+      }
+    }
+
+    fetchPostData()
+  }, [id, history])
+
   return (
-      <div className={style.postDetailScreen}>
+    <div className={style.postDetailScreen}>
+      {!loading && (<>
         <GroupCover >
-          <Link to="/group" style={{textDecoration: "none"}}>
-          <div className={style.content}>
-            <div className={style.groupAvatar}>
-              <FontAwesomeIcon icon={faGlobeAsia} className={style.avatar}/>
+          <Link to={`/group/${post.group._id}`} style={{ textDecoration: "none" }}>
+            <div className={style.content}>
+              <div className={style.groupAvatar}>
+                <FontAwesomeIcon icon={faGlobeAsia} className={style.avatar} />
+              </div>
+              <div className={style.groupName}>Nhóm C++</div>
             </div>
-            <div className={style.groupName}>Nhóm C++</div>
-          </div>
           </Link>
         </GroupCover>
         <div className={style.groupCoverFooter}>
@@ -32,14 +46,15 @@ const PostDetailScreen = () => {
         </div>
         <div className={style.contentContainer}>
           <div className={style.leftContainer}>
-            <FullPost post={post}/>
+            <FullPost post={post} />
           </div>
           <div className={style.rightContainer}>
             <GroupRule />
-            <Footer/>
+            <Footer />
           </div>
         </div>
-      </div>
+      </>)}
+    </div>
   )
 }
 export default PostDetailScreen;

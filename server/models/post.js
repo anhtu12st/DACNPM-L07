@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 // const voteSchema = mongoose.model('Vote');
-// const commentSchema = mongoose.model('Comment');
+const commentSchema = require('./comment')
 let Vote = require('./vote')
 
 const postSchema = new Schema(
@@ -22,7 +22,8 @@ const postSchema = new Schema(
     text: { type: String, required: true },
     vote_count: { type: Number, default: 0 },
     voters: [{ type: Schema.Types.ObjectId, ref: 'Vote'}],
-    views: { type: Number, default: 1 }
+    views: { type: Number, default: 1 },
+    comments: [commentSchema]
   },
   { timestamps: { createdAt: 'created', updatedAt: 'updatedAt' } },
 );
@@ -68,29 +69,30 @@ postSchema.methods = {
     return this.save();
   },
 
-  // addComment(author, body) {
-  //   this.comments.push({ author, body, history: [{ body }] });
-  //   return this.save();
-  // },
-  //
-  // modifyComment(id, body) {
-  //   const comment = this.comments.id(id);
-  //   if (!comment) throw new Error('Comment not found');
-  //   comment.updateComment(body);
-  //   return this.save();
-  // },
-  //
-  // removeComment(id) {
-  //   const comment = this.comments.id(id);
-  //   if (!comment) throw new Error('Comment not found');
-  //   comment.remove();
-  //   return this.save();
-  // },
+  addComment(author, text) {
+    this.comments.push({ author, text });
+    this.populate('comments.author', '-role')
+    return this.save();
+  },
+  
+  modifyComment(id, text) {
+    const comment = this.comments.id(id);
+    if (!comment) throw new Error('Comment not found');
+    comment.updateComment(text);
+    return this.save();
+  },
+  
+  removeComment(id) {
+    const comment = this.comments.id(id);
+    if (!comment) throw new Error('Comment not found');
+    comment.remove();
+    return this.save();
+  },
 };
 
 postSchema.pre(/^find/, function () {
   this.populate('author');
-    // .populate('comments.author', '-role')
+  this.populate('comments.author', '-role')
     // .populate('comments.comments.author', '-role');
   this.populate('group');
 });

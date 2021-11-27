@@ -1,5 +1,5 @@
 import React from 'react';
-import { faSignOutAlt, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from "react-router-dom";
 import { ExitToApp } from '@mui/icons-material'
