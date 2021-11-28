@@ -25,20 +25,40 @@ function App() {
     fetchData()
   }, [isAuthenticated])
 
-  const handleVotePost = async (postId, value) => {
+  const handleVotePost = (postId, value) => {
     const postIdx = postsData.findIndex(post => post.id === postId)
     if (postIdx < 0)
       return;
-    let newVote = 0
     if (value > 0) {
-      newVote = await upvotePost(postId)
+      upvotePost(postId)
     }
     else {
-      newVote = await downvotePost(postId)
+      downvotePost(postId)
     }
-    console.log(newVote)
     let newData = [...postsData]
-    newData[postIdx].vote_count = newVote
+    let voteValue = newData[postIdx].vote_value
+    let voteCount = newData[postIdx].vote_count
+    if (voteValue === value) {
+      if (voteValue === 1) {
+        voteCount -= 1
+      }
+      else {
+        voteCount += 1
+      }
+      voteValue = 0
+    }
+    else {
+      if (voteValue === 0) {
+        voteCount += value
+      }
+      else {
+        voteCount += 2 * value
+      }
+      voteValue = value
+    }
+
+    newData[postIdx].vote_value = voteValue
+    newData[postIdx].vote_count = voteCount
     setPostsData(newData)
   }
 
@@ -82,7 +102,7 @@ function App() {
           />
           <Route
             exact path="/posts/:id"
-            render={props => <PostDetailScreen {...props} />}
+            render={props => <PostDetailScreen {...props} handleVote={handleVotePost} />}
           />
         </Layout>
       </Switch>

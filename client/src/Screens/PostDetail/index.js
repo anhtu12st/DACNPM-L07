@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { getPostById } from '../../Services/Post';
 
 
-const PostDetailScreen = () => {
+const PostDetailScreen = ({ handleVote }) => {
   const history = useHistory();
   const [post, setPost] = useState({})
   const [loading, setLoading] = useState(true)
@@ -27,7 +27,6 @@ const PostDetailScreen = () => {
 
     fetchPostData()
   }, [id, history])
-  console.log(post)
 
   return (
     <div className={style.postDetailScreen}>
@@ -47,7 +46,7 @@ const PostDetailScreen = () => {
         </div>
         <div className={style.contentContainer}>
           <div className={style.leftContainer}>
-            <FullPost post={post} />
+            <FullPost post={post} handleVote={handleVote}/>
           </div>
           <div className={style.rightContainer}>
             <GroupRule />

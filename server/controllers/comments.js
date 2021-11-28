@@ -27,6 +27,7 @@ exports.createComment = async (req, res, next) => {
       return res.status(201).json(post);
     } else if (req.post) {
       const post = await req.post.addComment(id, text);
+      post.populate('author')
       return res.status(201).json(post);
     }
   } catch (error) {

@@ -23,8 +23,8 @@ const MoreInfo = ({userNum, createAt}) => {
             <div className="rule">
                 <ol className="title">
                     Nội quy
-                    {rules.length > 0 && rules.map(rule => (
-                        <li className="content">
+                    {rules.length > 0 && rules.map((rule, idx) => (
+                        <li className="content" key={idx}>
                             {rule}
                         </li>
                     ))}

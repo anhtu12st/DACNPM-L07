@@ -30,7 +30,7 @@ const CommentSection = ({ post }) => {
       setComment(() => EditorState.createEmpty())
 
       const sendHTTPPostRequest = async () => {
-        const data = await createComment(post._id, { comment:  newComment })
+        const data = await createComment(post.id, { comment:  newComment })
         setCommentsList(data.comments)
       }
       sendHTTPPostRequest()
@@ -74,8 +74,8 @@ const CommentSection = ({ post }) => {
       </div>
 
 
-      {commentsList.map(({ author, text, created }) => (
-        <div className={style.comment}>
+      {commentsList.map(({ author, text, created }, idx) => (
+        <div className={style.comment} key={idx}>
           <div className={style.postInfoContent}>
             <span className={style.groupLabel}>{author.username}</span>
             <span className={style.postInfo}>{moment(created).fromNow()}</span>

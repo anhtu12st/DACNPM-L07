@@ -3,8 +3,6 @@ import PostSummary from '../PostSummary'
 import style from './Feed.module.sass';
 
 import { Link } from 'react-router-dom'
-import {getPost, getPostGroupFollowing} from '../../Services/Post';
-import { downvotePost, upvotePost} from "../../Services/Vote";
 
 const Feed = ({ postsData, handleVote }) => {
 
@@ -15,7 +13,7 @@ const Feed = ({ postsData, handleVote }) => {
                 key={idx}
                 to={{
                   pathname: `/posts/${post.id}`,
-                  state: { post }
+                  state: { post: post }
                 }}
                 className={style.linkContainer}
             >

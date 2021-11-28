@@ -5,7 +5,7 @@ import { getPostbyGroup } from '../../Services/Post';
 import { Link } from 'react-router-dom';
 
 const GroupFeed = ({ id }) => {
-    const [postsData, setPostsData] = useState()
+    const [postsData, setPostsData] = useState([])
     useEffect( () => {
         const fetchData = async() => {
           const data = await getPostbyGroup(id)
@@ -15,7 +15,7 @@ const GroupFeed = ({ id }) => {
       }, [id])
     return (
         <div className={style.feedContainer}>
-            {!!postsData && postsData.map(post =>
+            {postsData.length > 0 && postsData.map(post =>
                 <Link to={`/posts/${post.id}`} className={style.linkContainer}>
                     <PostSummary
                         content={post}

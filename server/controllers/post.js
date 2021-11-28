@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 const Group = require('../models/group');
 const Post = require('../models/post');
 const User = require('../models/user');
+const jwt = require("jsonwebtoken");
+const config = require("../config");
 
 exports.loadPosts = async (req, res, next, id) => {
   try {
@@ -29,7 +31,10 @@ exports.createPost = async (req, res, next) => {
       group: mongoose.Types.ObjectId(group)
     });
     await post.vote(author, 1)
-    res.status(201).json(post);
+    const postData = {...post._doc, vote_value: 1}
+    postData.id = postData._id
+    delete postData._id
+    res.status(201).json(postData)
   } catch (error) {
     next(error);
   }
@@ -43,7 +48,23 @@ exports.showPost = async (req, res, next) => {
       { $inc: { views: 1 } },
       { new: true, timestamps: false },
     );
-    res.json({ ...post._doc });
+    const token = req.headers.authorization
+    if (token) {
+
+      const decodedToken = jwt.verify(token.slice(7), config.jwt.secret, {
+        algorithm: 'HS256',
+      });
+
+      const userId = mongoose.Types.ObjectId(decodedToken.id)
+      const vote_value = await post.hasVoted(userId)
+      const postData = {...post._doc, vote_value: vote_value}
+      postData.id = postData._id
+      delete postData._id
+      res.json(postData);
+    }
+    else {
+      res.json({...post._doc})
+    }
   } catch (error) {
     next(error);
   }
@@ -64,15 +85,27 @@ exports.listPostsGroupFollowing = async (req, res, next) => {
     const user = await User.findOne({_id: req.user.id})
     const userGroup = user.groups
     var group = await Group.find()
-    var posts = []
+    var allPosts = []
+    const userId = mongoose.Types.ObjectId((req.user.id))
+
     var postx = userGroup.map(async(id) => {
       const groupId = id.toString()
-      const groupById = group.find(x => x._id.toString() == groupId)
-      var post = await Post.find({ group: groupById._id})
-      posts = [ ...posts , ...post ]
+      const groupById = group.find(x => x._id.toString() === groupId)
+      var postsInGroup = await Post.find({ group: groupById._id})
+      allPosts.push(...postsInGroup)
     })
     await Promise.all(postx)
-    res.json(posts);
+
+    let allPostsWithVotedValue = []
+    const postsVotePromise = allPosts.map(async(doc) => {
+      const vote_value = await doc.hasVoted(userId)
+      let new_doc = {...doc._doc, vote_value: vote_value}
+      new_doc.id = new_doc._id
+      delete new_doc._id
+      allPostsWithVotedValue.push(new_doc)
+    })
+    await Promise.all(postsVotePromise)
+    res.json(allPostsWithVotedValue);
   } catch (error) {
     next(error);
   }

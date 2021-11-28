@@ -55,33 +55,6 @@ postSchema.methods = {
       const new_vote = await Vote.create({ voter, vote_value: vote, parent: this._id })
       this.voters.push(new_vote._id)
     }
-    // this person has voted
-    // if (voterIdx !== -1) {
-    //   console.log(this)
-    //   const voting = populatedPost.voters
-    //   // unvote?
-    //   if (vote === voting.vote_value) {
-    //     this.vote_count -= voting.vote_value;
-    //     this.voters.pull(voter);
-    //     Vote.deleteOne({ voter: voter, vote_value: vote, parent: this._id })
-    //   }
-    //   // change upvote to downvote or vice versa?
-    //   else {
-    //     this.vote_count -= this.voters[voterIdx].vote_value;
-    //     this.vote_count += vote;
-    //     this.voters[voterIdx].vote_value = vote
-    //   }
-    // }
-    // // this person has not voted yet
-    // else {
-    //   this.vote_count += vote;
-    //   const newVote = await Vote.create({
-    //     voter: voter,
-    //     vote_value: vote,
-    //     parent: this._id
-    //   })
-    //   this.voters.push(newVote._id);
-    // }
     return this.save();
   },
 
@@ -104,6 +77,13 @@ postSchema.methods = {
     comment.remove();
     return this.save();
   },
+
+  async hasVoted(voter) {
+    const voteDoc = await Vote.findOne({voter, parent: this._id})
+    if (voteDoc)
+      return voteDoc.vote_value
+    return 0
+  }
 };
 
 postSchema.pre(/^find/, function () {

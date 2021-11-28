@@ -7,8 +7,8 @@ import MiddleBar from "../MiddleBar";
 import { useEffect, useState } from 'react';
 
 const PostSummary = ({ content, isSummary, handleVote }) => {
-    const [timePasseds, settimePassed] = useState()
-    const [timeUnits, settimeUnit] = useState()
+    const [timePasseds, settimePassed] = useState(0)
+    const [timeUnits, settimeUnit] = useState('ngày')
     useEffect(() => {
         const MS_PER_HOUR = 60 * 60 * 1000
         const MS_PER_MINUTE = 60 * 1000
@@ -32,7 +32,7 @@ const PostSummary = ({ content, isSummary, handleVote }) => {
         }
         settimePassed(timePassed)
         settimeUnit(timeUnit)
-    }, [content]);
+    }, []);
 
     const handleUpvote = (e) => {
         e.preventDefault()
@@ -43,14 +43,28 @@ const PostSummary = ({ content, isSummary, handleVote }) => {
         e.preventDefault()
         handleVote(content.id, -1)
     }
-
+    let voteStyle = undefined
+    if (content.vote_value > 0) {
+        voteStyle = style.upvoteActive
+    }
+    else if (content.vote_value < 0) {
+        voteStyle = style.downvoteActive
+    }
     return (
         <MiddleBar>
             <div className={style.flexContainer}>
                 <div className={`${style.voting} ${!isSummary && style.inFullPost}`}>
-                    <div onClick={ handleUpvote } className={style.voteBtn}><FontAwesomeIcon icon={faCaretSquareUp}/></div>
-                    <span className={style.upvoteCount}>{content.vote_count}</span>
-                    <div onClick={ handleDownvote } className={style.voteBtn}><FontAwesomeIcon icon={faCaretSquareDown}/></div>
+                    <div
+                        onClick={ handleUpvote }
+                        className={[style.voteBtn, content.vote_value === 1 ? voteStyle : undefined].join(' ')}>
+                        <FontAwesomeIcon icon={faCaretSquareUp}/>
+                    </div>
+                    <span className={[style.upvoteCount, voteStyle].join(' ')}>{content.vote_count}</span>
+                    <div
+                        onClick={ handleDownvote }
+                        className={[style.voteBtn, content.vote_value === -1 ? voteStyle : undefined].join(' ')}>
+                        <FontAwesomeIcon icon={faCaretSquareDown}/>
+                    </div>
                 </div>
                 <div className={style.postContent}>
                     <div className={style.postInfoContent}>
