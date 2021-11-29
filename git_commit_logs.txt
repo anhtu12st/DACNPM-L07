@@ -1,0 +1,167 @@
+"730b0f0","Nguyen Vo","Sun, 28 Nov 2021 09:15:10 +0700","fix vote bug",	 13 files changed, 114 insertions(+), 62 deletions(-)	
+
+"0cc1829","Nguyen Vo","Sat, 27 Nov 2021 19:51:34 +0700","voting functionality",	 16 files changed, 152 insertions(+), 91 deletions(-)	
+
+"cf3e125","Đặng Hoài Bão","Sat, 27 Nov 2021 00:03:42 +0700","group userNum createAt",	 2 files changed, 6 insertions(+), 6 deletions(-)	
+
+"c3fd3f2","Nguyen Vo","Fri, 26 Nov 2021 23:33:23 +0700","refactor client",	 14 files changed, 135 insertions(+), 68 deletions(-)	
+
+"317e431","Đặng Hoài Bão","Fri, 26 Nov 2021 23:25:15 +0700","reverse post",	 3 files changed, 4 insertions(+), 4 deletions(-)	
+
+"0d9d192","Đặng Hoài Bão","Fri, 26 Nov 2021 23:11:17 +0700","time",	 3 files changed, 28 insertions(+), 18 deletions(-)	
+
+"3dad3a3","anhtu12st","Fri, 26 Nov 2021 23:09:54 +0700","add comment function",	 14 files changed, 245 insertions(+), 219 deletions(-)	
+
+"8be510a","Đặng Hoài Bão","Fri, 26 Nov 2021 22:34:57 +0700","view post group following",	 6 files changed, 46 insertions(+), 12 deletions(-)	
+
+"bbce6e9","Nguyen Vo","Fri, 26 Nov 2021 20:02:15 +0700","add key to list.map children",	 3 files changed, 18 insertions(+), 15 deletions(-)	
+
+"b321763","Đặng Hoài Bão","Fri, 26 Nov 2021 19:59:58 +0700","view post api",	 13 files changed, 70 insertions(+), 105 deletions(-)	
+
+"09717c8","Đặng Hoài Bão","Fri, 26 Nov 2021 18:40:20 +0700","fix conflict",	 1 file changed, 5 deletions(-)	
+
+"b400245","Đặng Hoài Bão","Fri, 26 Nov 2021 18:37:04 +0700","on edit",	 5 files changed, 30 insertions(+), 15 deletions(-)	
+
+"8468d35","Đặng Hoài Bão","Fri, 26 Nov 2021 17:56:53 +0700","join group",	 7 files changed, 73 insertions(+), 11 deletions(-)	
+
+"9c78e09","Đặng Hoài Bão","Fri, 26 Nov 2021 11:16:51 +0700","fix group following",	 1 file changed, 5 insertions(+), 3 deletions(-)	
+
+"20b0302","Đặng Hoài Bão","Fri, 26 Nov 2021 11:08:33 +0700","fix",	 1 file changed, 2 insertions(+), 2 deletions(-)	
+
+"a988c15","Đặng Hoài Bão","Fri, 26 Nov 2021 11:04:58 +0700","fix",	 1 file changed, 3 insertions(+), 2 deletions(-)	
+
+"c750ac1","Nguyen Vo","Fri, 26 Nov 2021 10:54:22 +0700","changing model in server",	 4 files changed, 70 insertions(+), 72 deletions(-)	
+
+"2084147","Đặng Hoài Bão","Fri, 26 Nov 2021 10:40:09 +0700","group api",	 5 files changed, 11 insertions(+), 12 deletions(-)	
+
+"c8fdf14","Đặng Hoài Bão","Fri, 26 Nov 2021 10:06:07 +0700","create group api",	 11 files changed, 89 insertions(+), 51 deletions(-)	
+
+"941ae2b","Nguyen Vo","Fri, 26 Nov 2021 09:49:21 +0700","finish create post",	 3 files changed, 6 insertions(+), 12 deletions(-)	
+
+"6a1abb7","Nguyen Vo","Fri, 26 Nov 2021 00:03:26 +0700","implement comment feature",	 27 files changed, 361 insertions(+), 235 deletions(-)	
+
+"1bf945c","Đặng Hoài Bão","Wed, 24 Nov 2021 02:24:25 +0700","group post",	 5 files changed, 42 insertions(+), 9 deletions(-)	
+
+"911ef5e","anhtu12st","Tue, 23 Nov 2021 23:03:46 +0700","update user profile",	 5 files changed, 76 insertions(+), 39 deletions(-)	
+
+"0e87b40","Nguyen Vo","Tue, 23 Nov 2021 01:00:36 +0700","Done fetching group following from server",	 19 files changed, 97 insertions(+), 47 deletions(-)	
+
+"73c3c2b","Đặng Hoài Bão","Mon, 22 Nov 2021 22:47:21 +0700","create post",	 4 files changed, 38 insertions(+), 7 deletions(-)	
+
+"d583aa2","anhtu12st","Sun, 21 Nov 2021 18:21:39 +0700","login",	 21 files changed, 296 insertions(+), 111 deletions(-)	
+
+"19256b0","anhtu12st","Sat, 20 Nov 2021 18:36:32 +0700","init server",	 5 files changed, 5 insertions(+), 9 deletions(-)	
+
+"6770f59","anhtu12st","Sat, 20 Nov 2021 18:02:37 +0700","init server",	 20 files changed, 2453 insertions(+)	
+
+"7220918","Nguyen Vo","Wed, 17 Nov 2021 20:58:41 +0700","modified sass",	 15 files changed, 67 insertions(+), 35 deletions(-)	
+
+"6440f47","Nguyen Vo","Sat, 6 Nov 2021 23:24:59 +0700","minor change",	 1 file changed, 1 insertion(+)	
+
+"12b2b09","Đặng Hoài Bão","Sat, 6 Nov 2021 23:24:58 +0700","m",	 8 files changed, 188 insertions(+), 12 deletions(-)	
+
+"893c82c","Nguyen Vo","Sat, 6 Nov 2021 23:23:11 +0700","Restyle button and group page",	 14 files changed, 93 insertions(+), 76 deletions(-)	
+
+"a2ddce2","Nguyen Vo","Sat, 6 Nov 2021 21:47:52 +0700","restyle group page",	 9 files changed, 98 insertions(+), 90 deletions(-)	
+
+"d2efded","Nguyen Vo","Sat, 6 Nov 2021 21:44:15 +0700","Still re styling group page",	 2 files changed, 3 insertions(+), 3 deletions(-)	
+
+"269620c","Nguyen Vo","Sat, 6 Nov 2021 20:55:48 +0700","starting post detail screen",	 4 files changed, 28 insertions(+), 3 deletions(-)	
+
+"83c258b","Đặng Hoài Bão","Sat, 6 Nov 2021 19:18:03 +0700","fix",	 13 files changed, 66 insertions(+), 35 deletions(-)	
+
+"104d362","Nguyen Vo","Sat, 6 Nov 2021 11:22:35 +0700","Restyling home page",	 18 files changed, 198 insertions(+), 173 deletions(-)	
+
+"5a5e64f","sshinichi-69","Fri, 5 Nov 2021 22:02:45 +0700","import scss for GroupRule",	 2 files changed, 14 insertions(+), 6 deletions(-)	
+
+"26a1045","Đặng Hoài Bão","Fri, 5 Nov 2021 21:55:53 +0700","new",	 5 files changed, 17 insertions(+), 37485 deletions(-)	
+
+"4317075","Nguyen Vo","Fri, 5 Nov 2021 21:08:01 +0700","done create post page",	 21 files changed, 756 insertions(+), 70 deletions(-)	
+
+"4def236","anhtu12st","Fri, 5 Nov 2021 18:52:21 +0700","add feature update profile",	 6 files changed, 70 insertions(+), 34 deletions(-)	
+
+"dd4f91f","sshinichi-69","Fri, 5 Nov 2021 12:39:49 +0700","Group Page",	 120 files changed, 56316 insertions(+), 1 deletion(-)	
+
+"90af6b0","sshinichi-69","Fri, 5 Nov 2021 07:10:02 +0700","1",	 2 files changed, 17 insertions(+), 1 deletion(-)	
+
+"dc866fe","Đặng Hoài Bão","Fri, 5 Nov 2021 03:37:12 +0700","HOME, LOGIN & SIGN UP",	 20 files changed, 173 insertions(+), 61 deletions(-)	
+
+"ef6b33c","Đặng Hoài Bão","Thu, 4 Nov 2021 23:50:10 +0700","fix merge",	 2 files changed, 4 insertions(+), 4 deletions(-)	
+
+"62d76fe","Đặng Hoài Bão","Thu, 4 Nov 2021 23:44:10 +0700","CreateGroupPopup",	 6 files changed, 132 insertions(+), 5 deletions(-)	
+
+"cfc7af2","Dangnguyen2705","Thu, 4 Nov 2021 21:06:30 +0700","update login-signup",	 19 files changed, 214 insertions(+), 284 deletions(-)	
+
+"43b85b3","Đặng Hoài Bão","Thu, 4 Nov 2021 18:26:15 +0700","Feed & Post Sumary",	 7 files changed, 132 insertions(+), 18 deletions(-)	
+
+"0c87aac","Đặng Hoài Bão","Thu, 4 Nov 2021 17:49:30 +0700","Footer",	 2 files changed, 4 insertions(+), 1 deletion(-)	
+
+"fbc9263","Đặng Hoài Bão","Thu, 4 Nov 2021 17:46:04 +0700","Greeting",	 10 files changed, 110 insertions(+), 119 deletions(-)	
+
+"7c5442f","Đặng Hoài Bão","Thu, 4 Nov 2021 15:54:38 +0700","TrendingGroup",	 6 files changed, 31 insertions(+), 22 deletions(-)	
+
+"b6ad2bf","Đặng Hoài Bão","Thu, 4 Nov 2021 15:48:04 +0700","FilterBar",	 2 files changed, 3 insertions(+), 1 deletion(-)	
+
+"5e08475","Đặng Hoài Bão","Thu, 4 Nov 2021 15:44:25 +0700","CreatePostBar",	 5 files changed, 28 insertions(+), 23 deletions(-)	
+
+"133c2d2","Đặng Hoài Bão","Thu, 4 Nov 2021 15:27:35 +0700","GroupFollowing",	 2 files changed, 12 insertions(+), 4 deletions(-)	
+
+"ed04c92","Đặng Hoài Bão","Thu, 4 Nov 2021 14:52:45 +0700","header",	 6 files changed, 36 insertions(+), 74 deletions(-)	
+
+"e79fed3","Đặng Hoài Bão","Thu, 4 Nov 2021 14:35:33 +0700","header",	 3 files changed, 24 insertions(+), 26 deletions(-)	
+
+"4307de9","Dangnguyen2705","Thu, 4 Nov 2021 14:23:00 +0700","pull",	 5 files changed, 11 insertions(+), 2 deletions(-)	
+
+"9c7a184","Dangnguyen2705","Thu, 4 Nov 2021 14:22:37 +0700","pull",	 2 files changed, 24 deletions(-)	
+
+"40c4b83","Đặng Hoài Bão","Thu, 4 Nov 2021 14:14:36 +0700","fix",	 15 files changed, 36 insertions(+), 40 deletions(-)	
+
+"124e4de","Đặng Hoài Bão","Thu, 4 Nov 2021 10:47:53 +0700","little",	 1 file changed, 1 insertion(+), 2 deletions(-)	
+
+"69d6682","Đặng Hoài Bão","Thu, 4 Nov 2021 10:05:32 +0700","CHANGE",	 14 files changed, 101 insertions(+), 62 deletions(-)	
+
+"a1546dd","Đặng Hoài Bão","Thu, 4 Nov 2021 09:37:28 +0700","CHANGE",	 44 files changed, 127 insertions(+), 109 deletions(-)	
+
+"85319f3","sshinichi-69","Wed, 3 Nov 2021 10:24:56 +0700","Khanh (#4)",	 1 file changed, 1 insertion(+)	
+
+"93896cf","sshinichi-69","Wed, 3 Nov 2021 07:19:41 +0700","Group page & Create group",	 3362 files changed, 393998 insertions(+)	
+
+"6aa6ea1","sshinichi-69","Wed, 3 Nov 2021 06:09:02 +0700","Create assignment",	 1 file changed, 1 insertion(+)	
+
+"a6b47b3","Dangnguyen2705","Wed, 3 Nov 2021 01:28:33 +0700","update login-signup",	 4 files changed, 26 insertions(+), 7 deletions(-)	
+
+"a553b1a","Dangnguyen2705","Wed, 3 Nov 2021 00:37:32 +0700","Login",	 9 files changed, 160 insertions(+), 143 deletions(-)	
+
+"2d044e1","anhtu12st","Tue, 2 Nov 2021 21:35:50 +0700","add profile page",	 4 files changed, 144 insertions(+), 3 deletions(-)	
+
+"20ce290","Dangnguyen2705","Tue, 2 Nov 2021 20:02:37 +0700","add Login, Signup",	 6 files changed, 190 insertions(+), 8 deletions(-)	
+
+"e695515","anhtu12st","Tue, 2 Nov 2021 17:48:29 +0700","add admin Page",	 24 files changed, 4112 insertions(+)	
+
+"65f3072","Nguyen Vo","Tue, 2 Nov 2021 00:02:11 +0700","Developed header bar, some side panels, newsfeed (home page) and create new post",	 23 files changed, 840 insertions(+), 493 deletions(-)	
+
+"a6dd383","Đặng Hoài Bão","Tue, 2 Nov 2021 02:06:52 +0700","draft for HomePage",	 17 files changed, 285 insertions(+), 15 deletions(-)	
+
+"a95b113","Đặng Hoài Bão","Tue, 2 Nov 2021 00:54:38 +0700","CreatePost",	 6 files changed, 98 insertions(+), 14 deletions(-)	
+
+"192a035","Đặng Hoài Bão","Tue, 2 Nov 2021 00:13:34 +0700","fix",	 1 file changed, 1 deletion(-)	
+
+"4ef3ed4","Đặng Hoài Bão","Tue, 2 Nov 2021 00:09:24 +0700","CreatePost",	 7 files changed, 24 insertions(+), 23 deletions(-)	
+
+"3167fa1","Đặng Hoài Bão","Mon, 1 Nov 2021 23:02:27 +0700","style postShort",	 6 files changed, 48462 insertions(+), 10584 deletions(-)	
+
+"d8fb96f","Đặng Hoài Bão","Mon, 1 Nov 2021 22:00:48 +0700","css",	 7 files changed, 79 insertions(+), 48 deletions(-)	
+
+"f15faac","Đặng Hoài Bão","Mon, 1 Nov 2021 21:14:25 +0700","PostShort PostContainer Home",	 6 files changed, 143 insertions(+), 23 deletions(-)	
+
+"975c6f5","Đặng Hoài Bão","Sun, 24 Oct 2021 14:18:35 +0700","clean up",	 1 file changed, 1 insertion(+), 2 deletions(-)	
+
+"d200e84","Đặng Hoài Bão","Sun, 24 Oct 2021 14:17:44 +0700","add",	 1 file changed, 2 insertions(+), 1 deletion(-)	
+
+"ad962b3","Đặng Hoài Bão","Sun, 24 Oct 2021 10:03:18 +0700","clean up",	 4 files changed, 2092 insertions(+), 2084 deletions(-)	
+
+"022ddf3","tupa7Cerebral","Mon, 11 Oct 2021 16:57:32 +0700","add readme 2",	 1 file changed, 1 insertion(+)	
+
+"66ca95e","tupa7Cerebral","Mon, 11 Oct 2021 16:54:46 +0700","add readme",	 1 file changed, 1 insertion(+)	
+
+"807b1fd","tupa7Cerebral","Sun, 10 Oct 2021 20:24:31 +0700","Init client",	 24 files changed, 12573 insertions(+)	
